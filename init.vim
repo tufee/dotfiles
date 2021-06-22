@@ -38,11 +38,18 @@ nnoremap <C-H> <C-W><C-H>
 let g:UltiSnipsExpandTrigger='<c-j>'
 "let g:hardtime_default_on = 1
 
-let g:vimspector_enable_mappings = 'HUMAN'
+"let g:vimspector_enable_mappings = 'HUMAN'
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+nnoremap <Leader>dr :call vimspector#Restart()<CR>
+nnoremap <Leader>dq :call vimspector#Reset()<CR>
+nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dw ::VimspectorWatch 
+nnoremap <Leader>dx :call vimspector#CleanLineBreakpoint()<CR>
+nnoremap <Leader>di <Plug>VimspectorBalloonEval
 
 " moves current line down or up
 nnoremap <leader>- ddp
-nnoremap <leader>_ ddkP
+nnoremap <leader>_ ddkP:V
 
 "nnoremap F :Locate / <cr>
 

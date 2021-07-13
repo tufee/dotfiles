@@ -29,12 +29,24 @@ Plug 'pantharshit00/vim-prisma'
 Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
-let g:comfortable_motion_no_default_key_mappings = 1
+" Não exibir janela de pré-visualização de conteúdo do arquivo
+let g:fzf_preview_window = []
+
+let g:fzf_layout = 
+\ { 'window': 
+  \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
+\ } 
+
+
+"let g:comfortable_motion_no_default_key_mappings = 1
+"
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 let g:comfortable_motion_scroll_down_key = "j"
 let g:comfortable_motion_scroll_up_key = "k"
 
-:nnoremap <F2> :buffers<CR>:buffer<Space>
+:nnoremap <F2> :Buffers<CR>
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -160,7 +172,7 @@ nnoremap <c-p> :Files<cr>
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
       \ 'ctrl-t': 'tabedit',
-      \ 'ctrl-v': 'vslit',
+      \ 'ctrl-v': 'vsplit',
       \ }
 let g:fzf_layout = { 'down': '~40%' }
 

@@ -24,7 +24,15 @@ Plug 'edkolev/tmuxline.vim'
 
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'mlaursen/vim-react-snippets'
+
+Plug 'pantharshit00/vim-prisma'
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
+
+let g:comfortable_motion_no_default_key_mappings = 1
+
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
 
 :nnoremap <F2> :buffers<CR>:buffer<Space>
 

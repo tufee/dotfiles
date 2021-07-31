@@ -1,179 +1,126 @@
 call plug#begin()
+" Início da instalação do fzf
+" O fzf serve para fazer buscas no estilo do sublime text, com Ctrl + P
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" Conquer of Completation - autocomplete - intelisense engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Explorar de arquivos
 Plug 'preservim/nerdtree'
+
+" Adiciona comentários no código
 Plug 'preservim/nerdcommenter'
  
+" Debugger
 Plug 'puremourning/vimspector' 
-Plug 'tpope/vim-fugitive'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-surround'
-Plug 'SirVer/ultisnips'
 
-Plug 'sheerun/vimrc'
+" Suporte para Git no Vim
+Plug 'tpope/vim-fugitive'
+
+" Fazer fechamento automático de pares (parênteses, colchetes, aspas, etc)
+Plug 'jiangmiao/auto-pairs'
+
+" Facilitar manipulação de 'surroundings' (pares)
+Plug 'tpope/vim-surround'
+
+" Adicionar syntax hightlight para várias linguagens
 Plug 'sheerun/vim-polyglot'
 
+" Temas
 Plug 'sfi0zy/atlantic-dark.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'morhetz/gruvbox'
+
+" Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'edkolev/tmuxline.vim'
 
+" Suporte para Styled Components
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'mlaursen/vim-react-snippets'
 
+" Adiciona suporte ao prisma
 Plug 'pantharshit00/vim-prisma'
+
+" Suporte para smooth scrolling
 Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
-let g:comfortable_motion_no_default_key_mappings = 1
+" Configuração do FZF --------------------------------------------------------
 
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
+" Não exibir janela de pré-visualização de conteúdo do arquivo
+let g:fzf_preview_window = []
 
-:nnoremap <F2> :buffers<CR>:buffer<Space>
+" Posicionamento da janela do FZF (v2)
+let g:fzf_layout = 
+\ { 'window': 
+  \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
+\ } 
 
-"split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" UltiSnips
-let g:UltiSnipsExpandTrigger='<c-j>'
-"let g:hardtime_default_on = 1
-
-"let g:vimspector_enable_mappings = 'HUMAN'
-nnoremap <Leader>dc :call vimspector#Continue()<CR>
-nnoremap <Leader>dr :call vimspector#Restart()<CR>
-nnoremap <Leader>dq :call vimspector#Reset()<CR>
-nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <Leader>dw ::VimspectorWatch 
-nnoremap <Leader>dx :call vimspector#CleanLineBreakpoint()<CR>
-nnoremap <Leader>di <Plug>VimspectorBalloonEval
-
-" moves current line down or up
-nnoremap <leader>- ddp
-nnoremap <leader>_ ddkP:V
-
-"nnoremap F :Locate / <cr>
-
-syntax enable
-syntax on
-
-colorscheme atlantic-dark
-"colorscheme paramount
-
-"autocmd vimenter * ++nested colorscheme gruvbox
-"let g:gruvbox_contrast_dark='hard'
-"colorscheme gruvbox
-
-
-" Return to last edit position when opening files
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-
-"Open and switch buffers
-nnoremap T :tabnew <cr>
-nnoremap <Tab> :bn <cr>
-nnoremap <S-Tab> :bp <cr>
-nnoremap <bar> :call OpenBuffer('v') <cr>
-
-
-
-" Make it so any .env files are correctly styled. Normally only worked with .env
-autocmd BufNewFile,BufRead * if expand('%t') =~ '.env' | set filetype=sh | endif
-
-" Make it so that if files are changed externally (ex: changing git branches) update the vim buffers automatically
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if !bufexists("[Command Line]") | checktime | endif
-autocmd FileChangedShellPost *
-      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-
-"Visual mode
-inoremap jj <ESC>
-
-" Enable copy in nvim to system
-set clipboard=unnamedplus 
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
-filetype on
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Highlight search results
-set hlsearch
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases
-set smartcase
-
-" update tab behavior
-set expandtab
-set smarttab
-set shiftwidth=2
-set tabstop=2
-set nowrap 
-" line breaking
-set lbr
-
-" Show line numbers
-set number
-
-" Show relative line numbers
-set relativenumber
-
-" Active mouse in Vim
-set mouse=a
-
-" Preview effects of commands like replace
-set inccommand=split
-
-" Leader key
-let mapleader="\<space>"
-
-" Open init.vim
-nnoremap <leader>ev :vsplit ~/.config/nvim/init.vim<cr>
-
-" Refresh init.vim
-nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
-
-" Save file
-nnoremap <c-s> :w! <cr>
-imap <c-s> <Esc>:w<CR>a
-
-" Exit file
-nnoremap <c-q> :q! <cr>
-
-" Browse file
-nnoremap <c-p> :Files<cr>
-
-" Update fzf.vim actions for bindings like command-t
+" Define atalhos para expandir o resultado da busca do fzf
+" para horizontal, vertical e na tela atual
+" e define o tamanho da tela de busca para 30% da tela atual
 let g:fzf_action = {
       \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit',
       \ 'ctrl-t': 'tabedit',
-      \ 'ctrl-v': 'vslit',
       \ }
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'down': '~30%' }
 
-" Open NerdTree
-map <C-n> :NERDTreeToggle<CR>
+" Cores do FZF devem casar com as cores do tema
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
-" Command for set Prettier as default formater
+" Cores ---------------------------------------------------------------------
+
+" Ativa o suporte para 256 cores
+set termguicolors
+
+" Habilita syntax highlight
+syntax enable
+
+" [TEMA] Configurações para tema gruvbox ------------------------------------
+
+" Ativa o tema gruvbox
+colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+
+" [TEMA] Configurações para tema atlantic dark ------------------------------
+
+" Ativa o tema atlantic-dark
+" colorscheme atlantic-dark
+
+" [TEMA] Configurações para tema paramount ----------------------------------
+
+" Ativa o tema paramount
+" colorscheme paramount
+
+" Configuração do plugin COC ------------------------------------------------
+
+" Add `:OR` comando para organizar os importes no buffer atual
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+
+" Comando para definir o prettier como formatador padrão
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-" Shortcut for show autocomplete suggestions
+" Usar Ctrl + Espaço para abrir autocomplete no modo de inserção
 inoremap <silent><expr> <c-space> coc#refresh()
 
-"Coc config
+" Configurações do coc
 let g:coc_global_extensions=[
       \ 'coc-eslint',
       \ 'coc-json',
@@ -183,63 +130,188 @@ let g:coc_global_extensions=[
      \ 'coc-tsserver',
      \ 'coc-vimlsp',
      \ 'coc-emmet',
-      \ 'coc-styled-components'
       \ ]
 
-" Formatting selected code.
+
+" Espaços e Tabs -----------------------------------------------------------
+
+" Define tabs como espaços
+set expandtab
+
+" Número de espaços visuais ao pressionar a tecla TAB
+set tabstop=2
+
+" Número de espaços contados em uma tabulação quando estiver editando
+set softtabstop=2
+
+" Número de espaços contados em uma tabulação em nova linha
+set shiftwidth=2
+
+" UI e Layout ----------------------------------------------------------------
+
+" Remove a marca da linha atual
+set nocursorline
+
+" Mostra os números das linhas
+set number
+
+" Mostra o números das linhas em relação a posição do cursor
+set relativenumber
+
+" Ativa o mouse
+set mouse=a
+
+" Pode deixar o nvim lento, mas garantido que syntax highlight vai 
+" sempre funcionar
+autocmd BufEnter * :syntax sync fromstart
+
+
+
+" Comportamentos do vim ------------------------------------------------------
+
+" Permite editar outros arquivos sem salvar um antes de abrir outro
+set hidden
+
+" permite ter uma pré-visualização antes de fazer uma substituição com :%s
+set inccommand=split
+
+" Permite copiar do clipboard para o vim e do vim para o clipboard
+set clipboard=unnamedplus 
+
+" Destaca os resultados da busca
+set hlsearch
+
+" Ignora letras maiúsculas e minúsculas na busca
+set ignorecase
+
+" Sobrescreve o `ignorecase` quando houver caracteres em maísuculo na busca
+set smartcase
+
+" Adiciona quebra de linhas quando elas ficam grandes
+set lbr
+
+" Define diretório para salvar histórico de `desfazer`
+set undodir=~/.config/nvim/undos
+
+" Salva automaticamente um histórico de ações para `desfazer`, ainda que o vim
+" seja fechado
+set undofile
+
+" Atalhos com a tecla <leader> -----------------------------------------------
+
+" Define a tecla `leader` como a espaço
+let mapleader="\<space>"
+
+" Atalho para edição do arquivo de configuração do neovim. Só pressionar
+" a tecla <leader> e digitar `ev` (edit vim) no modo normal
+nnoremap <leader>ev :e ~/.config/nvim/init.vim<cr>
+
+" Atalho para recarregar o vim após uma edição no arquivo de configuração
+"(source vim) - <leader> seguido de `sv`
+nnoremap <leader>sv :source ~/.config/nvim/init.vim<cr>
+
+" Atalhos do vimspector
+nnoremap <Leader>dc :call vimspector#Continue()<CR>
+nnoremap <Leader>dr :call vimspector#Restart()<CR>
+nnoremap <Leader>dq :call vimspector#Reset()<CR>
+nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <Leader>dw ::VimspectorWatch 
+nnoremap <Leader>dx :call vimspector#CleanLineBreakpoint()<CR>
+nnoremap <Leader>di <Plug>VimspectorBalloonEval
+
+" Atalho para mover a linha atual para baixo
+nnoremap <leader>- ddp
+
+" Atalho para mover a linha atual para cima
+nnoremap <leader>_ ddkP
+
+" Remover highlight da busca com <leader><space>
+map <silent> <leader><cr> :noh<cr>
+
+" Formata somente o código selecionado
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-" format file
+" Outros atalhos ------------------------------------------------------------
+
+" Formata o arquivo atual
 nmap <silent> ff <Plug>(coc-format)
 
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" Mostra todos os buffers abertos
+:nnoremap <c-o> :Buffers<CR>
 
-" TextEdit might fail if hidden is not set.
-set hidden
+" Atalho para se mover entre os buffers abertos na mesma janela
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
-set noswapfile
+" Abre uma nova janela vazia
+nnoremap T :tabnew <cr>
 
-" Give more space for displaying messages.
-set cmdheight=1
+" Se move para o próximo buffer 
+nnoremap <Tab> :bn <cr>
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=2000
+" Se move para o buffer anterior
+nnoremap <S-Tab> :bp <cr>
 
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
+" Entra no modo visual
+inoremap jj <ESC>
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+" Salvar usando CTRL + S
+nnoremap <c-s> :w! <cr>
+imap <c-s> <Esc>:w<CR>a
 
-"Show hidden files in nerdthree
+" Sair usando CTRL + q
+nnoremap <c-q> :q! <cr>
+
+" Define o atalho Ctrl + P para utilizar o fzf 
+nnoremap <c-p> :Files<cr>
+
+" Atalho para abrir o explorador de arquivos nerdthree
+map <C-n> :NERDTreeToggle<CR>
+
+"Seleciona todo o conteúdo do arquivo
+nnoremap <c-a> <esc>ggVG<cr>
+
+" Outros ---------------------------------------------------------------
+
+" Permite que o cursor acompanhe a rolagem da tela
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+
+" Permitir fontes Powerline
+let g:airline_powerline_fonts=1
+
+" Retorna na última posição quando o arquivo é aberto
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Atualiza o buffer caso o código seja atualizado
+" por um git pull por exemplo
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if !bufexists("[Command Line]") | checktime | endif
+autocmd FileChangedShellPost *
+      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+
+" Mostra os arquivos ocultos no nerdthree
 let NERDTreeShowHidden=1
 
-" ================================================================
-" => Spell checking
-" ================================================================
-" always enforce spell checking in text files
-autocmd BufRead,BufNewFile *.txt,*.md,COMMIT_EDITMSG setlocal spell
+let g:python3_host_prog = '/usr/bin/python3'
 
-" linux doesn't do this by default, so enable it just to be safe
-hi SpellBad cterm=underline
+" Backups --------------------------------------------------------------------
+" Inicia o backup
+set backup
 
-let g:airline_powerline_fonts = 1
+" Define o diretório para os backups
+set backupdir=~/.config/nvim/backups
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
-au WinLeave * set nocursorline nocursorcolumn
-"set nocursorline
+" Arquivos do qual backups devem ser ignorados
+set backupskip=/tmp/*
+
+" Salva o arquivo no backup
+set writebackup
+
+" Ajuste para hot reloading (desabilitar o 'safe write')
+set backupcopy=yes

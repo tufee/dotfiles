@@ -32,6 +32,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'sfi0zy/atlantic-dark.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -48,6 +49,19 @@ Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------
+" Não exibir janela de pré-visualização de conteúdo do arquivo
+let g:fzf_preview_window = []
+
+let g:fzf_layout = 
+\ { 'window': 
+  \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
+\ } 
+
+
+"let g:comfortable_motion_no_default_key_mappings = 1
+"
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Não exibir janela de pré-visualização de conteúdo do arquivo
 let g:fzf_preview_window = []
@@ -57,6 +71,8 @@ let g:fzf_layout =
 \ { 'window': 
   \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
 \ } 
+
+:nnoremap <F2> :Buffers<CR>
 
 " Define atalhos para expandir o resultado da busca do fzf
 " para horizontal, vertical e na tela atual
@@ -95,9 +111,8 @@ syntax enable
 " [TEMA] Configurações para tema gruvbox ------------------------------------
 
 " Ativa o tema gruvbox
-colorscheme gruvbox
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+"let g:gruvbox_contrast_dark='hard'
+"colorscheme gruvbox
 
 " [TEMA] Configurações para tema atlantic dark ------------------------------
 
@@ -108,6 +123,14 @@ colorscheme gruvbox
 
 " Ativa o tema paramount
 " colorscheme paramount
+
+" [TEMA] Configurações para tema ayu ----------------------------------
+
+" Ativa o tema ayu
+"let ayucolor="light"  " for light version of theme
+"let ayucolor="mirage" " for mirage version of theme
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
 
 " Configuração do plugin COC ------------------------------------------------
 
@@ -165,8 +188,6 @@ set mouse=a
 " sempre funcionar
 autocmd BufEnter * :syntax sync fromstart
 
-
-
 " Comportamentos do vim ------------------------------------------------------
 
 " Permite editar outros arquivos sem salvar um antes de abrir outro
@@ -196,6 +217,14 @@ set undodir=~/.config/nvim/undos
 " Salva automaticamente um histórico de ações para `desfazer`, ainda que o vim
 " seja fechado
 set undofile
+
+" Update fzf.vim actions for bindings like command-t
+let g:fzf_action = {
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-t': 'tabedit',
+      \ 'ctrl-v': 'vsplit',
+      \ }
+let g:fzf_layout = { 'down': '~40%' }
 
 " Atalhos com a tecla <leader> -----------------------------------------------
 
@@ -274,6 +303,11 @@ map <C-n> :NERDTreeToggle<CR>
 "Seleciona todo o conteúdo do arquivo
 nnoremap <c-a> <esc>ggVG<cr>
 
+" Permiter usar o `enter` para 
+" realizar a confirmação do autocomplete
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 " Outros ---------------------------------------------------------------
 
 " Permite que o cursor acompanhe a rolagem da tela
@@ -315,3 +349,5 @@ set writebackup
 
 " Ajuste para hot reloading (desabilitar o 'safe write')
 set backupcopy=yes
+
+

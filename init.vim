@@ -33,6 +33,10 @@ Plug 'sfi0zy/atlantic-dark.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'joshdick/onedark.vim'
+Plug 'srcery-colors/srcery-vim'
+Plug 'drewtempelmeyer/palenight.vim'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -46,6 +50,17 @@ Plug 'pantharshit00/vim-prisma'
 
 " Suporte para smooth scrolling
 Plug 'yuttie/comfortable-motion.vim'
+
+" Adiciona um terminal dentro do vim
+Plug 'voldikss/vim-floaterm'
+
+" Adiciona Atalhos para funções 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Adiciona ícones ao vim 
+Plug 'ryanoasis/vim-devicons'
+
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------
@@ -57,9 +72,6 @@ let g:fzf_layout =
   \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
 \ } 
 
-
-"let g:comfortable_motion_no_default_key_mappings = 1
-"
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -108,9 +120,24 @@ set termguicolors
 " Habilita syntax highlight
 syntax enable
 
+" [TEMA] Configurações para tema srcery ------------------------------
+
+" Ativa o tema srcery
+colorscheme srcery
+
+" [TEMA] Configurações para tema onedark ------------------------------
+
+" Ativa o tema onedark
+"colorscheme onedark
+
+" [TEMA] Configurações para tema moonfly ------------------------------
+
+" Ativa o tema moonfly
+"colorscheme moonfly
+
 " [TEMA] Configurações para tema gruvbox ------------------------------------
 
-" Ativa o tema gruvbox
+"Ativa o tema gruvbox
 "let g:gruvbox_contrast_dark='hard'
 "colorscheme gruvbox
 
@@ -129,8 +156,17 @@ syntax enable
 " Ativa o tema ayu
 "let ayucolor="light"  " for light version of theme
 "let ayucolor="mirage" " for mirage version of theme
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+"let ayucolor="dark"   " for dark version of theme
+"colorscheme ayu
+
+"" [TEMA] Configurações para tema paramount ----------------------------------
+
+"set background=dark
+"colorscheme palenight
+
+" Configurações vim dev icons
+set encoding=utf8
+set guifont=FiraMono\ Nerd\ Font\ 12
 
 " Configuração do plugin COC ------------------------------------------------
 
@@ -247,7 +283,7 @@ nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
 nnoremap <Leader>dw ::VimspectorWatch 
 nnoremap <Leader>dx :call vimspector#CleanLineBreakpoint()<CR>
 nnoremap <Leader>di <Plug>VimspectorBalloonEval
-
+ 
 " Atalho para mover a linha atual para baixo
 nnoremap <leader>- ddp
 
@@ -260,6 +296,13 @@ map <silent> <leader><cr> :noh<cr>
 " Formata somente o código selecionado
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+
+" Atalho para o floaterm
+let g:floaterm_keymap_new    = '<F7>'
+let g:floaterm_keymap_toggle = '<F8>'
+
+" Atalho para ultisnips
+let g:UltiSnipsExpandTrigger='<c-j>'
 
 " Outros atalhos ------------------------------------------------------------
 
@@ -308,7 +351,13 @@ nnoremap <c-a> <esc>ggVG<cr>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" Atalho para ir para as definições da função
+nmap <silent> gd <Plug>(coc-definition)
+
 " Outros ---------------------------------------------------------------
+
+" Fecha o buffer atual
+nnoremap <c-m> :bd<cr>
 
 " Permite que o cursor acompanhe a rolagem da tela
 let g:comfortable_motion_scroll_down_key = "j"

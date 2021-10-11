@@ -56,7 +56,7 @@ Plug 'voldikss/vim-floaterm'
 
 " Adiciona Atalhos para funções 
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'mlaursen/vim-react-snippets'
 
 " Adiciona ícones ao vim 
 Plug 'ryanoasis/vim-devicons'
@@ -357,7 +357,10 @@ nmap <silent> gd <Plug>(coc-definition)
 " Outros ---------------------------------------------------------------
 
 " Fecha o buffer atual
-nnoremap <c-m> :bd<cr>
+nnoremap <c-k> :bd <cr>
+
+" Adiciona uma quebra de linha
+:nnoremap <NL> i<CR><ESC>
 
 " Permite que o cursor acompanhe a rolagem da tela
 let g:comfortable_motion_scroll_down_key = "j"
@@ -399,4 +402,4 @@ set writebackup
 " Ajuste para hot reloading (desabilitar o 'safe write')
 set backupcopy=yes
 
-
+set foldmethod=manual

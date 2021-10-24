@@ -1,4 +1,4 @@
-{
+
 "diagnostic.errorSign": "🚨",
   "diagnostic.warningSign": "⚠️ ",
   "diagnostic.infoSign": "⚠️ ",
@@ -28,5 +28,6 @@
     "typescriptreact",
     "json",
     "prisma"
+    "yml"
   ]
 }

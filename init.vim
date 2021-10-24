@@ -61,6 +61,12 @@ Plug 'mlaursen/vim-react-snippets'
 " Adiciona ícones ao vim 
 Plug 'ryanoasis/vim-devicons'
 
+" Plugin para mover os blocos mais fácil 
+Plug 'matze/vim-move'
+
+" Plugins para mostrar um preview da busca de arquivos
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------
@@ -166,7 +172,7 @@ colorscheme srcery
 
 " Configurações vim dev icons
 set encoding=utf8
-set guifont=FiraMono\ Nerd\ Font\ 12
+set guifont=FiraCode\ Nerd\ Font\ 12
 
 " Configuração do plugin COC ------------------------------------------------
 
@@ -181,14 +187,18 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Configurações do coc
 let g:coc_global_extensions=[
+      \ 'coc-css',
+      \ 'coc-stylelint',
+      \ 'coc-docker',
+      \ 'coc-yaml',
       \ 'coc-eslint',
       \ 'coc-json',
       \ 'coc-html',
       \ 'coc-prettier',
-     \ 'coc-highlight',
-     \ 'coc-tsserver',
-     \ 'coc-vimlsp',
-     \ 'coc-emmet',
+      \ 'coc-highlight',
+      \ 'coc-tsserver',
+      \ 'coc-vimlsp',
+      \ 'coc-emmet',
       \ ]
 
 
@@ -284,12 +294,6 @@ nnoremap <Leader>dw ::VimspectorWatch
 nnoremap <Leader>dx :call vimspector#CleanLineBreakpoint()<CR>
 nnoremap <Leader>di <Plug>VimspectorBalloonEval
  
-" Atalho para mover a linha atual para baixo
-nnoremap <leader>- ddp
-
-" Atalho para mover a linha atual para cima
-nnoremap <leader>_ ddkP
-
 " Remover highlight da busca com <leader><space>
 map <silent> <leader><cr> :noh<cr>
 
@@ -300,9 +304,6 @@ nmap <leader>f  <Plug>(coc-format-selected)
 " Atalho para o floaterm
 let g:floaterm_keymap_new    = '<F7>'
 let g:floaterm_keymap_toggle = '<F8>'
-
-" Atalho para ultisnips
-let g:UltiSnipsExpandTrigger='<c-j>'
 
 " Outros atalhos ------------------------------------------------------------
 
@@ -318,6 +319,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Atalho para ultisnips
+let g:UltiSnipsExpandTrigger='<c-j>'
+
 " Abre uma nova janela vazia
 nnoremap T :tabnew <cr>
 
@@ -328,7 +332,7 @@ nnoremap <Tab> :bn <cr>
 nnoremap <S-Tab> :bp <cr>
 
 " Entra no modo visual
-inoremap jj <ESC>
+inoremap kj <ESC>
 
 " Salvar usando CTRL + S
 nnoremap <c-s> :w! <cr>
@@ -338,7 +342,7 @@ imap <c-s> <Esc>:w<CR>a
 nnoremap <c-q> :q! <cr>
 
 " Define o atalho Ctrl + P para utilizar o fzf 
-nnoremap <c-p> :Files<cr>
+nnoremap <c-p> :Telescope find_files<cr>
 
 " Atalho para abrir o explorador de arquivos nerdthree
 map <C-n> :NERDTreeToggle<CR>
@@ -354,13 +358,10 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 " Atalho para ir para as definições da função
 nmap <silent> gd <Plug>(coc-definition)
 
-" Outros ---------------------------------------------------------------
-
 " Fecha o buffer atual
 nnoremap <c-k> :bd <cr>
 
-" Adiciona uma quebra de linha
-:nnoremap <NL> i<CR><ESC>
+" Outros ---------------------------------------------------------------
 
 " Permite que o cursor acompanhe a rolagem da tela
 let g:comfortable_motion_scroll_down_key = "j"

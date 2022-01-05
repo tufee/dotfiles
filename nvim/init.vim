@@ -12,9 +12,9 @@ Plug 'preservim/nerdtree'
 
 " Adiciona comentários no código
 Plug 'preservim/nerdcommenter'
- 
+
 " Debugger
-Plug 'puremourning/vimspector' 
+Plug 'puremourning/vimspector'
 
 " Suporte para Git no Vim
 Plug 'tpope/vim-fugitive'
@@ -37,6 +37,9 @@ Plug 'bluz71/vim-moonfly-colors'
 Plug 'joshdick/onedark.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'franbach/miramare'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -54,29 +57,32 @@ Plug 'yuttie/comfortable-motion.vim'
 " Adiciona um terminal dentro do vim
 Plug 'voldikss/vim-floaterm'
 
-" Adiciona Atalhos para funções 
+" Adiciona Atalhos para funções
 Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
-" Adiciona ícones ao vim 
+" Adiciona ícones ao vim
 Plug 'ryanoasis/vim-devicons'
 
-" Plugin para mover os blocos mais fácil 
+" Plugin para mover os blocos mais fácil
 Plug 'matze/vim-move'
 
 " Plugins para mostrar um preview da busca de arquivos
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'eugen0329/vim-esearch'
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------
 " Não exibir janela de pré-visualização de conteúdo do arquivo
 let g:fzf_preview_window = []
 
-let g:fzf_layout = 
-\ { 'window': 
-  \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
-\ } 
+let g:fzf_layout =
+\ { 'window':
+\ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' }
+\ }
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
@@ -85,10 +91,10 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 let g:fzf_preview_window = []
 
 " Posicionamento da janela do FZF (v2)
-let g:fzf_layout = 
-\ { 'window': 
-  \ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' } 
-\ } 
+let g:fzf_layout =
+\ { 'window':
+\ { 'width': 0.98, 'height': 0.7, 'yoffset': 0.94, 'border': 'rounded' }
+\ }
 
 :nnoremap <F2> :Buffers<CR>
 
@@ -96,27 +102,27 @@ let g:fzf_layout =
 " para horizontal, vertical e na tela atual
 " e define o tamanho da tela de busca para 30% da tela atual
 let g:fzf_action = {
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-v': 'vsplit',
-      \ 'ctrl-t': 'tabedit',
-      \ }
+\ 'ctrl-s': 'split',
+\ 'ctrl-v': 'vsplit',
+\ 'ctrl-t': 'tabedit',
+\ }
 let g:fzf_layout = { 'down': '~30%' }
 
 " Cores do FZF devem casar com as cores do tema
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+\ 'bg':      ['bg', 'Normal'],
+\ 'hl':      ['fg', 'Comment'],
+\ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+\ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+\ 'hl+':     ['fg', 'Statement'],
+\ 'info':    ['fg', 'PreProc'],
+\ 'border':  ['fg', 'Ignore'],
+\ 'prompt':  ['fg', 'Conditional'],
+\ 'pointer': ['fg', 'Exception'],
+\ 'marker':  ['fg', 'Keyword'],
+\ 'spinner': ['fg', 'Label'],
+\ 'header':  ['fg', 'Comment'] }
 
 " Cores ---------------------------------------------------------------------
 
@@ -126,10 +132,25 @@ set termguicolors
 " Habilita syntax highlight
 syntax enable
 
+" [TEMA] Configurações para tema dracula ------------------------------
+
+" Ativa o tema dracula
+" colorscheme dracula
+
 " [TEMA] Configurações para tema srcery ------------------------------
 
 " Ativa o tema srcery
-colorscheme srcery
+"colorscheme srcery
+
+" [TEMA] Configurações para tema spaceduck ------------------------------
+
+" Ativa o tema spaceduck
+colorscheme spaceduck
+
+" [TEMA] Configurações para tema miramare ------------------------------
+
+" Ativa o tema miramare
+"colorscheme miramare
 
 " [TEMA] Configurações para tema onedark ------------------------------
 
@@ -172,7 +193,7 @@ colorscheme srcery
 
 " Configurações vim dev icons
 set encoding=utf8
-set guifont=FiraCode\ Nerd\ Font\ 12
+set guifont=FiraMono\ Medium\ Nerd\ Font\ 12
 
 " Configuração do plugin COC ------------------------------------------------
 
@@ -187,20 +208,19 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Configurações do coc
 let g:coc_global_extensions=[
-      \ 'coc-css',
-      \ 'coc-stylelint',
-      \ 'coc-docker',
-      \ 'coc-yaml',
-      \ 'coc-eslint',
-      \ 'coc-json',
-      \ 'coc-html',
-      \ 'coc-prettier',
-      \ 'coc-highlight',
-      \ 'coc-tsserver',
-      \ 'coc-vimlsp',
-      \ 'coc-emmet',
-      \ ]
-
+\ 'coc-css',
+\ 'coc-stylelint',
+\ 'coc-docker',
+\ 'coc-yaml',
+\ 'coc-eslint',
+\ 'coc-json',
+\ 'coc-html',
+\ 'coc-prettier',
+\ 'coc-highlight',
+\ 'coc-tsserver',
+\ 'coc-vimlsp',
+\ 'coc-emmet',
+\ ]
 
 " Espaços e Tabs -----------------------------------------------------------
 
@@ -230,7 +250,7 @@ set relativenumber
 " Ativa o mouse
 set mouse=a
 
-" Pode deixar o nvim lento, mas garantido que syntax highlight vai 
+" Pode deixar o nvim lento, mas garantido que syntax highlight vai
 " sempre funcionar
 autocmd BufEnter * :syntax sync fromstart
 
@@ -243,7 +263,7 @@ set hidden
 set inccommand=split
 
 " Permite copiar do clipboard para o vim e do vim para o clipboard
-set clipboard=unnamedplus 
+set clipboard=unnamedplus
 
 " Destaca os resultados da busca
 set hlsearch
@@ -266,10 +286,10 @@ set undofile
 
 " Update fzf.vim actions for bindings like command-t
 let g:fzf_action = {
-      \ 'ctrl-s': 'split',
-      \ 'ctrl-t': 'tabedit',
-      \ 'ctrl-v': 'vsplit',
-      \ }
+\ 'ctrl-s': 'split',
+\ 'ctrl-t': 'tabedit',
+\ 'ctrl-v': 'vsplit',
+\ }
 let g:fzf_layout = { 'down': '~40%' }
 
 " Atalhos com a tecla <leader> -----------------------------------------------
@@ -290,10 +310,10 @@ nnoremap <Leader>dc :call vimspector#Continue()<CR>
 nnoremap <Leader>dr :call vimspector#Restart()<CR>
 nnoremap <Leader>dq :call vimspector#Reset()<CR>
 nnoremap <Leader>db :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <Leader>dw ::VimspectorWatch 
+nnoremap <Leader>dw ::VimspectorWatch
 nnoremap <Leader>dx :call vimspector#CleanLineBreakpoint()<CR>
 nnoremap <Leader>di <Plug>VimspectorBalloonEval
- 
+
 " Remover highlight da busca com <leader><space>
 map <silent> <leader><cr> :noh<cr>
 
@@ -325,7 +345,7 @@ let g:UltiSnipsExpandTrigger='<c-j>'
 " Abre uma nova janela vazia
 nnoremap T :tabnew <cr>
 
-" Se move para o próximo buffer 
+" Se move para o próximo buffer
 nnoremap <Tab> :bn <cr>
 
 " Se move para o buffer anterior
@@ -341,19 +361,16 @@ imap <c-s> <Esc>:w<CR>a
 " Sair usando CTRL + q
 nnoremap <c-q> :q! <cr>
 
-" Define o atalho Ctrl + P para utilizar o fzf 
+" Define o atalho Ctrl + P para utilizar o fzf
 nnoremap <c-p> :Telescope find_files<cr>
 
 " Atalho para abrir o explorador de arquivos nerdthree
 map <C-n> :NERDTreeToggle<CR>
 
-"Seleciona todo o conteúdo do arquivo
-nnoremap <c-a> <esc>ggVG<cr>
-
-" Permiter usar o `enter` para 
+" Permiter usar o `enter` para
 " realizar a confirmação do autocomplete
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Atalho para ir para as definições da função
 nmap <silent> gd <Plug>(coc-definition)
@@ -372,15 +389,15 @@ let g:airline_powerline_fonts=1
 
 " Retorna na última posição quando o arquivo é aberto
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+\ if line("'\"") > 0 && line("'\"") <= line("$") |
+\   exe "normal! g`\"" |
+\ endif
 
 " Atualiza o buffer caso o código seja atualizado
 " por um git pull por exemplo
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if !bufexists("[Command Line]") | checktime | endif
 autocmd FileChangedShellPost *
-      \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
+\ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 " Mostra os arquivos ocultos no nerdthree
 let NERDTreeShowHidden=1
@@ -403,4 +420,9 @@ set writebackup
 " Ajuste para hot reloading (desabilitar o 'safe write')
 set backupcopy=yes
 
-set foldmethod=manual
+augroup remember_folds
+  autocmd!
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent! loadview
+augroup END
+

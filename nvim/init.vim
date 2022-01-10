@@ -72,7 +72,11 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Plugin para buscar informações dentro de arquivos
 Plug 'eugen0329/vim-esearch'
+
+" Plugin para renomear arquivos
+Plug 'tpope/vim-eunuch'
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------

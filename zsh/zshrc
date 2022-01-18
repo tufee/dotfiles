@@ -7,8 +7,6 @@ ZSH_THEME="spaceship"
 alias zshconfig="nvim ~/.zshrc"
 alias tmuxconfig="nvim ~/.tmux.conf"
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias front="nvim ~/dev/front-cbpm"
-alias back="nvim ~/dev/backend"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -29,6 +27,10 @@ VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 # TMUX
 ZSH_TMUX_AUTOSTART=true
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+
+# ZSH
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '\t' autosuggest-accept
 
 # Random
 unsetopt PROMPT_SP

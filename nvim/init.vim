@@ -72,7 +72,20 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Plugin para realizar buscas dentro dos arquivos
 Plug 'eugen0329/vim-esearch'
+
+" Plugin para executar comandos para renomear arquivos, mover, etc...
+Plug 'tpope/vim-eunuch' 
+
+" Plugin para mostrar todos os registros
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+
+" Plugin de suporte para a sintaxe do .edge
+Plug 'watzon/vim-edge-template'
+
+" Plugin para mostrar ver branchs e commits
+Plug 'rbong/vim-flog'
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------
@@ -135,7 +148,7 @@ syntax enable
 " [TEMA] Configurações para tema dracula ------------------------------
 
 " Ativa o tema dracula
-" colorscheme dracula
+ colorscheme dracula
 
 " [TEMA] Configurações para tema srcery ------------------------------
 
@@ -145,7 +158,7 @@ syntax enable
 " [TEMA] Configurações para tema spaceduck ------------------------------
 
 " Ativa o tema spaceduck
-colorscheme spaceduck
+"colorscheme spaceduck
 
 " [TEMA] Configurações para tema miramare ------------------------------
 
@@ -420,9 +433,13 @@ set writebackup
 " Ajuste para hot reloading (desabilitar o 'safe write')
 set backupcopy=yes
 
+" Impede do cursor voltar para o começo da linha
+" quando há espaços em branco
+set virtualedit=all
+
+" Salva como os folds foram deixados
 augroup remember_folds
   autocmd!
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
 augroup END
-

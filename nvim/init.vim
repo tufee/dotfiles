@@ -75,9 +75,6 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plugin para realizar buscas dentro dos arquivos
 Plug 'eugen0329/vim-esearch'
 
-" Plugin para executar comandos para renomear arquivos, mover, etc...
-Plug 'tpope/vim-eunuch' 
-
 " Plugin para mostrar todos os registros
 Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
@@ -86,6 +83,9 @@ Plug 'watzon/vim-edge-template'
 
 " Plugin para mostrar ver branchs e commits
 Plug 'rbong/vim-flog'
+
+" Plugin para usar o editorconfig
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------
@@ -148,7 +148,7 @@ syntax enable
 " [TEMA] Configurações para tema dracula ------------------------------
 
 " Ativa o tema dracula
- colorscheme dracula
+" colorscheme dracula
 
 " [TEMA] Configurações para tema srcery ------------------------------
 
@@ -178,8 +178,8 @@ syntax enable
 " [TEMA] Configurações para tema gruvbox ------------------------------------
 
 "Ativa o tema gruvbox
-"let g:gruvbox_contrast_dark='hard'
-"colorscheme gruvbox
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
 
 " [TEMA] Configurações para tema atlantic dark ------------------------------
 
@@ -443,3 +443,64 @@ augroup remember_folds
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
 augroup END
+
+" Função para renomear arquivos
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>
+"command! RenameFile :call RenameFile()
+
+" Atalhos para mudar o nível do folding
+nnoremap z0 :setlocal foldlevel=0<cr>
+nnoremap z1 :setlocal foldlevel=1<cr>
+nnoremap z2 :setlocal foldlevel=2<cr>
+nnoremap z3 :setlocal foldlevel=3<cr>
+nnoremap z4 :setlocal foldlevel=4<cr>
+nnoremap z5 :setlocal foldlevel=5<cr>
+
+" Configuração de folding  ---------
+
+" Ativa o folding
+set foldenable
+
+" Especifica o espaço do lado esquerdo da tela 
+" que indica que existe um fold
+set foldcolumn=2
+
+" Tipo de folding utilizado
+set foldmethod=marker
+
+" Abre os arquivos com todos os folds abertos
+set foldlevelstart=99
+
+" Tipos de comandos que dão unfold automáticamente
+" quando utilizados no fold
+set foldopen=block,hor,insert,jump,mark,percent,quickfix,search,tag,undo
+
+" Função para melhorar a visão do folding
+function! MyFoldText()
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount) - 4
+    return line . ' …' . repeat(" ",fillcharcount) . foldedlinecount . ' '
+endfunction
+
+" Usa a função para especificar como o texto será
+" exibido quando estiver em fold
+set foldtext=MyFoldText()

@@ -40,6 +40,8 @@ Plug 'drewtempelmeyer/palenight.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'franbach/miramare'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'sainnhe/everforest'
+Plug 'bluz71/vim-moonfly-colors'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -47,9 +49,6 @@ Plug 'vim-airline/vim-airline-themes'
 
 " Suporte para Styled Components
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
-" Adiciona suporte ao prisma
-Plug 'pantharshit00/vim-prisma'
 
 " Suporte para smooth scrolling
 Plug 'yuttie/comfortable-motion.vim'
@@ -84,8 +83,13 @@ Plug 'watzon/vim-edge-template'
 " Plugin para mostrar ver branchs e commits
 Plug 'rbong/vim-flog'
 
-" Plugin para usar o editorconfig
-Plug 'editorconfig/editorconfig-vim'
+Plug 'dstein64/vim-startuptime'
+
+" Plugin para repetir comandos com '.'
+Plug 'tpope/vim-repeat'
+
+" Plugin para melhorar a movimentação
+Plug 'chaoren/vim-wordmotion'
 call plug#end()
 
 " Configuração do FZF --------------------------------------------------------
@@ -139,11 +143,22 @@ let g:fzf_colors =
 
 " Cores ---------------------------------------------------------------------
 
+
 " Ativa o suporte para 256 cores
 set termguicolors
 
 " Habilita syntax highlight
 syntax enable
+ " [TEMA] Configurações para tema everforest ------------------------------
+
+" Ativa o tema everforest
+" let g:everforest_background = 'hard'
+" colorscheme everforest 
+" set background=dark
+
+" Ativa o tema moonfly
+"let g:everforest_background = 'hard'
+"colorscheme moonfly
 
 " [TEMA] Configurações para tema dracula ------------------------------
 
@@ -158,7 +173,7 @@ syntax enable
 " [TEMA] Configurações para tema spaceduck ------------------------------
 
 " Ativa o tema spaceduck
-"colorscheme spaceduck
+colorscheme spaceduck
 
 " [TEMA] Configurações para tema miramare ------------------------------
 
@@ -178,8 +193,8 @@ syntax enable
 " [TEMA] Configurações para tema gruvbox ------------------------------------
 
 "Ativa o tema gruvbox
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
+"let g:gruvbox_contrast_dark='hard'
+"colorscheme gruvbox
 
 " [TEMA] Configurações para tema atlantic dark ------------------------------
 
@@ -206,7 +221,6 @@ colorscheme gruvbox
 
 " Configurações vim dev icons
 set encoding=utf8
-set guifont=FiraMono\ Medium\ Nerd\ Font\ 12
 
 " Configuração do plugin COC ------------------------------------------------
 
@@ -215,6 +229,9 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 
 " Comando para definir o prettier como formatador padrão
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Atalho para listar erros na página
+nnoremap <Leader>l :CocDiagnostics<cr>
 
 " Usar Ctrl + Espaço para abrir autocomplete no modo de inserção
 inoremap <silent><expr> <c-space> coc#refresh()

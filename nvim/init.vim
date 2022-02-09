@@ -83,6 +83,9 @@ Plug 'watzon/vim-edge-template'
 " Plugin para mostrar ver branchs e commits
 Plug 'rbong/vim-flog'
 
+" Plugin para criar uma GUI para o git
+Plug 'TimUntersberger/neogit'
+
 Plug 'dstein64/vim-startuptime'
 
 " Plugin para repetir comandos com '.'

@@ -5,6 +5,7 @@ lvim.leader = "space"
 
 vim.opt.virtualedit = "all"
 vim.opt.wrap = true
+vim.g["UltiSnipsExpandTrigger"] = "<C-j>"
 
 lvim.keys.normal_mode = {
     ["<C-s>"] = ":w<cr>",
@@ -20,7 +21,7 @@ lvim.keys.normal_mode = {
 }
 
 vim.api.nvim_set_keymap('v', '/', [[<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment"]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '/', [[<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment"]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '/', [[<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment"]], { noremap = true, silent = true })
 
 -- Prettier configuration
 local formatters = require "lvim.lsp.null-ls.formatters"
@@ -124,5 +125,8 @@ lvim.plugins = {
         config = function()
             require("hop").setup()
         end
-    }
+    },
+    { 'TimUntersberger/neogit' },
+     {'SirVer/ultisnips'},
+    {'mlaursen/vim-react-snippets'}
 } 

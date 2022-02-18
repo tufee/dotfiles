@@ -11,20 +11,45 @@ lvim.keys.normal_mode = {
     ["<C-q>"] = ":q<cr>",
     ["<C-k>"] = "<Cmd>BufferKill<CR>",
     ["<C-n>"] = "<Cmd>NvimTreeToggle<CR>",
-    ["<C-m>"] = "<Cmd>HopWord<CR>",
-    ["<C-c>"] = "<Cmd>HopLine<CR>",
+    -- ["<C-m>"] = "<Cmd>HopWord<CR>",
+    -- ["<C-c>"] = "<Cmd>HopLine<CR>",
     ["<C-p>"] = "<Cmd>Telescope find_files<CR>",
     ["<C-o>"] = "<Cmd>Telescope buffers<CR>",
     ["<Tab>"] = ":bnext<CR>",
-    ["<S-Tab>"] = ":bprevious<CR>"
+    ["<S-Tab>"] = ":bprevious<CR>",
 }
 
+vim.api.nvim_set_keymap('v', '/', [[<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment"]], { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '/', [[<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "Comment"]], { noremap = true, silent = true })
+
+-- Prettier configuration
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-    {
-        exe = "prettier",
-        args = { "--print-width", "100" }
-    }
+  {
+    exe = "prettier",
+    filetypes = {
+      "javascriptreact",
+      "javascript",
+      "typescriptreact",
+      "typescript",
+      "json",
+      "markdown",
+    },
+  },
+}
+
+-- ESLint
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  {
+    exe = "eslint",
+    filetypes = {
+      "javascriptreact",
+      "javascript",
+      "typescriptreact",
+      "typescript",
+    },
+  },
 }
 
 lvim.builtin.dashboard.active = true
@@ -43,7 +68,16 @@ lvim.builtin.treesitter.ensure_installed = {
     "tsx",
     "css",
     "rust",
-    "yaml"
+    "yaml",
+    "dockerfile",
+    "html",
+    "comment",
+    "dot",
+    "http",
+    "markdown",
+    "make",
+    "regex",
+    "scss",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -89,8 +123,6 @@ lvim.plugins = {
         event = "BufRead",
         config = function()
             require("hop").setup()
-            vim.api.nvim_set_keymap("n", "s", ":HopChar2<cr>", { silent = true })
-            vim.api.nvim_set_keymap("n", "S", ":HopWord<cr>", { silent = true })
         end
     }
-}
+} 

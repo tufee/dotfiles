@@ -42,6 +42,7 @@ Plug 'franbach/miramare'
 Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 Plug 'sainnhe/everforest'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'joshdick/onedark.vim'
 
 " Airline
 Plug 'vim-airline/vim-airline'
@@ -52,6 +53,9 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " Suporte para smooth scrolling
 Plug 'yuttie/comfortable-motion.vim'
+
+" Plug para se mover rápido
+Plug 'phaazon/hop.nvim'
 
 " Adiciona um terminal dentro do vim
 Plug 'voldikss/vim-floaterm'
@@ -94,6 +98,9 @@ Plug 'tpope/vim-repeat'
 " Plugin para melhorar a movimentação
 Plug 'chaoren/vim-wordmotion'
 call plug#end()
+
+" Caarega o plug hop
+lua require'hop'.setup()
 
 " Configuração do FZF --------------------------------------------------------
 " Não exibir janela de pré-visualização de conteúdo do arquivo
@@ -160,8 +167,8 @@ syntax enable
 " set background=dark
 
 " Ativa o tema moonfly
-"let g:everforest_background = 'hard'
-"colorscheme moonfly
+" let g:everforest_background = 'hard'
+" colorscheme moonfly
 
 " [TEMA] Configurações para tema dracula ------------------------------
 
@@ -176,7 +183,7 @@ syntax enable
 " [TEMA] Configurações para tema spaceduck ------------------------------
 
 " Ativa o tema spaceduck
-colorscheme spaceduck
+" colorscheme spaceduck
 
 " [TEMA] Configurações para tema miramare ------------------------------
 
@@ -222,6 +229,10 @@ colorscheme spaceduck
 "set background=dark
 "colorscheme palenight
 
+"" [TEMA] Configurações para tema onedark ----------------------------------
+
+colorscheme onedark
+ 
 " Configurações vim dev icons
 set encoding=utf8
 
@@ -353,6 +364,9 @@ map <silent> <leader><cr> :noh<cr>
 " Formata somente o código selecionado
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+  
+" Mostra as opções para se mover no código
+nmap <S-s> <Cmd>HopWord<CR>
 
 " Atalho para o floaterm
 let g:floaterm_keymap_new    = '<F7>'
@@ -523,4 +537,4 @@ endfunction
 
 " Usa a função para especificar como o texto será
 " exibido quando estiver em fold
-set foldtext=MyFoldText()
+set foldtext=MyFoldText() 

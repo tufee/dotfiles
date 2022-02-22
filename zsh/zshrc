@@ -4,28 +4,28 @@ export ZSH="/home/tufe/.oh-my-zsh"
 ZSH_THEME="spaceship"
 
 # Aliases
-alias zshconfig="nvim ~/.zshrc"
-alias tmuxconfig="nvim ~/.tmux.conf"
+alias zshconfig="lvim ~/.zshrc"
+alias tmuxconfig="lvim ~/.tmux.conf"
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='vim'
  else
-export EDITOR='nvim'
+export EDITOR='lvim'
  fi
 
 # update automatically without asking
 zstyle ':omz:update' mode auto 
 
 # Load plugins
-plugins=(git zsh-vi-mode tmux)
+plugins=(git zsh-vi-mode tmux docker docker-compose zsh-autosuggestions zsh-completions fast-syntax-highlighting sudo)
 
 # vi-mode
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 
 # TMUX
-ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART=true                         
 ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
 
 # ZSH
@@ -35,24 +35,7 @@ bindkey '\t' autosuggest-accept
 # Random
 unsetopt PROMPT_SP
 
-# Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-command git clone [https://github.com/zdharma/zinit](https://github.com/zdharma/zinit) "$HOME/.zinit/bin" && \
-print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-print -P "%F{160}▓▒░ The clone has failed.%f%b"
-fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-
-# End of Zinit's installer chunk
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-zinit light zdharma/fast-syntax-highlighting
-zinit ice depth=1
 
 # Theme and interface
 LS_COLORS=$LS_COLORS:'ow=01;34:' ; export LS_COLORS
@@ -80,4 +63,4 @@ SPACESHIP_CHAR_SUFFIX=" "
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-source $ZSH/oh-my-zsh.sh
+source $ZSH/oh-my-zsh.sh 

@@ -8,7 +8,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Explorar de arquivos
-Plug 'preservim/nerdtree'
+Plug 'kyazdani42/nvim-tree.lua'
 
 " Adiciona comentários no código
 Plug 'preservim/nerdcommenter'
@@ -65,7 +65,7 @@ Plug 'SirVer/ultisnips'
 Plug 'mlaursen/vim-react-snippets'
 
 " Adiciona ícones ao vim
-Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons' " for file icons
 
 " Plugin para mover os blocos mais fácil
 Plug 'matze/vim-move'
@@ -90,8 +90,6 @@ Plug 'rbong/vim-flog'
 " Plugin para criar uma GUI para o git
 Plug 'TimUntersberger/neogit'
 
-Plug 'dstein64/vim-startuptime'
-
 " Plugin para repetir comandos com '.'
 Plug 'tpope/vim-repeat'
 
@@ -99,8 +97,11 @@ Plug 'tpope/vim-repeat'
 Plug 'chaoren/vim-wordmotion'
 call plug#end()
 
-" Caarega o plug hop
+" Carrega o plug hop
 lua require'hop'.setup()
+
+" Carrega o plug nvim-tree
+lua require'nvim-tree'.setup()
 
 " Configuração do FZF --------------------------------------------------------
 " Não exibir janela de pré-visualização de conteúdo do arquivo
@@ -153,7 +154,6 @@ let g:fzf_colors =
 
 " Cores ---------------------------------------------------------------------
 
-
 " Ativa o suporte para 256 cores
 set termguicolors
 
@@ -162,9 +162,8 @@ syntax enable
  " [TEMA] Configurações para tema everforest ------------------------------
 
 " Ativa o tema everforest
-" let g:everforest_background = 'hard'
-" colorscheme everforest 
-" set background=dark
+ let g:everforest_background = 'hard'
+ colorscheme everforest 
 
 " Ativa o tema moonfly
 " let g:everforest_background = 'hard'
@@ -231,7 +230,7 @@ syntax enable
 
 "" [TEMA] Configurações para tema onedark ----------------------------------
 
-colorscheme onedark
+" colorscheme onedark
  
 " Configurações vim dev icons
 set encoding=utf8
@@ -245,7 +244,7 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Atalho para listar erros na página
-nnoremap <Leader>l :CocDiagnostics<cr>
+nnoremap <Leader>l <cr>:CocDiagnostics<cr>
 
 " Usar Ctrl + Espaço para abrir autocomplete no modo de inserção
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -411,8 +410,9 @@ nnoremap <c-q> :q! <cr>
 " Define o atalho Ctrl + P para utilizar o fzf
 nnoremap <c-p> :Telescope find_files<cr>
 
-" Atalho para abrir o explorador de arquivos nerdthree
-map <C-n> :NERDTreeToggle<CR>
+" Atalhos para o explorador de arquivos
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
 
 " Permiter usar o `enter` para
 " realizar a confirmação do autocomplete
@@ -537,4 +537,4 @@ endfunction
 
 " Usa a função para especificar como o texto será
 " exibido quando estiver em fold
-set foldtext=MyFoldText() 
+set foldtext=MyFoldText()  

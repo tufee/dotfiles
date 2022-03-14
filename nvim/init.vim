@@ -95,6 +95,8 @@ Plug 'tpope/vim-repeat'
 
 " Plugin para melhorar a movimentação
 Plug 'chaoren/vim-wordmotion'
+
+Plug 'wakatime/vim-wakatime'
 call plug#end()
 
 " Carrega o plug hop
@@ -537,4 +539,4 @@ endfunction
 
 " Usa a função para especificar como o texto será
 " exibido quando estiver em fold
-set foldtext=MyFoldText()  
+"set foldtext=MyFoldText() 

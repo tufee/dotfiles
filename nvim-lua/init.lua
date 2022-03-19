@@ -1,0 +1,11 @@
+require 'settings'
+require 'keymaps'
+
+require 'plugins.packer'
+require 'plugins.comment'
+require 'plugins.feline'
+require 'plugins.devicons'
+require 'plugins.nvimtree'
+require 'plugins.telescope'
+require 'plugins.treesitter'
+require 'plugins.bufferline'

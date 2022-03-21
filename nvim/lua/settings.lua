@@ -15,6 +15,7 @@ opt.expandtab = true
 -- Número de espaços visuais ao pressionar a tecla TAB
 opt.tabstop = 2
 
+-- Adiciona marcação do tamanho da coluna
 opt.colorcolumn = '100'
 
 -- Número de espaços contados em uma tabulação quando estiver editando
@@ -34,6 +35,9 @@ opt.relativenumber = true
 
 -- Ativa o mouse
 opt.mouse = 'a'
+
+-- Desativa o swap
+opt.swapfile = false
 
 -- Permite editar outros arquivos sem salvar um antes de abrir outro
 opt.hidden = true
@@ -83,4 +87,4 @@ vim.g.loaded_python_provider = 1
 vim.g.python_host_skip_check=1
 vim.g.python_host_prog = '/bin/python2'
 vim.g.python3_host_skip_check=1
-vim.g.python3_host_prog = '/bin/python3'
+vim.g.python3_host_prog = '/bin/python3' 

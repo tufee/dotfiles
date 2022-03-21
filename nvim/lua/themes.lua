@@ -21,9 +21,6 @@ local opt = vim.opt
 --- Miramare 
 --- cmd [[colorscheme miramare]]
 
---- Onedark
---- cmd [[colorscheme onedark]]
-
 --- Gruvbox
 vim.g.gruvbox_contrast_dark= 'hard'
 cmd [[colorscheme gruvbox]]

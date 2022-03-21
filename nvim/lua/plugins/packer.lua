@@ -23,13 +23,10 @@ return require('packer').startup(function()
    use 'morhetz/gruvbox'                                                     
    use 'ayu-theme/ayu-vim'                                                   
    use 'bluz71/vim-moonfly-colors'                                           
-   use 'joshdick/onedark.vim'                                                
    use 'srcery-colors/srcery-vim'                                            
    use 'drewtempelmeyer/palenight.vim'                                       
    use 'franbach/miramare'                                                   
    use 'sainnhe/everforest'                                                  
-   use 'bluz71/vim-moonfly-colors'                                           
-   use 'joshdick/onedark.vim'                                                
    use {'dracula/vim', as = 'dracula'}
    use {'pineapplegiant/spaceduck', branch = 'main' }                      
                                                                               
@@ -89,4 +86,4 @@ return require('packer').startup(function()
    -- Snippets                                                                 
    use 'dcampos/nvim-snippy'                                                 
    use 'dcampos/cmp-snippy'                                                  
-end)
+end) 

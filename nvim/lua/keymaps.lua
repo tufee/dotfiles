@@ -70,4 +70,5 @@ vim.g.comfortable_motion_scroll_down_key = "j"
 vim.g.comfortable_motion_scroll_up_key = "k" 
 
 -- Atalho para comentários
- vim.api.nvim_set_keymap('v', '/', [[<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment"]], ns) 
+set("n", "<Leader>/", ":Commentary<CR>", ns)
+set("v", "<Leader>/", ":Commentary<CR>", ns) 

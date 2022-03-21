@@ -5,10 +5,10 @@ local ns = { noremap = true, silent = true }
 set('n', '<Leader><CR>', ':noh<CR>', ns)
 
 -- Atalho para edição do arquivo de configuração
-set('n', '<Leader>ev', ':e ~/.config/nvim/init.vim<CR>', ns)
+set('n', '<Leader>ev', ':e ~/.config/nvim/init.lua<CR>', ns)
 
 -- Atalho para atualizar as configurações
-set('n', '<Leader>sv', ':source ~/.config/nvim/init.vim<CR>', ns)
+set('n', '<Leader>sv', ':source ~/.config/nvim/init.lua<CR>', ns)
 
 -- Atalho para se mover entre os buffers abertos na mesma janela
 set('n', '<C-J>', '<C-W><C-J>', ns)

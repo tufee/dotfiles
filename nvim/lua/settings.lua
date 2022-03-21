@@ -15,6 +15,8 @@ opt.expandtab = true
 -- Número de espaços visuais ao pressionar a tecla TAB
 opt.tabstop = 2
 
+opt.colorcolumn = '100'
+
 -- Número de espaços contados em uma tabulação quando estiver editando
 opt.softtabstop = 2
 

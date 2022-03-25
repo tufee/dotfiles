@@ -16,6 +16,9 @@ return require('packer').startup(function()
                                                                               
    -- Facilitar manipulação de 'surroundings' (pares)                          
    use 'tpope/vim-surround'                                                  
+
+   -- Retorna a última posição que estava no arquivo
+   use 'farmergreg/vim-lastplace'
                                                                               
    -- Temas                                                                    
    use 'sfi0zy/atlantic-dark.vim'                                            
@@ -40,7 +43,7 @@ return require('packer').startup(function()
    -- Suporte para smooth scrolling                                            
    use 'yuttie/comfortable-motion.vim'                                       
                                                                               
-   -- use para se mover rápido                                                
+   -- Suporte para se mover rápido                                                
    use 'phaazon/hop.nvim'                                                    
                                                                               
    -- Adiciona Atalhos para funções                                            
@@ -50,27 +53,27 @@ return require('packer').startup(function()
    -- Adiciona ícones ao vim                                                   
    use 'kyazdani42/nvim-web-devicons'                                        
                                                                               
-   -- usein para mover os blocos mais fácil                                   
+   -- Suporte para mover os blocos mais fácil                                   
    use 'matze/vim-move'                                                      
                                                                               
-   -- useins para mostrar um preview da busca de arquivos                     
+   -- Suporte para mostrar um preview da busca de arquivos                     
    use 'nvim-lua/plenary.nvim'                                               
    use 'nvim-telescope/telescope.nvim'                                       
    use 'nvim-treesitter/nvim-treesitter'
                                                                               
-   -- usein para realizar buscas dentro dos arquivos                          
+   -- Suporte para realizar buscas dentro dos arquivos                          
    use 'eugen0329/vim-esearch'                                               
                                                                               
-   -- usein de suporte para a sintaxe do .edge                                
+   -- Suporte de suporte para a sintaxe do .edge                                
    use 'watzon/vim-edge-template'                                            
                                                                               
-   -- usein para criar uma GUI para o git                                     
-    use 'TimUntersberger/neogit'                                                
+   -- Suporte para criar uma GUI para o git                                     
+   use 'TimUntersberger/neogit'                                                
                                                                               
-   -- usein para melhorar a movimentação                                      
+   -- Suporte para melhorar a movimentação                                      
    use 'chaoren/vim-wordmotion'                                              
                                                                               
-   -- useins para configuração de LSP                                         
+   -- Suportes para configuração de LSP                                         
    use 'neovim/nvim-lspconfig'                                               
    use 'jose-elias-alvarez/null-ls.nvim'                                     
    use 'jose-elias-alvarez/nvim-lsp-ts-utils'                                

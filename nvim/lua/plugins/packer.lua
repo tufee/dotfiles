@@ -20,6 +20,8 @@ return require('packer').startup(function()
    -- Retorna a última posição que estava no arquivo
    use 'farmergreg/vim-lastplace'
                                                                               
+   use 'ahmedkhalf/project.nvim'
+
    -- Temas                                                                    
    use 'sfi0zy/atlantic-dark.vim'                                            
    use 'owickstrom/vim-colors-paramount'                                     
@@ -89,4 +91,7 @@ return require('packer').startup(function()
    -- Snippets                                                                 
    use 'dcampos/nvim-snippy'                                                 
    use 'dcampos/cmp-snippy'                                                  
-end) 
+
+   use  'folke/trouble.nvim'
+
+end)

@@ -5,7 +5,7 @@ local ns = { noremap = true, silent = true }
 set('n', '<Leader><CR>', ':noh<CR>', ns)
 
 -- Atalho para edição do arquivo de configuração
-set('n', '<Leader>ev', ':e ~/.config/nvim/init.lua<CR>', ns)
+set('n', '<Leader>ev', ':e ~/.config/nvim<CR>', ns)
 
 -- Atalho para atualizar as configurações
 set('n', '<Leader>sv', ':source ~/.config/nvim/init.lua<CR>', ns)
@@ -22,6 +22,9 @@ set("n", "<Leader>v", ":<C-u>vsplit<CR>", ns)
 
 -- Abre uma nova janela vazia
 set('n', '<C-T>', ':tabnew<CR>', ns)
+
+
+set('n', '<C-B>', ':Telescope projects<CR>', ns)
 
 -- Se move para o próximo buffer
 set('n', '<Tab>', ':bn<CR>', ns)
@@ -59,6 +62,9 @@ set('n', '<C-O>', ':Telescope buffers<CR>', ns)
 -- Abre um terminal
 set('n', '<F7>', ':terminal<CR>', ns)
 
+-- Abre um gerenciador de projetos
+set('n', '<F8>', ':Telescope projects<CR>', ns) 
+
 -- Mostra as opções para se mover no código
 vim.api.nvim_set_keymap('n', '<S-s>', '<CMD>HopWord<CR>', ns)
 
@@ -71,4 +77,24 @@ vim.g.comfortable_motion_scroll_up_key = "k"
 
 -- Atalho para comentários
 set("n", "<Leader>/", ":Commentary<CR>", ns)
-set("v", "<Leader>/", ":Commentary<CR>", ns) 
+set("v", "<Leader>/", ":Commentary<CR>", ns)
+
+-- Atalhos para diagnósticos de erro
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
+  {silent = true, noremap = true}
+)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
+  {silent = true, noremap = true}
+)

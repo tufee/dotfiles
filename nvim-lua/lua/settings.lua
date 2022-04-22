@@ -1,15 +1,24 @@
 local g = vim.g
 local opt = vim.opt
 local cmd = vim.cmd
+local path = vim.fn.expand('~/.config')
+
+-- Define a tecla `leader` como a espaço
+g.mapleader = ' ' 
 
 -- Ativa o suporte para 256 cores
 opt.termguicolors = true
+
+-- Adiciona coluna quando o conteúdo fica muito grande
+opt.signcolumn = 'yes'
 
 -- Define tabs como espaços
 opt.expandtab = true
 
 -- Número de espaços visuais ao pressionar a tecla TAB
 opt.tabstop = 2
+
+opt.colorcolumn = '100'
 
 -- Número de espaços contados em uma tabulação quando estiver editando
 opt.softtabstop = 2
@@ -28,6 +37,8 @@ opt.relativenumber = true
 
 -- Ativa o mouse
 opt.mouse = 'a'
+
+opt.swapfile = false
 
 -- Permite editar outros arquivos sem salvar um antes de abrir outro
 opt.hidden = true
@@ -50,81 +61,31 @@ opt.smartcase = true
 -- Adiciona quebra de linhas quando elas ficam grandes
 opt.lbr = true
 
--- Define a tecla `leader` como a espaço
-g.mapleader = ' '
+-- Ativa o backup
+opt.backup = true
 
-  
--- Mostra as opções para se mover no código
--- nmap <S-s> <Cmd>HopWord<CR>
-
--- " Atalho para o floaterm
--- let g:floaterm_keymap_new    = '<F7>'
--- let g:floaterm_keymap_toggle = '<F8>'
-
-
-
-
--- Atalho para ultisnips
--- let g:UltiSnipsExpandTrigger='<c-j>'
-
-
-
-
--- Define o atalho Ctrl + P para utilizar o fzf
--- nnoremap <c-p> :Telescope find_files<cr>
-
--- Atalhos para o explorador de arquivos
--- nnoremap <C-n> :NvimTreeToggle<CR>
--- nnoremap <leader>r :NvimTreeRefresh<CR>
-
--- Permiter usar o `enter` para
--- realizar a confirmação do autocomplete
--- inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
--- \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
--- Atalho para ir para as definições da função
--- nmap <silent> gd <Plug>(coc-definition)
-
-
-
--- Permite que o cursor acompanhe a rolagem da tela
--- let g:comfortable_motion_scroll_down_key = "j"
--- let g:comfortable_motion_scroll_up_key = "k"
-
--- Permitir fontes Powerline
--- let g:airline_powerline_fonts=1
-
--- " Retorna na última posição quando o arquivo é aberto
--- autocmd BufReadPost *
--- \ if line("'\"") > 0 && line("'\"") <= line("$") |
--- \   exe "normal! g`\"" |
--- \ endif
-
-
-
-
--- Inicia o backup
--- set backup
-
--- Define o diretório para os backups
--- set backupdir=~/.config/nvim/backups
-
--- Arquivos do qual backups devem ser ignorados
--- set backupskip=/tmp/*
+-- Salva automaticamente um histórico de ações para `desfazer` 
+opt.undofile = true
 
 -- Salva o arquivo no backup
--- set writebackup
+opt.writebackup = true
 
--- Ajuste para hot reloading (desabilitar o 'safe write')
--- set backupcopy=yes
+-- Define diretório para salvar histórico de `desfazer`
+opt.undodir = { path .. '/nvim/undos'}
 
--- Impede do cursor voltar para o começo da linha
--- quando há espaços em branco
+-- Define o diretório para os backups
+opt.backupdir = {path .. '/nvim/backups'}
+
+-- Melhora o autocomplete
+opt.completeopt= 'menuone,noinsert,noselect'
+
+-- Não volta para o inicio da linha ao se movimentar
 opt.virtualedit = 'all'
 
-
-
-
-
-
-
+-- ulstisnips spend time finding python provider
+-- https://github.com/neovim/neovim/issues/5702#issuecomment-264440944
+vim.g.loaded_python_provider = 1
+vim.g.python_host_skip_check=1
+vim.g.python_host_prog = '/bin/python2'
+vim.g.python3_host_skip_check=1
+vim.g.python3_host_prog = '/bin/python3'

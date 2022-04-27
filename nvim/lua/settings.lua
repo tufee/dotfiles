@@ -6,7 +6,10 @@ local path = vim.fn.expand('~/.config')
 -- Inicia o coq auto complete LSP
 vim.g.coq_settings = {
   auto_start = true,
-}
+  keymap = {
+    jump_to_mark = ''
+  },
+} 
 
 -- Define a tecla `leader` como a espaço
 g.mapleader = ' ' 

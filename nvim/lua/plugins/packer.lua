@@ -1,4 +1,16 @@
-return require('packer').startup(function()
+local fn = vim.fn
+
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+return require('packer').startup(function(use)
+
+   -- Necessário para auto gestão dos pacotes
+   use 'wbthomason/packer.nvim'
+
    -- Explorar de arquivos                                                        
    use 'kyazdani42/nvim-tree.lua'                                            
                                                                               
@@ -20,8 +32,6 @@ return require('packer').startup(function()
    -- Retorna a última posição que estava no arquivo
    use 'farmergreg/vim-lastplace'
                                                                               
-   use 'ahmedkhalf/project.nvim'
-
    -- Temas                                                                    
    use 'sfi0zy/atlantic-dark.vim'                                            
    use 'owickstrom/vim-colors-paramount'                                     
@@ -48,10 +58,6 @@ return require('packer').startup(function()
    -- Suporte para se mover rápido                                                
    use 'phaazon/hop.nvim'                                                    
                                                                               
-   -- Adiciona Atalhos para funções                                            
-   use 'SirVer/ultisnips'                                                    
-   use 'mlaursen/vim-react-snippets'                                         
-                                                                              
    -- Adiciona ícones ao vim                                                   
    use 'kyazdani42/nvim-web-devicons'                                        
                                                                               
@@ -71,6 +77,9 @@ return require('packer').startup(function()
                                                                               
    -- Suporte para criar uma GUI para o git                                     
    use 'TimUntersberger/neogit'                                                
+
+   -- Suporte para git diff
+   use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
                                                                               
    -- Suporte para melhorar a movimentação                                      
    use 'chaoren/vim-wordmotion'                                              
@@ -81,17 +90,16 @@ return require('packer').startup(function()
    use 'jose-elias-alvarez/nvim-lsp-ts-utils'                                
    use 'williamboman/nvim-lsp-installer'                                     
                                                                               
-   -- LSPs                                                                     
-   use 'hrsh7th/cmp-nvim-lsp'                                                
-   use 'hrsh7th/cmp-buffer'                                                  
-   use 'hrsh7th/cmp-path'                                                    
-   use 'hrsh7th/cmp-cmdline'                                                 
-   use 'hrsh7th/nvim-cmp'                                                    
-                                                                              
+   -- Suporte para auto complete LSP
+   use { 'ms-jpq/coq_nvim', branch = 'coq' }
+
    -- Snippets                                                                 
-   use 'dcampos/nvim-snippy'                                                 
-   use 'dcampos/cmp-snippy'                                                  
+   use { 'ms-jpq/coq.artifacts', branch = 'artifacts' }
 
-   use  'folke/trouble.nvim'
+   -- Mostra diagnósticos de erro
+   use 'folke/trouble.nvim'
 
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)

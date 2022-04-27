@@ -1,10 +1,10 @@
 require("null-ls").setup({
     sources = {
-       require("null-ls").builtins.completion.spell,
-       require("null-ls").builtins.diagnostics.zsh,
-       require("null-ls").builtins.diagnostics.yamllint,
-       require("null-ls").builtins.diagnostics.eslint_d,
-       require("null-ls").builtins.code_actions.eslint_d,
+       -- require("null-ls").builtins.completion.spell,
+       -- require("null-ls").builtins.diagnostics.zsh,
+       -- require("null-ls").builtins.diagnostics.yamllint,
+       require("null-ls").builtins.diagnostics.eslint,
+       require("null-ls").builtins.code_actions.eslint,
        require("null-ls").builtins.formatting.prettier, 
     },
 

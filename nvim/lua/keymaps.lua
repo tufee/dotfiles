@@ -23,7 +23,6 @@ set("n", "<Leader>v", ":<C-u>vsplit<CR>", ns)
 -- Abre uma nova janela vazia
 set('n', '<C-T>', ':tabnew<CR>', ns)
 
-
 set('n', '<C-B>', ':Telescope projects<CR>', ns)
 
 -- Se move para o próximo buffer
@@ -62,14 +61,8 @@ set('n', '<C-O>', ':Telescope buffers<CR>', ns)
 -- Abre um terminal
 set('n', '<F7>', ':terminal<CR>', ns)
 
--- Abre um gerenciador de projetos
-set('n', '<F8>', ':Telescope projects<CR>', ns) 
-
 -- Mostra as opções para se mover no código
 vim.api.nvim_set_keymap('n', '<S-s>', '<CMD>HopWord<CR>', ns)
-
--- Atalho para ultisnips
-vim.g.UltiSnipsExpandTrigger = "<C-J>"
 
 -- Permite que o cursor acompanhe a rolagem da tela
 vim.g.comfortable_motion_scroll_down_key = "j"
@@ -97,4 +90,4 @@ vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
 )
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
   {silent = true, noremap = true}
-)
+) 

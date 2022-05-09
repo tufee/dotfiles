@@ -91,3 +91,8 @@ vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>",
 vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>",
   {silent = true, noremap = true}
 ) 
+
+-- Usa o enter para aceitar o autoplmente
+vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "\\<C-y>" : "\\<CR>"', 
+  {expr = true}
+) 

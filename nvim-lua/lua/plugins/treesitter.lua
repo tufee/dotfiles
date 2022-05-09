@@ -1,6 +1,5 @@
 require('nvim-treesitter.configs').setup{
-  highlight = { enable = true },
-  indent = { enable = true },
+ 
   ensure_installed = {
       'bash',
       'javascript',
@@ -17,5 +16,8 @@ require('nvim-treesitter.configs').setup{
       'markdown',
       'regex',
       'scss',
-  }
+      'prisma'
+  },
+  highlight = { enable = true },
+  indent = { enable = true }, 
 }

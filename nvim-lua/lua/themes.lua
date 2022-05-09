@@ -13,7 +13,7 @@ local opt = vim.opt
 -- cmd [[colorscheme dracula]]
 
 -- Srcery
--- cmd [[colorscheme srcery]]
+ cmd [[colorscheme srcery]]
 
 -- Spaceduck
 -- cmd [[colorscheme spaceduck]]
@@ -23,7 +23,7 @@ local opt = vim.opt
 
 -- Gruvbox
 -- vim.g.gruvbox_contrast_dark= 'hard'
- cmd [[colorscheme gruvbox]]
+-- cmd [[colorscheme gruvbox]]
 
 -- Atlantic Dark 
 -- cmd [[colorscheme atlantic-dark]]

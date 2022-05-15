@@ -4,22 +4,27 @@ export ZSH="/home/tufe/.oh-my-zsh"
 ZSH_THEME="spaceship"
 
 # Aliases
-alias zshconfig="lvim ~/.zshrc"
-alias tmuxconfig="lvim ~/.tmux.conf"
+alias zshconfig="nvim ~/.zshrc"
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias tmuxconfig="nvim ~/.tmux.conf"
+alias vimconfig="cd ~/.config/nvim"
+alias vim="nvim"
+alias vi="nvim"
+alias googler="googler --unfilter "
+alias down="cd ~/Downloads"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+export EDITOR='nvim'
  else
-export EDITOR='lvim'
+export EDITOR='vim'
  fi
 
 # update automatically without asking
 zstyle ':omz:update' mode auto 
 
 # Load plugins
-plugins=(git zsh-vi-mode tmux docker docker-compose zsh-autosuggestions zsh-completions fast-syntax-highlighting sudo)
+plugins=(git zsh-vi-mode tmux docker docker-compose zsh-autosuggestions)
 
 # vi-mode
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
@@ -34,8 +39,6 @@ bindkey '\t' autosuggest-accept
 
 # Random
 unsetopt PROMPT_SP
-
-
 
 # Theme and interface
 LS_COLORS=$LS_COLORS:'ow=01;34:' ; export LS_COLORS
@@ -63,4 +66,4 @@ SPACESHIP_CHAR_SUFFIX=" "
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-source $ZSH/oh-my-zsh.sh 
+source $ZSH/oh-my-zsh.sh  

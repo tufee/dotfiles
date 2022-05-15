@@ -5,6 +5,7 @@ require('nvim-tree').setup{
     update_cwd = true
   },
   filters = {
-    custom = {'.git', 'node_modules', '.cache'}
+    custom = {'.git', 'node_modules', '.cache'},
+    exclude = { '.env' }
   },
-} 
+}  

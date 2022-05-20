@@ -40,9 +40,6 @@ set('n', '<C-S>', ':w!<CR>', ns)
 -- Sair usando CTRL + q
 set('n', '<C-Q>', ':q!<CR>', ns)
 
--- Fecha o buffer atual
-set('n', '<C-K>', ':bd<CR>', ns)
-
 -- Abre o explorador de arquivos
 set('n', '<C-N>', ':NvimTreeToggle<CR>', ns)
 
@@ -58,8 +55,10 @@ set('n', '<Leader>ff', ':Telescope live_grep<CR>', ns)
 -- Mostra os buffers abertos
 set('n', '<C-O>', ':Telescope buffers<CR>', ns)
 
--- Abre um terminal
-set('n', '<F7>', ':terminal<CR>', ns)
+-- Atalhos floaterm
+vim.g.floaterm_keymap_new = "<F7>" 
+vim.g.floaterm_keymap_prev = "<F8>" 
+vim.g.floaterm_keymap_toggle = "<F9>" 
 
 -- Mostra as opções para se mover no código
 vim.api.nvim_set_keymap('n', '<S-s>', '<CMD>HopWord<CR>', ns)
@@ -99,3 +98,36 @@ vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? "\\<C-y>" : "\\<CR>"',
 
 -- Formatter
 vim.cmd [[autocmd BufWritePre * undojoin | Neoformat]]
+
+-- Atalhos vimspector debugger
+vim.api.nvim_set_keymap("n", "<leader>dl", ":call vimspector#Launch()<cr>",
+  {silent = true, noremap = true}
+) 
+
+vim.api.nvim_set_keymap("n", "<leader>dr", "<Plug>VimspectorRestart<cr>",
+  {silent = true, noremap = true}
+)
+
+vim.api.nvim_set_keymap("n", "<leader>dR", ":call vimspector#Reset()<cr>",
+  {silent = true, noremap = true}
+)
+
+vim.api.nvim_set_keymap("n", "<leader>dc", ":call vimspector#Continue()<cr>",
+  {silent = true, noremap = true}
+) 
+
+vim.api.nvim_set_keymap("n", "<leader>dt", ":call vimspector#ToggleBreakpoint()<cr>",
+  {silent = true, noremap = true}
+) 
+
+vim.api.nvim_set_keymap("n", "<leader>dT", ":call vimspector#ClearBreakpoints()<cr>",
+  {silent = true, noremap = true}
+)
+
+vim.api.nvim_set_keymap("n", "<leader>db", "<Plug>VimspectorBreakpoints<cr>",
+  {silent = true, noremap = true}
+)
+
+ vim.api.nvim_set_keymap("n", "<leader>dw", "<Plug>VimspectorBalloonEval<cr>",
+  {silent = true, noremap = true}
+) 

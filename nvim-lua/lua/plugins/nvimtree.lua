@@ -8,4 +8,4 @@ require('nvim-tree').setup{
     custom = {'.git', 'node_modules', '.cache'},
     exclude = { '.env' }
   },
-}  
+} 

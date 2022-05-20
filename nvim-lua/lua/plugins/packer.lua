@@ -19,6 +19,12 @@ return require('packer').startup(function(use)
                                                                               
    -- Adiciona tabs                                                            
    use 'akinsho/bufferline.nvim'                                             
+
+   -- Abre um terminal flutuante
+   use 'voldikss/vim-floaterm'
+
+   -- Neovim Debugger
+   use 'puremourning/vimspector'
                                                                               
    -- Suporte para Git no Vim                                                  
    use 'tpope/vim-fugitive'                                                  

@@ -23,8 +23,6 @@ set("n", "<Leader>v", ":<C-u>vsplit<CR>", ns)
 -- Abre uma nova janela vazia
 set('n', '<C-T>', ':tabnew<CR>', ns)
 
-set('n', '<C-B>', ':Telescope projects<CR>', ns)
-
 -- Se move para o próximo buffer
 set('n', '<Tab>', ':bn<CR>', ns)
 
@@ -39,6 +37,9 @@ set('n', '<C-S>', ':w!<CR>', ns)
 
 -- Sair usando CTRL + q
 set('n', '<C-Q>', ':q!<CR>', ns)
+
+-- Fecha o buffer atual
+set('n', '<C-K>', ':bd<CR>', ns)
 
 -- Abre o explorador de arquivos
 set('n', '<C-N>', ':NvimTreeToggle<CR>', ns)

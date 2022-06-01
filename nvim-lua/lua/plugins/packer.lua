@@ -37,6 +37,9 @@ return require('packer').startup(function(use)
 
    -- Retorna a última posição que estava no arquivo
    use 'farmergreg/vim-lastplace'
+
+   -- Cria métricas de tempo de programação
+   use 'wakatime/vim-wakatime'
                                                                               
    -- Temas                                                                    
    use 'sfi0zy/atlantic-dark.vim'                                            

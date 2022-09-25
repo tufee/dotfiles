@@ -1,7 +1,6 @@
 local lspconfig = require("lspconfig")
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 
-
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
@@ -12,6 +11,12 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
         silent = true,
     })
 end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false
+    }
+)
 
 local on_attach = function(client, bufnr)
     vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
@@ -41,6 +46,7 @@ end
 
 lspconfig.tsserver.setup({
     on_attach = function(client, bufnr)
+
         client.resolved_capabilities.document_formatting = false
         client.resolved_capabilities.document_range_formatting = false        
 

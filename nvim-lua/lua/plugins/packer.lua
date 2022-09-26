@@ -9,6 +9,8 @@ return require('packer').startup(function(use)
 
    use 'wbthomason/packer.nvim' -- Necessário para auto gestão dos pacotes
    use 'sheerun/vim-polyglot' -- Adiciona suporte para syntax highlight
+   use 'windwp/nvim-autopairs' -- Fecha as tags automaticamente
+   use 'windwp/nvim-ts-autotag' -- Fecha tags html, tsx, vue, svelte,  php, rescript
    use 'dyng/ctrlsf.vim' -- Adiciona busca dentro de arquivos
    use 'kyazdani42/nvim-tree.lua' -- Explorar de arquivos                                                        
    use 'tpope/vim-commentary' -- Adiciona comentários no código                                           

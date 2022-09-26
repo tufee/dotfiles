@@ -38,12 +38,11 @@ cmp.setup({
       }),
     sources = {
       { name = 'nvim_lsp' }, 
-      { name = 'luasnip' }, 
       { name = 'nvim_lua' },
+      { name = 'cmp_tabnine' },
       { name = 'path' }, 
       { name = 'buffer', keyword_length = 4 },
       { name = 'treesitter' },
-      { name = 'cmp_tabnine' },
       { name = 'nvim_lsp_signature_help' }
     },
     completion = {
@@ -60,7 +59,6 @@ cmp.setup({
               nvim_lsp = "[LSP]",
               nvim_lua = "[Lua]",
               cmp_tabnine = "[TN]",
-              nvim_lua = "[Lua]",
               path = "[Path]",
               buffer = "[Buffer]",
             }),

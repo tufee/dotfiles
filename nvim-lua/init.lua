@@ -2,6 +2,7 @@ require 'settings'
 require 'keymaps'
 require 'themes'
 
+require 'plugins.feline' 
 require 'plugins.bufferline'
 require 'plugins.cmp'
 require 'plugins.lsp-config'

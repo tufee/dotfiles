@@ -4,6 +4,7 @@ local cmd = vim.cmd
 local path = vim.fn.expand('~/.config')
 
 g.mapleader = ' ' -- Define a tecla `leader` como a espaço
+g.ctrlsf_winsize = '30%'
 opt.termguicolors = true -- Ativa o suporte para 256 cores
 opt.signcolumn = 'yes' -- Adiciona coluna quando o conteúdo fica muito grande
 opt.expandtab = true

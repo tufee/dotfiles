@@ -1,8 +1,9 @@
 local cmd = vim.cmd
 local opt = vim.opt
 
-vim.g.everforest_background = 'hard'
-cmd [[colorscheme everforest]]
+require("one_monokai").setup()
+-- vim.g.everforest_background = 'hard'
+-- cmd [[colorscheme everforest]]
 -- vim.g.everforest_background = 'hard'
 -- cmd [[colorscheme moonfly]]
 -- cmd [[colorscheme dracula]]

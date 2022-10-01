@@ -35,6 +35,7 @@ return require('packer').startup(function(use)
    use 'sainnhe/everforest'                                                  
    use {'dracula/vim', as = 'dracula'}
    use {'pineapplegiant/spaceduck', branch = 'main' }                      
+   use "cpea2506/one_monokai.nvim"
                                                                               
    -- Airline                                                                  
    use 'vim-airline/vim-airline'                                             

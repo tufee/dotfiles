@@ -21,9 +21,9 @@ set('n', '<Leader>r', ':NvimTreeRefresh<CR>', ns) -- Atualiza o explorador de ar
 set('n', '<C-p>', ':Telescope find_files<CR>', ns) -- Realiza busca por arquivos do projeto
 set('n', '<C-F>f', ':CtrlSF ', ns) -- Realiza busca por palavra dentro dos arquivos
 set('v', '<C-F>f', '<Plug>CtrlSFVwordExec', ns) -- Realiza busca por palavra dentro dos arquivos usando a palavra selecionado no modo visual
-set('n', '<C-F>t', ':CtrlSFsToggle<CR>', ns) -- Ative e desativa o menu de busca
+set('n', '<C-F>t', ':CtrlSFToggle<CR>', ns) -- Ative e desativa o menu de busca
 set('n', '<C-O>', ':Telescope buffers<CR>', ns) -- Mostra os buffers abertos 
-vim.cmd('map <Leader>lf :lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>') -- Formatter
+vim.cmd('map <Leader>ff :lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>') -- Formatter
 
 -- Atalho para ajustar identação
 set("v", "<", "<gv", ns)
@@ -35,19 +35,17 @@ set('n', '<C-K>', '<C-W><C-K>', ns)
 set('n', '<C-L>', '<C-W><C-L>', ns)
 set('n', '<C-H>', '<C-W><C-H>', ns)
 
--- Atalho para mudar o tamanho da janela
-set("n", "<C-Up>", ":resize -2<CR>", ns)
 set("n", "<C-Down>", ":resize +2<CR>", ns)
 set("n", "<C-Left>", ":vertical resize +2<CR>", ns)
 set("n", "<C-Right>", ":vertical resize -2<CR>", ns)  
 
 -- Atalho para ir para o final da linha
-set("n", "<Leader>l", "<S-$>", ns)
-set("v", "<Leader>l", "<S-$>", ns)
+set("n", "<Leader>l", "$", ns)
+set("v", "<Leader>l", "$", ns)
 
 -- Atalho para ir para o inicio da linha
-set("n", "<Leader>h", "<S-_>", ns)
-set("v", "<Leader>h", "<S-_>", ns)
+set("n", "<Leader>h", "_", ns)
+set("v", "<Leader>h", "_", ns)
 
 -- Permite que o cursor acompanhe a rolagem da tela
 vim.g.comfortable_motion_scroll_down_key = "j"

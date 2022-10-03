@@ -1,15 +1,22 @@
-require 'settings'
-require 'keymaps'
-require 'themes'
+local load = function(mod)
+	package.loaded[mod] = nil
+	require(mod)
+end
 
-require 'plugins.feline' 
-require 'plugins.bufferline'
-require 'plugins.cmp'
-require 'plugins.lsp-config'
-require 'plugins.lspkind'
-require 'plugins.nvimtree'
-require 'plugins.packer'
-require 'plugins.telescope' 
-require 'plugins.toggleterm' 
-require 'plugins.autopairs' 
-require 'plugins.autotag' 
+load('settings')
+load('keymaps')
+load('themes')
+
+load('plugins.lualine')
+load('plugins.bufferline')
+load('plugins.cmp')
+load('plugins.lsp-config')
+load('plugins.null-ls')
+load('plugins.lspkind')
+load('plugins.nvimtree')
+load('plugins.packer')
+load('plugins.telescope')
+load('plugins.toggleterm')
+load('plugins.autopairs')
+load('plugins.autotag')
+load('plugins.sumneko')

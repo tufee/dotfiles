@@ -1,78 +1,91 @@
-local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local install_plugins = false
 
-if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+   print('Installing packer...')
+   local packer_url = 'https://github.com/wbthomason/packer.nvim'
+   vim.fn.system({'git', 'clone', '--depth', '1', packer_url, install_path})
+   print('Done.')
+
+   vim.cmd('packadd packer.nvim')
+   install_plugins = true
 end
 
-return require('packer').startup(function(use)
+require('packer').startup(function(use)
 
-   use 'wbthomason/packer.nvim' -- Necessário para auto gestão dos pacotes
-   use 'sheerun/vim-polyglot' -- Adiciona suporte para syntax highlight
-   use 'windwp/nvim-autopairs' -- Fecha as tags automaticamente
-   use 'windwp/nvim-ts-autotag' -- Fecha tags html, tsx, vue, svelte,  php, rescript
-   use 'dyng/ctrlsf.vim' -- Adiciona busca dentro de arquivos
-   use 'kyazdani42/nvim-tree.lua' -- Explorar de arquivos                                                        
-   use 'tpope/vim-commentary' -- Adiciona comentários no código                                           
-   use 'akinsho/bufferline.nvim' -- Adiciona tabs                                                            
-   use {'akinsho/toggleterm.nvim'} -- Abre um terminal flutuante
-   use 'puremourning/vimspector' -- Debugger
-   use 'tpope/vim-fugitive' -- Suporte para Git no Vim                                                  
-   use 'jiangmiao/auto-pairs' -- Fazer fechamento automático de pares
-   use 'tpope/vim-surround' -- Facilitar manipulação de 'surroundings' (pares)                          
-   use 'farmergreg/vim-lastplace' -- Retorna a última posição que estava no arquivo
-   use 'wakatime/vim-wakatime' -- Cria métricas de tempo de programação
+   use "wbthomason/packer.nvim"
+   use 'sheerun/vim-polyglot'
+   use 'windwp/nvim-autopairs'
+   use 'windwp/nvim-ts-autotag'
+   use 'dyng/ctrlsf.vim'
+   use 'kyazdani42/nvim-tree.lua'
+   use 'tpope/vim-commentary'
+   use 'akinsho/bufferline.nvim'
+   use 'akinsho/toggleterm.nvim'
+   use 'puremourning/vimspector'
+   use 'tpope/vim-fugitive'
+   use 'jiangmiao/auto-pairs'
+   use 'tpope/vim-surround'
+   use 'farmergreg/vim-lastplace'
+   use 'wakatime/vim-wakatime'
+   use 'tpope/vim-repeat'
 
-   -- Temas                                                                    
-   use 'sfi0zy/atlantic-dark.vim'                                            
-   use 'owickstrom/vim-colors-paramount'                                     
-   use 'morhetz/gruvbox'                                                     
-   use 'ayu-theme/ayu-vim'                                                   
-   use 'bluz71/vim-moonfly-colors'                                           
-   use 'srcery-colors/srcery-vim'                                            
-   use 'drewtempelmeyer/palenight.vim'                                       
-   use 'franbach/miramare'                                                   
-   use 'sainnhe/everforest'                                                  
+   -- Theme
+   use 'sfi0zy/atlantic-dark.vim'
+   use 'owickstrom/vim-colors-paramount'
+   use 'morhetz/gruvbox'
+   use 'ayu-theme/ayu-vim'
+   use 'bluz71/vim-moonfly-colors'
+   use 'srcery-colors/srcery-vim'
+   use 'drewtempelmeyer/palenight.vim'
+   use 'franbach/miramare'
+   use 'sainnhe/everforest'
    use {'dracula/vim', as = 'dracula'}
-   use {'pineapplegiant/spaceduck', branch = 'main' }                      
+   use {'pineapplegiant/spaceduck', branch = 'main' }
    use "cpea2506/one_monokai.nvim"
-                                                                              
-   -- Airline                                                                  
-   use 'vim-airline/vim-airline'                                             
-   use 'vim-airline/vim-airline-themes'                                      
-                                                                              
-   use {'styled-components/vim-styled-components',  branch = 'main' } -- Suporte para Styled Components                                           
-   use 'yuttie/comfortable-motion.vim' -- Suporte para smooth scrolling                                            
-   use 'kyazdani42/nvim-web-devicons' -- Adiciona ícones ao vim                                                   
-   use 'onsails/lspkind.nvim' -- Adiciona ícones no autocomplete
-   use 'matze/vim-move' -- Suporte para mover os blocos mais fácil                                   
+   use "challenger-deep-theme/vim"
+   use {'nvim-lualine/lualine.nvim', requires = {'kyazdani42/nvim-web-devicons', opt = true}}
 
-   -- Suporte para mostrar um preview da busca de arquivos                     
-   use 'nvim-lua/plenary.nvim'                                               
-   use 'nvim-telescope/telescope.nvim'                                       
+   -- Airline
+   use 'vim-airline/vim-airline'
+   use 'vim-airline/vim-airline-themes'
+
+   use {'styled-components/vim-styled-components',  branch = 'main' }
+   use 'yuttie/comfortable-motion.vim'
+   use 'kyazdani42/nvim-web-devicons'
+   use 'onsails/lspkind.nvim'
+   use 'matze/vim-move'
+
+   use 'nvim-lua/plenary.nvim'
+   use 'nvim-telescope/telescope.nvim'
    use 'nvim-treesitter/nvim-treesitter'
-                                                                              
-   use {'prettier/vim-prettier',  run = 'npm ci'} -- Formatter
-   use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'} -- Autocomplete
 
-   -- Suportes para configuração de LSP                                         
-   use 'neovim/nvim-lspconfig'                                               
-   use 'jose-elias-alvarez/nvim-lsp-ts-utils'                                
-   use 'williamboman/nvim-lsp-installer'                                     
-         
-   -- LSPs                                                                     
-   use 'hrsh7th/cmp-nvim-lsp'                                                
-   use 'hrsh7th/cmp-buffer'                                                  
-   use 'hrsh7th/cmp-path'                                                    
-   use 'hrsh7th/cmp-cmdline'                                                 
-   use 'hrsh7th/nvim-cmp'      
-   use 'hrsh7th/cmp-nvim-lua'      
-   use 'hrsh7th/cmp-nvim-lsp-signature-help'      
-   use 'ray-x/cmp-treesitter'      
+   use {'prettier/vim-prettier',  run = 'npm ci'}
+   use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'}
 
-   use 'feline-nvim/feline.nvim' -- Add ícones na barra de status
+   -- LSPs
+   use 'neovim/nvim-lspconfig'
+   use 'jose-elias-alvarez/nvim-lsp-ts-utils'
+   use 'jose-elias-alvarez/null-ls.nvim'
+   use 'williamboman/nvim-lsp-installer'
+   use 'hrsh7th/cmp-nvim-lsp'
+   use 'hrsh7th/cmp-buffer'
+   use 'hrsh7th/cmp-path'
+   use 'hrsh7th/cmp-cmdline'
+   use 'hrsh7th/nvim-cmp'
+   use 'hrsh7th/cmp-nvim-lua'
+   use 'saadparwaiz1/cmp_luasnip'
+   use 'hrsh7th/cmp-nvim-lsp-signature-help'
+   use 'ray-x/cmp-treesitter'
 
-  if packer_bootstrap then
-    require('packer').sync()
-  end
+   use 'rafamadriz/friendly-snippets'
+   use {"L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*"}
+
+   if install_plugins then
+      require('packer').sync()
+   end
 end)
+
+if install_plugins then
+   return
+end

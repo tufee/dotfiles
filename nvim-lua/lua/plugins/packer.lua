@@ -22,7 +22,7 @@ require('packer').startup(function(use)
    use 'tpope/vim-commentary'
    use 'akinsho/bufferline.nvim'
    use 'akinsho/toggleterm.nvim'
-   use 'puremourning/vimspector'
+   -- use 'puremourning/vimspector'
    use 'tpope/vim-fugitive'
    use 'jiangmiao/auto-pairs'
    use 'tpope/vim-surround'
@@ -30,6 +30,8 @@ require('packer').startup(function(use)
    use 'wakatime/vim-wakatime'
    use 'tpope/vim-repeat'
 
+   use 'mfussenegger/nvim-dap'
+   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
    -- Theme
    use 'sfi0zy/atlantic-dark.vim'
    use 'owickstrom/vim-colors-paramount'

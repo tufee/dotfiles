@@ -8,7 +8,7 @@ set.list = true
 set.listchars = {eol = '↲', tab = '▸ ', trail = '·'}
 set.termguicolors = true -- Ativa o suporte para 256 cores
 set.signcolumn = 'yes' -- Adiciona coluna quando o conteúdo fica muito grande
-opt.expandtab = true
+set.expandtab = true
 set.tabstop = 2 -- Número de espaços visuais ao pressionar a tecla TAB
 set.softtabstop = 2 -- Número de espaços contados em uma tabulação quando estiver editando
 set.shiftwidth = 2 -- Número de espaços contados em uma tabulação em nova linha
@@ -17,7 +17,7 @@ set.number = true -- Mostra os números das linhas
 set.relativenumber = true -- Mostra o números das linhas em relação a posição do cursor
 set.mouse = 'a' -- Ativa o mouse
 set.swapfile = false -- Desativa o swap 
-set.vim.opt.autoindent = true
+set.autoindent = true
 set.hidden = true -- Permite editar outros arquivos sem salvar um antes de abrir outro
 set.inccommand = 'split' -- Permite ter uma pré-visualização antes de fazer uma substituição com :%s
 set.clipboard = 'unnamedplus' -- Permite copiar do clipboard para o vim e do vim para o clipboard

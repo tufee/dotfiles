@@ -1,30 +1,30 @@
+local set = vim.keymap.set
+
 local dap = require('dap')
-require("nvim-dap-virtual-text").setup()
 
-vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointRejected', {text='🟦', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapStopped', {text='🟢', texthl='', linehl='', numhl=''})
+set('n', 'tt', ':TestNearest<CR>', {silent = true, desc = 'Remove highlight in the search'})
+set('n', 'tf', ':TestFile<CR>', {silent = true, desc = 'Remove highlight in the search'})
+set('n', 'ts', ':TestSuite<CR>', {silent = true, desc = 'Remove highlight in the search'})
+set('n', 't_', ':TestLast<CR>', {silent = true, desc = 'Remove highlight in the search'})
 
-dap.defaults.fallback.terminal_win_cmd = '50vsplit new'
-dap.adapters.node2 = {
-  type = 'executable',
-  command = 'node',
-  args = {os.getenv('HOME') .. '/dev/microsoft/vscode-node-debug2/out/src/nodeDebug.js'},
-}
+vim.g['test#strategy'] = "neovim"
+vim.g['test#neovim#term_position'] = "horizontal"
+vim.g['test#enabled_runners'] = { 'javascript#mocha' }
+vim.g['test#javascript#runner'] = 'mocha'
 
-local function debugJest(testName, filename)
+function debugMocha(testName, filename)
   print("starting " .. testName .. " in " .. filename)
   dap.run({
       type = 'node2',
       request = 'launch',
       cwd = vim.fn.getcwd(),
-      runtimeArgs = {'--inspect-brk', '/usr/local/bin/jest', '--no-coverage', '-t', testName, '--', filename},
+      runtimeArgs = {'--inspect-brk', './node_modules/.bin/mocha', '--no-coverage', '-t', testName, '--', filename},
       sourceMaps = true,
       protocol = 'inspector',
       skipFiles = {'<node_internals>/**/*.js'},
       console = 'integratedTerminal',
       port = 9229,
-      })
+    })
 end
 
 local function attach()
@@ -36,10 +36,10 @@ local function attach()
       sourceMaps = true,
       protocol = 'inspector',
       skipFiles = {'<node_internals>/**/*.js'},
-      })
+    })
 end
 
-local function attachToRemote()
+function attachToRemote()
   print("attaching")
   dap.run({
       type = 'node2',
@@ -51,11 +51,11 @@ local function attachToRemote()
       sourceMaps = true,
       protocol = 'inspector',
       skipFiles = {'<node_internals>/**/*.js'},
-      })
+    })
 end
 
 return {
-  debugJest = debugJest,
+  debugMocha = debugMocha,
   attach = attach,
   attachToRemote = attachToRemote,
 }

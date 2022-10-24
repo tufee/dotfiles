@@ -6,7 +6,7 @@ end
 
 toggle_term.setup {
   size = 10,
-  open_mapping = [[<c-t>]],
+  open_mapping = [[<C-t>]],
   hide_numbers = true, -- hide the number column in toggleterm buffers
   shade_terminals = false,
   start_in_insert = true,

@@ -6,7 +6,7 @@ tabnine.setup({
     sort = true,
     run_on_every_keystroke = true,
     snippet_placeholder = '..',
-    ignored_file_types = { 
+    ignored_file_types = {
     },
     show_prediction_strength = false
   })

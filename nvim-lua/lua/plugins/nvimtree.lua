@@ -53,7 +53,6 @@ local options = {
         git = false,
       },
 
-      
       glyphs = {
         default = "",
         symlink = "",

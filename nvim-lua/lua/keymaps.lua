@@ -17,7 +17,6 @@ set("x", "<Leader>p", '"_dP', { silent = true, desc = "stay the register when co
 
 set("n", "<Tab>", ":bn<CR>", { silent = true, desc = "move to next buffer" })
 set("n", "<S-Tab>", ":bp<CR>", { silent = true, desc = "move to previous buffer" })
-set("n", "<C-O>", ":Telescope buffers<CR>", { silent = true, desc = "show opened buffer" })
 
 set("i", "kj", "<ESC>", { silent = true, desc = "enter in normal mode" })
 
@@ -25,9 +24,12 @@ set("n", "<C-N>", ":NvimTreeToggle<CR>", { silent = true, desc = "open file expl
 set("n", "<Leader>r", ":NvimTreeRefresh<CR>", { silent = true, desc = "reload file explorer" })
 
 set("n", "<C-p>", ":Telescope find_files<CR>", { silent = true, desc = "find files" })
-set("n", "<C-F>f", ":CtrlSF ", { silent = true, desc = "search word" })
-set("v", "<C-F>f", "<Plug>CtrlSFVwordExec", { silent = true, desc = "search selected word" })
-set("n", "<C-F>t", ":CtrlSFToggle<CR>", { silent = true, desc = "toggle find menu" })
+set("n", "<C-O>", ":Telescope buffers<CR>", { silent = true, desc = "show opened buffer" })
+set("n", "<C-F>f", ":Telescope live_grep<CR>", { silent = true, desc = "show opened buffer" })
+
+-- set("n", "<C-F>f", ":CtrlSF ", { silent = true, desc = "search word" })
+-- set("v", "<C-F>f", "<Plug>CtrlSFVwordExec", { silent = true, desc = "search selected word" })
+-- set("n", "<C-F>t", ":CtrlSFToggle<CR>", { silent = true, desc = "toggle find menu" })
 
 set("v", "<", "<gv", { silent = true, desc = "adjust indentation" })
 set("v", ">", ">gv", { silent = true, desc = "adjust indentation" })

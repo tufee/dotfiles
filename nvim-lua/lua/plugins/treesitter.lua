@@ -1,11 +1,11 @@
-require('nvim-treesitter.configs').setup{
+require("nvim-treesitter.configs").setup({
   autotag = {
     enable = true,
   },
   highlight = {
     enable = true,
     disable = {},
-    additional_vim_regex_highlighting = true
+    additional_vim_regex_highlighting = true,
   },
   incremental_selection = {
     enable = true,
@@ -14,4 +14,4 @@ require('nvim-treesitter.configs').setup{
     enable = true,
   },
   ensure_installed = "all",
-}
+})

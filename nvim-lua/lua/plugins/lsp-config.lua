@@ -16,7 +16,6 @@ require("mason-lspconfig").setup({
     "graphql",
     "jsonls",
     "tsserver",
-    "eslint",
     "sqlls",
     "yamlls",
   },
@@ -70,10 +69,6 @@ lspconfig.dotls.setup({
   capabilities = capabilities,
 })
 
-lspconfig.eslint.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
 
 lspconfig.graphql.setup({
   on_attach = on_attach,

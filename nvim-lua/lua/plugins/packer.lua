@@ -13,22 +13,15 @@ end
 
 require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
-  use("sheerun/vim-polyglot")
   use("windwp/nvim-autopairs")
   use("windwp/nvim-ts-autotag")
-  use("kyazdani42/nvim-tree.lua")
   use("tpope/vim-commentary")
-  use("akinsho/bufferline.nvim")
-  use("akinsho/toggleterm.nvim")
-  use("tpope/vim-fugitive")
-  use("jiangmiao/auto-pairs")
   use("tpope/vim-surround")
-  use("farmergreg/vim-lastplace")
   use("wakatime/vim-wakatime")
-  use("tpope/vim-repeat")
 
   use("mfussenegger/nvim-dap")
   use("theHamsta/nvim-dap-virtual-text")
+  use('tpope/vim-vinegar')
 
   -- Theme
   use("sfi0zy/atlantic-dark.vim")
@@ -50,16 +43,12 @@ require("packer").startup(function(use)
   use("vim-airline/vim-airline")
   use("vim-airline/vim-airline-themes")
 
-  use({ "styled-components/vim-styled-components", branch = "main" })
-  use("kyazdani42/nvim-web-devicons")
   use("onsails/lspkind.nvim")
   use("matze/vim-move")
 
   use("nvim-lua/plenary.nvim")
   use("nvim-telescope/telescope.nvim")
   use("nvim-treesitter/nvim-treesitter")
-
-  use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 
   -- LSPs
   use({ "williamboman/mason.nvim" })
@@ -81,7 +70,6 @@ require("packer").startup(function(use)
 
   use("rafamadriz/friendly-snippets")
   use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
-
   use({ "vim-test/vim-test" })
 
   if install_plugins then

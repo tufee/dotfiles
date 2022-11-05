@@ -1,9 +1,9 @@
--- local cmd = vim.cmd
+local cmd = vim.cmd
 -- local opt = vim.opt
 
-require("one_monokai").setup()
+-- require("one_monokai").setup()
 -- Challenger deep
--- cmd [[colorscheme challenger_deep]]
+ cmd [[colorscheme challenger_deep]]
 -- vim.g.everforest_background = 'hard'
 -- cmd [[colorscheme everforest]]
 -- vim.g.everforest_background = 'hard'

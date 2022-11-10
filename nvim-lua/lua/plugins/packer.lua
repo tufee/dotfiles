@@ -19,10 +19,13 @@ require("packer").startup(function(use)
   use("tpope/vim-surround")
   use("wakatime/vim-wakatime")
 
-  use("mfussenegger/nvim-dap")
-  use("theHamsta/nvim-dap-virtual-text")
-  use('tpope/vim-vinegar')
+  -- use("mfussenegger/nvim-dap")
+  -- use("theHamsta/nvim-dap-virtual-text")
+  -- use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
 
+  use "lukas-reineke/indent-blankline.nvim"
+  use('tpope/vim-vinegar')
+  use('puremourning/vimspector')
   -- Theme
   use("sfi0zy/atlantic-dark.vim")
   use("owickstrom/vim-colors-paramount")

@@ -2,6 +2,7 @@ local g = vim.g
 local set = vim.opt
 local path = vim.fn.expand("~/.config")
 
+g.vimspector_base_dir='/home/tufe/.local/share/nvim/site/pack/packer/start/vimspector'
 g.mapleader = " "
 set.list = true
 set.listchars = { eol = "↲", trail = "·" }

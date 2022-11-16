@@ -18,10 +18,11 @@ require("packer").startup(function(use)
   use("tpope/vim-commentary")
   use("tpope/vim-surround")
   use("wakatime/vim-wakatime")
+  use {'akinsho/bufferline.nvim', tag = "v3.*"}
+  use {"akinsho/toggleterm.nvim", tag = '*'}
 
-  -- use("mfussenegger/nvim-dap")
-  -- use("theHamsta/nvim-dap-virtual-text")
-  -- use { "mxsdev/nvim-dap-vscode-js", requires = {"mfussenegger/nvim-dap"} }
+  use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
+  use('kovetskiy/neovim-move')
 
   use "lukas-reineke/indent-blankline.nvim"
   use('tpope/vim-vinegar')
@@ -71,9 +72,8 @@ require("packer").startup(function(use)
   use("hrsh7th/cmp-nvim-lsp-signature-help")
   use("ray-x/cmp-treesitter")
 
-  use("rafamadriz/friendly-snippets")
+  use('SirVer/ultisnips')
   use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
-  use({ "vim-test/vim-test" })
 
   if install_plugins then
     require("packer").sync()

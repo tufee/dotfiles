@@ -12,7 +12,6 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     "sumneko_lua",
     "dockerls",
-    "dotls",
     "graphql",
     "jsonls",
     "tsserver",
@@ -63,12 +62,6 @@ lspconfig.dockerls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-
-lspconfig.dotls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
 
 lspconfig.graphql.setup({
   on_attach = on_attach,

@@ -17,16 +17,16 @@ require("packer").startup(function(use)
   use("windwp/nvim-ts-autotag")
   use("tpope/vim-commentary")
   use("tpope/vim-surround")
-  use("wakatime/vim-wakatime")
   use {'akinsho/bufferline.nvim', tag = "v3.*"}
   use {"akinsho/toggleterm.nvim", tag = '*'}
+  use {"pangloss/vim-javascript"}
+  use {"MaxMEllon/vim-jsx-pretty"}
 
-  use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
   use('kovetskiy/neovim-move')
-
   use "lukas-reineke/indent-blankline.nvim"
-  use('tpope/vim-vinegar')
+  use {'nvim-tree/nvim-tree.lua', requires = { 'nvim-tree/nvim-web-devicons'}}
   use('puremourning/vimspector')
+
   -- Theme
   use("sfi0zy/atlantic-dark.vim")
   use("owickstrom/vim-colors-paramount")
@@ -71,8 +71,6 @@ require("packer").startup(function(use)
   use("saadparwaiz1/cmp_luasnip")
   use("hrsh7th/cmp-nvim-lsp-signature-help")
   use("ray-x/cmp-treesitter")
-
-  use('SirVer/ultisnips')
   use({ "L3MON4D3/LuaSnip", tag = "v<CurrentMajor>.*" })
 
   if install_plugins then

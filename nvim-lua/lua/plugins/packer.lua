@@ -21,6 +21,7 @@ require("packer").startup(function(use)
   use {"akinsho/toggleterm.nvim", tag = '*'}
   use {"pangloss/vim-javascript"}
   use {"MaxMEllon/vim-jsx-pretty"}
+  use {"RRethy/vim-illuminate"}
 
   use('kovetskiy/neovim-move')
   use "lukas-reineke/indent-blankline.nvim"
@@ -68,6 +69,7 @@ require("packer").startup(function(use)
   use("hrsh7th/cmp-cmdline")
   use("hrsh7th/nvim-cmp")
   use("hrsh7th/cmp-nvim-lua")
+  use("hrsh7th/cmp-copilot")
   use("saadparwaiz1/cmp_luasnip")
   use("hrsh7th/cmp-nvim-lsp-signature-help")
   use("ray-x/cmp-treesitter")

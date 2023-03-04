@@ -7,7 +7,7 @@ load("settings")
 load("keymaps")
 load("themes")
 
-load("plugins.autopairs")
+-- load("plugins.autopairs")
 load("plugins.autotag")
 load("plugins.bufferline")
 load("plugins.cmp")
@@ -20,4 +20,3 @@ load("plugins.nvim-tree")
 load("plugins.packer")
 load("plugins.telescope")
 load("plugins.toggle-term")
-

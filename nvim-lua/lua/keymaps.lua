@@ -18,7 +18,7 @@ set("n", "<Tab>", ":bn<CR>", { silent = true })
 set("n", "<S-Tab>", ":bp<CR>", { silent = true })
 
 set("n", "<C-p>", ":Telescope find_files<CR>", { silent = true })
-set("n", "<C-O>", ":Telescope buffers<CR>", { silent = true })
+set("n", "<Leader><Leader>", ":Telescope buffers<CR>", { silent = true })
 set("n", "<C-F>", ":Telescope live_grep<CR>", { silent = true })
 
 set("v", "<", "<gv", { silent = true })
@@ -38,17 +38,12 @@ set("v", "<Leader>/", ":Commentary<CR>", { silent = true })
 
 -- Atalhos vimspector debugger
 vim.api.nvim_set_keymap("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })
-
 vim.api.nvim_set_keymap("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { silent = true, noremap = true })
-
 vim.api.nvim_set_keymap("n", "<leader>dq", ":call vimspector#Reset()<cr>", { silent = true, noremap = true })
-
 vim.api.nvim_set_keymap("n", "<S-H>", ":call vimspector#Continue()<cr>", { silent = true, noremap = true })
-
+vim.api.nvim_set_keymap("n", "<S-L>", ":call vimspector#StepOver()<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap("n", "<S-F>", ":call vimspector#StepInto()<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>dh", ":call vimspector#ToggleBreakpoint()<cr>", { silent = true, noremap = true })
-
 vim.api.nvim_set_keymap("n", "<leader>dH", ":call vimspector#ClearBreakpoints()<cr>", { silent = true, noremap = true })
-
 vim.api.nvim_set_keymap("n", "<leader>db", "<Plug>VimspectorBreakpoints<cr>", { silent = true, noremap = true })
-
 vim.api.nvim_set_keymap("n", "<leader>dw", "<Plug>VimspectorBalloonEval<cr>", { silent = true, noremap = true })

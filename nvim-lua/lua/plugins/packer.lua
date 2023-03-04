@@ -22,6 +22,8 @@ require("packer").startup(function(use)
   use {"pangloss/vim-javascript"}
   use {"MaxMEllon/vim-jsx-pretty"}
   use {"RRethy/vim-illuminate"}
+  use {"jparise/vim-graphql"}
+  use {"prisma/vim-prisma"}
 
   use('kovetskiy/neovim-move')
   use "lukas-reineke/indent-blankline.nvim"

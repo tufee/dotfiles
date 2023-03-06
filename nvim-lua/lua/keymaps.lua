@@ -11,6 +11,11 @@ set("n", "<C-S>", ":w<CR>", { silent = true })
 set("n", "<C-G>", ":bd<CR>", { silent = true })
 set("n", "<C-Q>", ":q!<CR>", { silent = true })
 
+set("n", "<C-H>", "<C-W>h", { silent = true })
+set("n", "<C-J>", "<C-W>j", { silent = true })
+set("n", "<C-K>", "<C-W>k", { silent = true })
+set("n", "<C-L>", "<C-W>l", { silent = true })
+
 set("n", "<Leader>a", "ggVG<CR>", { silent = true })
 set("x", "<Leader>p", '"_dP', { silent = true })
 
@@ -42,7 +47,7 @@ vim.api.nvim_set_keymap("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { sile
 vim.api.nvim_set_keymap("n", "<leader>dq", ":call vimspector#Reset()<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<S-H>", ":call vimspector#Continue()<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<S-L>", ":call vimspector#StepOver()<cr>", { silent = true, noremap = true })
-vim.api.nvim_set_keymap("n", "<S-F>", ":call vimspector#StepInto()<cr>", { silent = true, noremap = true })
+-- vim.api.nvim_set_keymap("n", "<S-F>", ":call vimspector#StepInto()<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>dh", ":call vimspector#ToggleBreakpoint()<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>dH", ":call vimspector#ClearBreakpoints()<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>db", "<Plug>VimspectorBreakpoints<cr>", { silent = true, noremap = true })

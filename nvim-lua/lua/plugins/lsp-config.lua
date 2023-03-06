@@ -10,7 +10,7 @@ require("mason").setup({
 
 require("mason-lspconfig").setup({
   ensure_installed = {
-    "sumneko_lua",
+ --   "lua-ls",
     "dockerls",
     "graphql",
     "jsonls",
@@ -73,17 +73,17 @@ lspconfig.jsonls.setup({
   capabilities = capabilities,
 })
 
-lspconfig.sumneko_lua.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-    },
-  },
-})
+-- lspconfig.sumneko_lua.setup({
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = { "vim" },
+--       },
+--     },
+--   },
+-- })
 
 lspconfig.sqlls.setup({
   on_attach = on_attach,

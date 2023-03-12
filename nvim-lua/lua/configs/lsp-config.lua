@@ -1,25 +1,3 @@
-require("mason").setup({
-  ui = {
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗",
-    },
-  },
-})
-
-require("mason-lspconfig").setup({
-  ensure_installed = {
- --   "lua-ls",
-    "dockerls",
-    "graphql",
-    "jsonls",
-    "tsserver",
-    "sqlls",
-    "yamlls",
-  },
-})
-
 local lspconfig = require("lspconfig")
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 
@@ -73,17 +51,17 @@ lspconfig.jsonls.setup({
   capabilities = capabilities,
 })
 
--- lspconfig.sumneko_lua.setup({
---   on_attach = on_attach,
---   capabilities = capabilities,
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = { "vim" },
---       },
---     },
---   },
--- })
+lspconfig.lua_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+})
 
 lspconfig.sqlls.setup({
   on_attach = on_attach,

@@ -7,18 +7,17 @@ set("n", "<Leader>ev", ":e ~/.config/nvim<CR>", { silent = true })
 set("n", "<Leader>sv", ":source $MYVIMRC<CR>", { silent = true })
 set("n", "<Leader>rl", ":luafile %<CR>", { silent = true })
 set("n", "<C-C>", ":%y+<CR>", { silent = true })
+set("n", "<Leader>a", "ggVG<CR>", { silent = true })
 
-set("n", "<C-S>", ":w<CR>", { silent = true })
-set("n", "<C-G>", ":bd<CR>", { silent = true })
-set("n", "<C-Q>", ":q!<CR>", { silent = true })
+set("n", "<Leader>w", ":w<CR>", { silent = true })
+set("n", "<Leader>g", ":bd<CR>", { silent = true })
+set("n", "<Leader>o", ":w | %bd | e#<CR>", { silent = true })
+set("n", "<Leader>q", ":q!<CR>", { silent = true })
 
 set("n", "<C-H>", "<C-W>h", { silent = true })
 set("n", "<C-J>", "<C-W>j", { silent = true })
 set("n", "<C-K>", "<C-W>k", { silent = true })
 set("n", "<C-L>", "<C-W>l", { silent = true })
-
-set("n", "<Leader>a", "ggVG<CR>", { silent = true })
-set("x", "<Leader>p", '"_dP', { silent = true })
 
 set("n", "<Tab>", ":bn<CR>", { silent = true })
 set("n", "<S-Tab>", ":bp<CR>", { silent = true })
@@ -38,9 +37,6 @@ set("n", "<C-E>", "$", { silent = true })
 set("v", "<C-E>", "$", { silent = true })
 set("n", "<C-B>", "_", { silent = true })
 set("v", "<C-B>", "_", { silent = true })
-
-set("n", "<Leader>/", ":Commentary<CR>", { silent = true })
-set("v", "<Leader>/", ":Commentary<CR>", { silent = true })
 
 -- Atalhos vimspector debugger
 vim.api.nvim_set_keymap("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })

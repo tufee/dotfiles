@@ -1,8 +1,14 @@
-local formatting = require("null-ls").builtins.formatting
+local status, nls = pcall(require, "null-ls")
+
+if not status then
+  return
+end
+
+local fmt = nls.builtins.formatting
 
 require("null-ls").setup({
   sources = {
-    formatting.prettier,
-    formatting.stylua,
+    fmt.prettier,
+    fmt.stylua,
   },
 })

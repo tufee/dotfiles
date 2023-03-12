@@ -38,6 +38,8 @@ set("v", "<C-E>", "$", { silent = true })
 set("n", "<C-B>", "_", { silent = true })
 set("v", "<C-B>", "_", { silent = true })
 
+vim.api.nvim_set_keymap("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", { silent = true, noremap = true })
+
 -- Atalhos vimspector debugger
 vim.api.nvim_set_keymap("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { silent = true, noremap = true })

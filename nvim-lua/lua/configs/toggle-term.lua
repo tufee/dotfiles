@@ -1,4 +1,3 @@
-local vim = vim
 local present, toggle_term = pcall(require, "toggleterm")
 if not present then
   return

@@ -1,4 +1,8 @@
-local lspconfig = require("lspconfig")
+local status, lspconfig = pcall(require, "lspconfig")
+if not status then
+ return
+end
+
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
 
 for type, icon in pairs(signs) do

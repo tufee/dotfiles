@@ -107,7 +107,6 @@ return require("packer").startup(function(use)
 
   use("puremourning/vimspector")
 
-  use("matze/vim-move")
   use("tpope/vim-surround")
   use("wakatime/vim-wakatime")
 
@@ -175,6 +174,7 @@ return require("packer").startup(function(use)
   use("challenger-deep-theme/vim")
   use({ "dracula/vim", as = "dracula" })
   use({ "pineapplegiant/spaceduck", branch = "main" })
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   if packer_bootstrap then
     require("packer").sync()

@@ -17,7 +17,7 @@ local buf_map = function(bufnr, mode, lhs, rhs, opts)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
+  virtual_text = true,
 })
 
 local on_attach = function(client, bufnr)
@@ -26,7 +26,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
+  --vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "[a", vim.diagnostic.goto_prev, bufopts)
   vim.keymap.set("n", "]a", vim.diagnostic.goto_next, bufopts)
@@ -55,6 +55,10 @@ lspconfig.jsonls.setup({
   capabilities = capabilities,
 })
 
+lspconfig.vimls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 lspconfig.lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,

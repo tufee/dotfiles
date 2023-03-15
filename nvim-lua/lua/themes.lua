@@ -1,7 +1,8 @@
 local cmd = vim.cmd
 -- local opt = vim.opt
 
- require("one_monokai").setup()
+-- require("one_monokai").setup()
+ cmd [[colorscheme catppuccin-mocha]] --" catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
 -- Challenger deep
 -- cmd [[colorscheme challenger_deep]]
 -- vim.g.everforest_background = 'hard'

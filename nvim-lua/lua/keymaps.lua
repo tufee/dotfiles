@@ -27,8 +27,8 @@ set("n", "<C-U>", "<C-U>zz", { silent = true })
 set("n", "n", "nzzzv", { silent = true })
 set("n", "N", "Nzzzv", { silent = true })
 
-set("n", "<C-K>", ":bn<CR>", { silent = true })
-set("n", "<C-J>", ":bp<CR>", { silent = true })
+set("n", "<Tab>", ":bn<CR>", { silent = true })
+set("n", "<S-Tab>", ":bp<CR>", { silent = true })
 
 set("n", "<C-p>", ":Telescope find_files<CR>", { silent = true })
 set("n", "<Leader><Leader>", ":Telescope buffers<CR>", { silent = true })
@@ -51,13 +51,16 @@ set("v", "<C-B>", "_", { silent = true })
 
 set("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", { silent = true, noremap = true })
 
+set("n", "<leader>cg", ":ChatGPT<CR>")
+set("n", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
+
 -- Atalhos vimspector debugger
 set("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })
 set("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { silent = true, noremap = true })
 set("n", "<leader>dq", ":call vimspector#Reset()<cr>", { silent = true, noremap = true })
 set("n", "<S-H>", ":call vimspector#Continue()<cr>", { silent = true, noremap = true })
 set("n", "<S-L>", ":call vimspector#StepOver()<cr>", { silent = true, noremap = true })
--- set("n", "<S-F>", ":call vimspector#StepInto()<cr>", { silent = true, noremap = true })
+set("n", "<S-Y>", ":call vimspector#StepInto()<cr>", { silent = true, noremap = true })
 set("n", "<leader>dh", ":call vimspector#ToggleBreakpoint()<cr>", { silent = true, noremap = true })
 set("n", "<leader>dH", ":call vimspector#ClearBreakpoints()<cr>", { silent = true, noremap = true })
 set("n", "<leader>db", "<Plug>VimspectorBreakpoints<cr>", { silent = true, noremap = true })

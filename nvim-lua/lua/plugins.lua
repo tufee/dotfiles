@@ -1,8 +1,8 @@
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -11,17 +11,26 @@ end
 
 local packer_bootstrap = ensure_packer()
 
+vim.fn.setenv("OPENAI_API_KEY", "")
+
 return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
-  use({
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup()
-    end,
-  })
+  -- use({
+  --   "windwp/nvim-autopairs",
+  --   config = function()
+  --     require("nvim-autopairs").setup()
+  --   end,
+  -- })
 
   use("nvim-lua/plenary.nvim")
+
+  use({
+    'rcarriga/nvim-notify',
+    config = function()
+      require("notify").setup()
+    end,
+  })
 
   use({
     "nvim-telescope/telescope.nvim",
@@ -46,25 +55,60 @@ return require("packer").startup(function(use)
   })
 
   use({
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup()
+    end,
+  })
+
+  use({
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        formatters = {
+          insert_text = require("copilot_cmp.format").remove_existing
+        },
+      })
+    end
+  })
+
+  use({
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
     requires = {
-      { "hrsh7th/cmp-nvim-lsp", after = "nvim-cmp" },
-      { "hrsh7th/cmp-path", after = "nvim-cmp" },
-      { "hrsh7th/cmp-buffer", after = "nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp-signature-help", after = "nvim-cmp"},
+      { "hrsh7th/cmp-nvim-lsp",                 after = "nvim-cmp" },
+      { "hrsh7th/cmp-path",                     after = "nvim-cmp" },
+      { "hrsh7th/cmp-buffer",                   after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help",  after = "nvim-cmp" },
       { "jose-elias-alvarez/nvim-lsp-ts-utils", after = "nvim-cmp" }
     },
     config = function()
       require("configs.cmp")
     end,
   })
-  --use("hrsh7th/cmp-copilot")
+
+  use({
+    "jackMort/ChatGPT.nvim",
+    config = function()
+      require("configs.chatgpt")
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  })
+
 
   use({
     "jose-elias-alvarez/null-ls.nvim",
     config = function()
-      require("configs.null-ls")
+      require("null-ls").setup()
     end,
     requires = { "nvim-lua/plenary.nvim" },
   })
@@ -88,8 +132,8 @@ return require("packer").startup(function(use)
     "akinsho/toggleterm.nvim",
     tag = "*",
     config = function()
-    require("configs.toggle-term")
-  end,
+      require("configs.toggle-term")
+    end,
   })
 
   use({
@@ -111,15 +155,20 @@ return require("packer").startup(function(use)
   use("wakatime/vim-wakatime")
 
   -- UI
-  use({ "akinsho/bufferline.nvim", tag = "v3.*",
+  use({
+    "akinsho/bufferline.nvim",
+    tag = "v3.*",
     config = function()
       require("bufferline").setup()
     end
   })
 
-  use({ "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons",
-      opt = true },
+  use({
+    "nvim-lualine/lualine.nvim",
+    requires = {
+      "kyazdani42/nvim-web-devicons",
+      opt = true
+    },
     config = function()
       require('configs.lualine')
     end,
@@ -128,14 +177,16 @@ return require("packer").startup(function(use)
   use("vim-airline/vim-airline")
   use("vim-airline/vim-airline-themes")
 
-  use({"onsails/lspkind.nvim",
+  use({
+    "onsails/lspkind.nvim",
     config = function()
       require('configs.lspkind')
     end,
   })
   use("nvim-tree/nvim-web-devicons")
 
-  use({ "nvim-tree/nvim-tree.lua",
+  use({
+    "nvim-tree/nvim-tree.lua",
     requires = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require('configs.nvim-tree')
@@ -144,7 +195,8 @@ return require("packer").startup(function(use)
 
   use("RRethy/vim-illuminate")
 
-  use({"lukas-reineke/indent-blankline.nvim",
+  use({
+    "lukas-reineke/indent-blankline.nvim",
     config = function()
       require('configs.indent-blankline')
     end,
@@ -180,4 +232,3 @@ return require("packer").startup(function(use)
     require("packer").sync()
   end
 end)
-

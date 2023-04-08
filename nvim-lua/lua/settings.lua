@@ -18,6 +18,7 @@ set.relativenumber = true
 set.mouse = "a"
 set.swapfile = false
 set.autoindent = true
+set.smartindent = true
 set.hidden = true
 set.inccommand = "split"
 set.clipboard = "unnamedplus"

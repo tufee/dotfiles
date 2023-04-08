@@ -59,6 +59,7 @@ lspconfig.vimls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
+
 lspconfig.lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -82,6 +83,11 @@ lspconfig.yamlls.setup({
 })
 
 lspconfig.gopls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.prismals.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })

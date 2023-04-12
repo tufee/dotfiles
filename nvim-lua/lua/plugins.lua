@@ -55,6 +55,21 @@ return require("packer").startup(function(use)
   })
 
   use({
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    requires = {
+      { "hrsh7th/cmp-nvim-lsp",                 after = "nvim-cmp" },
+      { "hrsh7th/cmp-path",                     after = "nvim-cmp" },
+      { "hrsh7th/cmp-buffer",                   after = "nvim-cmp" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help",  after = "nvim-cmp" },
+      { "jose-elias-alvarez/nvim-lsp-ts-utils", after = "nvim-cmp" }
+    },
+    config = function()
+      require("configs.cmp")
+    end,
+  })
+
+  use({
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
@@ -77,32 +92,17 @@ return require("packer").startup(function(use)
     end
   })
 
-  use({
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    requires = {
-      { "hrsh7th/cmp-nvim-lsp",                 after = "nvim-cmp" },
-      { "hrsh7th/cmp-path",                     after = "nvim-cmp" },
-      { "hrsh7th/cmp-buffer",                   after = "nvim-cmp" },
-      { "hrsh7th/cmp-nvim-lsp-signature-help",  after = "nvim-cmp" },
-      { "jose-elias-alvarez/nvim-lsp-ts-utils", after = "nvim-cmp" }
-    },
-    config = function()
-      require("configs.cmp")
-    end,
-  })
-
-  use({
-    "jackMort/ChatGPT.nvim",
-    config = function()
-      require("configs.chatgpt")
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  })
+  -- use({
+  --   "jackMort/ChatGPT.nvim",
+  --   config = function()
+  --     require("configs.chatgpt")
+  --   end,
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim"
+  --   }
+  -- })
 
 
   use({

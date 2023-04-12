@@ -9,6 +9,7 @@ set("n", "<Leader>rl", ":luafile %<CR>", { silent = true })
 set("n", "<C-C>", ":%y+<CR>", { silent = true })
 set("v", "Y", "}mgy`g", { silent = true })
 set("n", "<Leader>a", "ggVG<CR>", { silent = true })
+set("n", "á", "'a", { silent = true })
 
 set("n", "<Leader>w", ":w<CR>", { silent = true })
 set("n", "<Leader>g", ":bd<CR>", { silent = true })

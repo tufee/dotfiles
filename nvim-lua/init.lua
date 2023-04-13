@@ -5,5 +5,5 @@ end
 
 load("settings")
 load("keymaps")
-load("themes")
 load("plugins")
+load("themes")

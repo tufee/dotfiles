@@ -1,7 +1,7 @@
 local set = vim.keymap.set
 
 set("i", "kj", "<ESC>", { silent = true })
-set("n", "<C-N>", ":NvimTreeToggle<CR>", { silent = true })
+set("n", "<C-N>", ":NeoTreeShow<CR>", { silent = true })
 set("n", "<Leader><CR>", ":noh<CR>", { silent = true })
 set("n", "<Leader>ev", ":e ~/.config/nvim<CR>", { silent = true })
 set("n", "<Leader>sv", ":source $MYVIMRC<CR>", { silent = true })

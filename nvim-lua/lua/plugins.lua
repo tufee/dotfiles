@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
---vim.fn.setenv("OPENAI_API_KEY", "")
+vim.fn.setenv("OPENAI_API_KEY", "")
 
 require("lazy").setup({
 
@@ -28,9 +28,14 @@ require("lazy").setup({
     end
   },
 
-  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-lua/plenary.nvim",    lazy = true },
 
-  { 'rcarriga/nvim-notify',  lazy = true },
+  {
+    'rcarriga/nvim-notify',
+    config = function()
+      require('configs.notify')
+    end
+  },
 
   {
     "nvim-telescope/telescope.nvim",
@@ -95,18 +100,17 @@ require("lazy").setup({
     end
   },
 
-  -- ({
-  --   "jackMort/ChatGPT.nvim",
-  --   config = function()
-  --     require("configs.chatgpt")
-  --   end,
-  --   requires = {
-  --     "MunifTanjim/nui.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim"
-  --   }
-  -- })
-
+  {
+    "jackMort/ChatGPT.nvim",
+    config = function()
+      require("configs.chatgpt")
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim"
+    }
+  },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -198,8 +202,12 @@ require("lazy").setup({
     end,
   },
 
-  { "vim-airline/vim-airline",        lazy = true },
-  { "vim-airline/vim-airline-themes", lazy = true },
+  {
+    "tiagovla/scope.nvim",
+    config = function()
+      require('scope').setup()
+    end,
+  },
 
   {
     "onsails/lspkind.nvim",
@@ -209,9 +217,14 @@ require("lazy").setup({
     end,
   },
 
-  { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "nvim-tree/nvim-web-devicons",     lazy = true },
 
-  { "RRethy/vim-illuminate",       lazy = true },
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require('illuminate').configure()
+    end,
+  },
 
   -- {
   --   "lukas-reineke/indent-blankline.nvim",

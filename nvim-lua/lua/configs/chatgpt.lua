@@ -74,6 +74,6 @@ require("chatgpt").setup(
       delete_session = "d",
     },
     predefined_chat_gpt_prompts = "https://raw.githubusercontent.com/f/awesome-chatgpt-prompts/main/prompts.csv",
-    actions_paths = { "~/.config/nvim/custom_actions.json" }
+    -- actions_paths = { "~/.config/nvim/custom_actions.json" }
   }
 )

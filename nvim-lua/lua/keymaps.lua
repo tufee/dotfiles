@@ -31,6 +31,9 @@ set("n", "N", "Nzzzv", { silent = true })
 set("n", "<Tab>", ":bn<CR>", { silent = true })
 set("n", "<S-Tab>", ":bp<CR>", { silent = true })
 
+set("n", "<Leader>l", ":tabnext<CR>", { silent = true })
+set("n", "<Leader>h", ":tabprevious<CR>", { silent = true })
+
 set("n", "<C-p>", ":Telescope find_files<CR>", { silent = true })
 set("n", "<Leader><Leader>", ":Telescope buffers<CR>", { silent = true })
 set("n", "<C-F>", ":Telescope live_grep<CR>", { silent = true })
@@ -54,8 +57,9 @@ set("n", "<C-p>",
   "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
   { silent = true, noremap = true })
 
--- set("n", "<leader>cg", ":ChatGPT<CR>")
--- set("n", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
+set("n", "<leader>cg", ":ChatGPT<CR>")
+set("v", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
+set("v", "<leader>cr", ":ChatGPTRun ")
 
 set("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })
 set("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { silent = true, noremap = true })

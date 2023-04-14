@@ -11,10 +11,10 @@ end
 -- cmd [[colorscheme challenger_deep]]
 -- vim.g.everforest_background = 'hard'
 -- cmd [[colorscheme everforest]]
--- vim.g.everforest_background = 'hard'
+-- vim.g.everforest_backround = 'hard'
 -- cmd [[colorscheme moonfly]]
--- cmd [[colorscheme dracula]]
--- cmd [[colorscheme srcery]]
+-- cmd [[colorscheme draa]]
+-- cmd [[colorscheme srcry]]
 -- cmd [[colorscheme spaceduck]]
 -- cmd [[colorscheme miramare]]
 -- cmd [[colorscheme gruvbox]]

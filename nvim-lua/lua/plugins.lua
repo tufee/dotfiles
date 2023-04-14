@@ -21,6 +21,12 @@ require("lazy").setup({
   --     require("nvim-autopairs").setup()
   --   end,
   -- })
+  {
+    "klen/nvim-test",
+    config = function()
+      require('nvim-test').setup()
+    end
+  },
 
   { "nvim-lua/plenary.nvim", lazy = true },
 
@@ -30,6 +36,11 @@ require("lazy").setup({
     "nvim-telescope/telescope.nvim",
     lazy = true,
     tag = "0.1.1",
+    dependencies = { { "nvim-lua/plenary.nvim" } },
+  },
+
+  {
+    "nvim-pack/nvim-spectre",
     dependencies = { { "nvim-lua/plenary.nvim" } },
   },
 
@@ -120,7 +131,9 @@ require("lazy").setup({
 
   {
     "akinsho/toggleterm.nvim",
-    lazy = true,
+    keys = {
+      { "<C-T>", "<cmd>Toggleterm<cr>" },
+    },
     config = function()
       require("configs.toggle-term")
     end,
@@ -152,9 +165,16 @@ require("lazy").setup({
   { "jparise/vim-graphql",      lazy = true },
   { "prisma/vim-prisma",        lazy = true },
 
-  { "puremourning/vimspector",  lazy = true },
+  {
+    "puremourning/vimspector",
+    lazy = true,
+    keys = {
+      { "<leader>dh", ":call vimspector#ToggleBreakpoint()<cr>" },
+    },
+  },
 
-  { "tpope/vim-surround",       lazy = true },
+  { "tpope/vim-surround" },
+  { "tpope/vim-repeat" },
   { "wakatime/vim-wakatime" },
 
   -- UI
@@ -193,13 +213,13 @@ require("lazy").setup({
 
   { "RRethy/vim-illuminate",       lazy = true },
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    lazy = true,
-    config = function()
-      require('configs.indent-blankline')
-    end,
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   lazy = true,
+  --   config = function()
+  --     require('configs.indent-blankline')
+  --   end,
+  -- },
 
   {
     "nvim-treesitter/nvim-treesitter",

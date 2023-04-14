@@ -50,6 +50,7 @@ local lazygit = Terminal:new({
   end,
 })
 
+---@diagnostic disable-next-line: lowercase-global
 function _lazygit_toggle()
   lazygit:toggle()
 end

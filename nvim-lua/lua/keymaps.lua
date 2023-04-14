@@ -9,7 +9,7 @@ set("n", "<Leader>rl", ":luafile %<CR>", { silent = true })
 set("n", "<C-C>", ":%y+<CR>", { silent = true })
 set("v", "Y", "}mgy`g", { silent = true })
 set("n", "<Leader>a", "ggVG<CR>", { silent = true })
-set("n", "á", "'a", { silent = true })
+set("n", "´", "`", { silent = true })
 
 set("n", "<Leader>w", ":w<CR>", { silent = true })
 set("n", "<Leader>g", ":bd<CR>", { silent = true })
@@ -50,12 +50,13 @@ set("v", "<C-E>", "$", { silent = true })
 set("n", "<C-B>", "_", { silent = true })
 set("v", "<C-B>", "_", { silent = true })
 
-set("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", { silent = true, noremap = true })
+set("n", "<C-p>",
+  "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+  { silent = true, noremap = true })
 
-set("n", "<leader>cg", ":ChatGPT<CR>")
-set("n", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
+-- set("n", "<leader>cg", ":ChatGPT<CR>")
+-- set("n", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
 
--- Atalhos vimspector debugger
 set("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })
 set("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { silent = true, noremap = true })
 set("n", "<leader>dq", ":call vimspector#Reset()<cr>", { silent = true, noremap = true })
@@ -66,3 +67,8 @@ set("n", "<leader>dh", ":call vimspector#ToggleBreakpoint()<cr>", { silent = tru
 set("n", "<leader>dH", ":call vimspector#ClearBreakpoints()<cr>", { silent = true, noremap = true })
 set("n", "<leader>db", "<Plug>VimspectorBreakpoints<cr>", { silent = true, noremap = true })
 set("n", "<leader>dw", "<Plug>VimspectorBalloonEval<cr>", { silent = true, noremap = true })
+
+set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
+set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
+set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>')
+set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>')

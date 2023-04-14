@@ -1,6 +1,6 @@
 require("chatgpt").setup(
   {
-    welcome_message = WELCOME_MESSAGE,
+    welcome_message = "WELCOME_MESSAGE",
     loading_text = "loading",
     question_sign = "", -- you can use emoji if you want e.g. 🙂
     answer_sign = "ﮧ", -- 🤖

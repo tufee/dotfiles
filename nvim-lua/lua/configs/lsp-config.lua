@@ -1,6 +1,6 @@
 local status, lspconfig = pcall(require, "lspconfig")
 if not status then
- return
+  return
 end
 
 local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
@@ -20,6 +20,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   virtual_text = true,
 })
 
+---@diagnostic disable-next-line: unused-local
 local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, bufopts)

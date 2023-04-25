@@ -93,6 +93,16 @@ lspconfig.prismals.setup({
   capabilities = capabilities,
 })
 
+lspconfig.eslint.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.cssls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 lspconfig.tsserver.setup({
   on_attach = function(client, bufnr)
     client.server_capabilities.document_formatting = false

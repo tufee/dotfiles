@@ -14,13 +14,14 @@ set("n", "´", "`", { silent = true })
 set("n", "<Leader>w", ":w<CR>", { silent = true })
 set("n", "<Leader>g", ":bd<CR>", { silent = true })
 set("n", "<Leader>o", ":w | %bd | e#<CR>", { silent = true })
+set("n", "<Leader>q", ":qa | %bd | e#<CR>", { silent = true })
 set("n", "<C-q>", ":q!<CR>", { silent = true })
 set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-set("n", "<C-H>", "<C-W>h", { silent = true })
-set("n", "<C-J>", "<C-W>j", { silent = true })
-set("n", "<C-K>", "<C-W>k", { silent = true })
-set("n", "<C-L>", "<C-W>l", { silent = true })
+-- set("n", "<C-H>", "<C-W>h", { silent = true })
+-- set("n", "<C-J>", "<C-W>j", { silent = true })
+-- set("n", "<C-K>", "<C-W>k", { silent = true })
+-- set("n", "<C-L>", "<C-W>l", { silent = true })
 
 set("n", "<C-D>", "<C-D>zz", { silent = true })
 set("n", "<C-U>", "<C-U>zz", { silent = true })
@@ -28,13 +29,14 @@ set("n", "<C-U>", "<C-U>zz", { silent = true })
 set("n", "n", "nzzzv", { silent = true })
 set("n", "N", "Nzzzv", { silent = true })
 
-set("n", "<Tab>", ":bn<CR>", { silent = true })
-set("n", "<S-Tab>", ":bp<CR>", { silent = true })
+set("n", "<C-K>", ":bn<CR>", { silent = true })
+set("n", "<C-J>", ":bp<CR>", { silent = true })
 
 set("n", "<Leader>l", ":tabnext<CR>", { silent = true })
 set("n", "<Leader>h", ":tabprevious<CR>", { silent = true })
 
 set("n", "<C-p>", ":Telescope find_files<CR>", { silent = true })
+set("n", "<C-s>", ":SearchSession<CR>", { silent = true })
 set("n", "<Leader><Leader>", ":Telescope buffers<CR>", { silent = true })
 set("n", "<C-F>", ":Telescope live_grep<CR>", { silent = true })
 
@@ -60,6 +62,11 @@ set("n", "<C-p>",
 set("n", "<leader>cg", ":ChatGPT<CR>")
 set("v", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
 set("v", "<leader>cr", ":ChatGPTRun ")
+
+set("n", "<leader>ts", ":TestSuite<CR>")
+set("n", "<leader>tf", ":TestFile<CR>")
+set("n", "<leader>tn", ":TestNearest<CR>")
+set("n", "<leader>tl", ":TestLast<CR>")
 
 set("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })
 set("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { silent = true, noremap = true })

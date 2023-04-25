@@ -60,7 +60,7 @@ require("chatgpt").setup(
     },
     keymaps = {
       close = { "<C-c>" },
-      submit = "<Enter>",
+      submit = "<C-m>",
       yank_last = "<C-y>",
       yank_last_code = "<C-k>",
       scroll_up = "<C-u>",

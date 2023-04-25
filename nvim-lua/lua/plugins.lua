@@ -21,6 +21,29 @@ require("lazy").setup({
   --     require("nvim-autopairs").setup()
   --   end,
   -- })
+
+  {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      }
+    end
+  },
+
+  {
+    'styled-components/vim-styled-components',
+  },
+
+  {
+    'rmagatti/session-lens',
+    requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require('session-lens').setup()
+    end
+  },
+
   {
     "klen/nvim-test",
     config = function()
@@ -100,17 +123,17 @@ require("lazy").setup({
     end
   },
 
-  {
-    "jackMort/ChatGPT.nvim",
-    config = function()
-      require("configs.chatgpt")
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-  },
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   config = function()
+  --     require("configs.chatgpt")
+  --   end,
+  --   requires = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim"
+  --   }
+  -- },
 
   {
     "jose-elias-alvarez/null-ls.nvim",
@@ -164,8 +187,8 @@ require("lazy").setup({
   },
 
   -- JS
-  { "pangloss/vim-javascript",  lazy = true },
-  { "MaxMEllon/vim-jsx-pretty", lazy = true },
+  { "pangloss/vim-javascript",  lazy = false },
+  { "MaxMEllon/vim-jsx-pretty", lazy = false },
   { "jparise/vim-graphql",      lazy = true },
   { "prisma/vim-prisma",        lazy = true },
 
@@ -217,7 +240,7 @@ require("lazy").setup({
     end,
   },
 
-  { "nvim-tree/nvim-web-devicons",     lazy = true },
+  { "nvim-tree/nvim-web-devicons", lazy = true },
 
   {
     "RRethy/vim-illuminate",
@@ -225,14 +248,6 @@ require("lazy").setup({
       require('illuminate').configure()
     end,
   },
-
-  -- {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   lazy = true,
-  --   config = function()
-  --     require('configs.indent-blankline')
-  --   end,
-  -- },
 
   {
     "nvim-treesitter/nvim-treesitter",
@@ -242,18 +257,8 @@ require("lazy").setup({
   },
 
   -- Themes
-  { "sfi0zy/atlantic-dark.vim",        lazy = true },
-  { "owickstrom/vim-colors-paramount", lazy = true },
-  { "morhetz/gruvbox",                 lazy = true },
-  { "shatur/neovim-ayu",               lazy = false },
-  { "bluz71/vim-moonfly-colors",       lazy = true },
-  { "srcery-colors/srcery-vim",        lazy = true },
-  { "drewtempelmeyer/palenight.vim",   lazy = true },
-  { "franbach/miramare",               lazy = true },
-  { "sainnhe/everforest",              lazy = true },
-  { "cpea2506/one_monokai.nvim",       lazy = true },
-  { "challenger-deep-theme/vim",       lazy = true },
-  -- { "dracula/vim", as = "dracula" },
-  { "pineapplegiant/spaceduck",        branch = "main", lazy = true },
-  { "catppuccin/nvim",                 lazy = true },
+  { "morhetz/gruvbox",             lazy = true },
+  { "shatur/neovim-ayu",           lazy = true },
+  { "cpea2506/one_monokai.nvim",   lazy = true },
+  { "catppuccin/nvim",             lazy = false },
 })

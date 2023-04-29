@@ -5,16 +5,13 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-if [ -z $TMUX ]; then; tmux; fi
-
-source ~/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # Aliases
 alias zshconfig="nvim ~/.zshrc"
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias tmuxconfig="nvim ~/.tmux.conf"
 alias vimconfig="cd ~/.config/nvim"
+alias down="cd ~/Downloads"
+alias dev="cd ~/dev"
 alias vim="nvim"
 alias vi="nvim"
 alias ls="exa --icons"
@@ -23,6 +20,15 @@ alias ps="procs"
 alias top="ytop"
 alias lg="lazygit"
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
 
 export PATH=$PATH:/usr/local/go/bin
 export NVM_DIR="$HOME/.nvm"
@@ -31,3 +37,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
+ZVM_VI_INSERT_ESCAPE_BINDKEY=kj

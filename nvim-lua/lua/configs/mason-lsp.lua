@@ -7,13 +7,17 @@ end
 masonlsp.setup({
   automatic_installation = true,
   ensure_installed = {
-    "lua_ls",
     "dockerls",
     "graphql",
     "jsonls",
-    "tsserver",
+    "vimls",
+    "lua_ls",
     "sqlls",
     "yamlls",
+    "gopls",
+    "prismals",
     "eslint",
+    "cssls",
+    "tsserver",
   },
 })

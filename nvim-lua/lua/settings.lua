@@ -5,7 +5,7 @@ local path = vim.fn.expand("~/.config")
 g.vimspector_base_dir='/home/tufe/.local/share/nvim/site/pack/packer/start/vimspector'
 g.mapleader = " "
 set.list = true
-set.listchars = { eol = "↲", trail = "·", nbsp = "." }
+set.listchars = { eol = " ", trail = "·", nbsp = "." }
 set.termguicolors = true
 set.signcolumn = "yes"
 set.expandtab = true

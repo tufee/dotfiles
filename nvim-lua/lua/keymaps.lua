@@ -7,9 +7,7 @@ set("n", "<Leader>ev", ":e ~/.config/nvim<CR>", { silent = true })
 set("n", "<Leader>sv", ":source $MYVIMRC<CR>", { silent = true })
 set("n", "<Leader>rl", ":luafile %<CR>", { silent = true })
 set("n", "<C-C>", ":%y+<CR>", { silent = true })
-set("v", "Y", "}mgy`g", { silent = true })
 set("n", "<Leader>a", "ggVG<CR>", { silent = true })
-set("n", "´", "`", { silent = true })
 
 set("n", "<Leader>w", ":w<CR>", { silent = true })
 set("n", "<Leader>g", ":bd<CR>", { silent = true })
@@ -31,9 +29,6 @@ set("n", "N", "Nzzzv", { silent = true })
 
 set("n", "<C-K>", ":bn<CR>", { silent = true })
 set("n", "<C-J>", ":bp<CR>", { silent = true })
-
-set("n", "<Leader>l", ":tabnext<CR>", { silent = true })
-set("n", "<Leader>h", ":tabprevious<CR>", { silent = true })
 
 set("n", "<C-p>", ":Telescope find_files<CR>", { silent = true })
 set("n", "<C-s>", ":SearchSession<CR>", { silent = true })

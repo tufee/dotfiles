@@ -1,4 +1,5 @@
--- require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local status, cmp = pcall(require, "cmp")
 if not status then
   return
@@ -66,10 +67,11 @@ cmp.setup({
   }),
   sources = {
     { name = "nvim_lsp" },
-    { name = "path",                   keyword_length = 3 },
-    { name = "buffer",                 keyword_length = 3 },
+    { name = "path" },
+    { name = "buffer" },
     { name = "nvim_lsp_signature_help" },
     { name = "copilot" },
+    { name = "luasnip" },
   },
   completion = {
     keyword_length = 1,

@@ -11,7 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.fn.setenv('OPENAI_API_KEY', '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')
+vim.fn.setenv('OPENAI_API_KEY', '')
 
 require('lazy').setup({
 

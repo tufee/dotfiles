@@ -21,6 +21,7 @@ require('lazy').setup({
   --     require('nvim-autopairs').setup()
   --   end,
   -- })
+  { 'mbbill/undotree' },
 
   {
     'rmagatti/auto-session',
@@ -43,13 +44,19 @@ require('lazy').setup({
   },
 
   {
-    'klen/nvim-test',
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      'marilari88/neotest-vitest'
+    },
     config = function()
-      require('nvim-test').setup()
+      require('configs.neotest')
     end
   },
 
-  { 'nvim-lua/plenary.nvim',                  lazy = true },
+  { 'nvim-lua/plenary.nvim',    lazy = true },
 
   {
     'rcarriga/nvim-notify',

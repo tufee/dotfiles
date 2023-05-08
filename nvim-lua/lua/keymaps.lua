@@ -78,3 +78,8 @@ set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
 set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
 set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>')
 set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>')
+
+set('n', '<leader>ut', vim.cmd.UndotreeToggle)
+set('n', '<leader>ef', ':EslintFixAll<CR>')
+set('n', '<leader>tn', ':lua require("neotest").run.run()<CR>')
+set('n', '<leader>tf', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>')

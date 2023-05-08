@@ -66,12 +66,12 @@ cmp.setup({
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
   }),
   sources = {
-    { name = "nvim_lsp" },
-    { name = "path" },
-    { name = "buffer" },
+    { name = "nvim_lsp",               max_item_count = 3 },
+    { name = "path",                   max_item_count = 3 },
+    { name = "buffer",                 max_item_count = 3 },
     { name = "nvim_lsp_signature_help" },
     { name = "copilot" },
-    { name = "luasnip" },
+    { name = "luasnip",                max_item_count = 3 },
   },
   completion = {
     keyword_length = 1,

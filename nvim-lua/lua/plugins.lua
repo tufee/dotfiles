@@ -15,12 +15,6 @@ vim.fn.setenv('OPENAI_API_KEY', '')
 
 require('lazy').setup({
 
-  -- ({
-  --   'windwp/nvim-autopairs',
-  --   config = function()
-  --     require('nvim-autopairs').setup()
-  --   end,
-  -- })
   { 'mbbill/undotree' },
 
   {
@@ -189,14 +183,6 @@ require('lazy').setup({
   { 'jparise/vim-graphql',      lazy = true },
   { 'prisma/vim-prisma',        lazy = true },
 
-  {
-    'puremourning/vimspector',
-    lazy = true,
-    keys = {
-      { '<leader>dh', ':call vimspector#ToggleBreakpoint()<cr>' },
-    },
-  },
-
   { 'tpope/vim-surround' },
   { 'tpope/vim-repeat' },
   { 'wakatime/vim-wakatime' },
@@ -250,5 +236,6 @@ require('lazy').setup({
   { 'morhetz/gruvbox',             lazy = true },
   { 'shatur/neovim-ayu',           lazy = true },
   { 'cpea2506/one_monokai.nvim',   lazy = true },
-  { 'catppuccin/nvim',             lazy = false },
+  { 'catppuccin/nvim',             lazy = true },
+  { 'rose-pine/neovim',            name = 'rose-pine', lazy = false },
 })

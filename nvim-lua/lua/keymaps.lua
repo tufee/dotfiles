@@ -54,25 +54,9 @@ set("n", "<C-p>",
   "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
   { silent = true, noremap = true })
 
-set("n", "<leader>cg", ":ChatGPT<CR>")
-set("v", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
-set("v", "<leader>cr", ":ChatGPTRun ")
-
-set("n", "<leader>ts", ":TestSuite<CR>")
-set("n", "<leader>tf", ":TestFile<CR>")
-set("n", "<leader>tn", ":TestNearest<CR>")
-set("n", "<leader>tl", ":TestLast<CR>")
-
-set("n", "<leader>dl", ":call vimspector#Launch()<cr>", { silent = true, noremap = true })
-set("n", "<leader>dr", "<Plug>VimspectorRestart<cr>", { silent = true, noremap = true })
-set("n", "<leader>dq", ":call vimspector#Reset()<cr>", { silent = true, noremap = true })
-set("n", "<S-H>", ":call vimspector#Continue()<cr>", { silent = true, noremap = true })
-set("n", "<S-L>", ":call vimspector#StepOver()<cr>", { silent = true, noremap = true })
-set("n", "<S-Y>", ":call vimspector#StepInto()<cr>", { silent = true, noremap = true })
-set("n", "<leader>dh", ":call vimspector#ToggleBreakpoint()<cr>", { silent = true, noremap = true })
-set("n", "<leader>dH", ":call vimspector#ClearBreakpoints()<cr>", { silent = true, noremap = true })
-set("n", "<leader>db", "<Plug>VimspectorBreakpoints<cr>", { silent = true, noremap = true })
-set("n", "<leader>dw", "<Plug>VimspectorBalloonEval<cr>", { silent = true, noremap = true })
+-- set("n", "<leader>cg", ":ChatGPT<CR>")
+-- set("v", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
+-- set("v", "<leader>cr", ":ChatGPTRun ")
 
 set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
 set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')

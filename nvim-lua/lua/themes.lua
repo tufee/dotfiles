@@ -1,6 +1,7 @@
 -- require("one_monokai").setup()
 
-vim.cmd [[colorscheme catppuccin-mocha]] --" catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+-- vim.cmd [[colorscheme catppuccin-mocha]] --" catppuccin-latte, catppuccin-frappe, catppuccin-macchiato, catppuccin-mocha
+vim.cmd('colorscheme rose-pine-moon')
 
 -- cmd [[colorscheme gruvbox]]
 -- vim.g.gruvbox_contrast_dark= 'hard'

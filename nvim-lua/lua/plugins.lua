@@ -15,27 +15,42 @@ vim.fn.setenv('OPENAI_API_KEY', '')
 
 require('lazy').setup({
 
-  { 'mbbill/undotree' },
-
   {
-    'rmagatti/auto-session',
+    'mfussenegger/nvim-dap',
     config = function()
-      require('auto-session').setup {
-        log_level = 'error',
-        auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-      }
+      require('configs.dap')
     end
   },
+
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap' },
+    config = function()
+      require('configs.dap-ui')
+    end
+    ,
+  },
+  -- { 'mbbill/undotree' },
+  --
+  -- {
+  --   'rmagatti/auto-session',
+  --   config = function()
+  --     require('auto-session').setup {
+  --       log_level = 'error',
+  --       auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
+  --     }
+  --   end
+  -- },
 
   { 'styled-components/vim-styled-components' },
 
-  {
-    'rmagatti/session-lens',
-    dependencies = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
-    config = function()
-      require('session-lens').setup()
-    end
-  },
+  -- {
+  --   'rmagatti/session-lens',
+  --   dependencies = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+  --   config = function()
+  --     require('session-lens').setup()
+  --   end
+  -- },
 
   {
     "nvim-neotest/neotest",
@@ -50,7 +65,7 @@ require('lazy').setup({
     end
   },
 
-  { 'nvim-lua/plenary.nvim',    lazy = true },
+  { 'nvim-lua/plenary.nvim',                  lazy = true },
 
   {
     'rcarriga/nvim-notify',

@@ -40,6 +40,5 @@ export NVM_DIR="$HOME/.nvm"
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-ZVM_VI_INSERT_ESCAPE_BINDKEY=kj
+source ~/powerlevel10k/powerlevel10k.zsh-theme

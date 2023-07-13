@@ -14,7 +14,6 @@ masonlsp.setup({
     "lua_ls",
     "sqlls",
     "yamlls",
-    "gopls",
     "prismals",
     "eslint",
     "cssls",

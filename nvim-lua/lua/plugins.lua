@@ -15,21 +15,7 @@ vim.fn.setenv('OPENAI_API_KEY', '')
 
 require('lazy').setup({
 
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('configs.dap')
-    end
-  },
 
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap' },
-    config = function()
-      require('configs.dap-ui')
-    end
-    ,
-  },
   -- { 'mbbill/undotree' },
   --
   -- {
@@ -112,28 +98,28 @@ require('lazy').setup({
     end,
   },
 
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('copilot').setup()
-    end
-  },
-
-  {
-    'zbirenbaum/copilot-cmp',
-    dependencies = { 'copilot.lua' },
-    config = function()
-      require('copilot_cmp').setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        formatters = {
-          insert_text = require('copilot_cmp.format').remove_existing
-        },
-      })
-    end
-  },
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  --   config = function()
+  --     require('copilot').setup()
+  --   end
+  -- },
+  --
+  -- {
+  --   'zbirenbaum/copilot-cmp',
+  --   dependencies = { 'copilot.lua' },
+  --   config = function()
+  --     require('copilot_cmp').setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --       formatters = {
+  --         insert_text = require('copilot_cmp.format').remove_existing
+  --       },
+  --     })
+  --   end
+  -- },
 
   -- {
   --   'jackMort/ChatGPT.nvim',
@@ -160,6 +146,24 @@ require('lazy').setup({
       require('configs.mason-lsp')
     end,
     dependencies = { 'mason.nvim' }
+  },
+
+  { 'mfussenegger/nvim-dap' },
+
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap' },
+    config = function()
+      require('configs.dap-ui')
+    end
+    ,
+  },
+
+  {
+    "jay-babu/mason-nvim-dap.nvim",
+    config = function()
+      require('configs.dap')
+    end
   },
 
   {

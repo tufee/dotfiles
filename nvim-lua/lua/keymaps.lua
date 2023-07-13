@@ -31,7 +31,6 @@ set("n", "<C-K>", ":bn<CR>", { silent = true })
 set("n", "<C-J>", ":bp<CR>", { silent = true })
 
 set("n", "<C-p>", ":Telescope find_files<CR>", { silent = true })
-set("n", "<C-s>", ":SearchSession<CR>", { silent = true })
 set("n", "<Leader><Leader>", ":Telescope buffers<CR>", { silent = true })
 set("n", "<C-F>", ":Telescope live_grep<CR>", { silent = true })
 
@@ -54,21 +53,16 @@ set("n", "<C-p>",
   "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
   { silent = true, noremap = true })
 
--- set("n", "<leader>cg", ":ChatGPT<CR>")
--- set("v", "<leader>ce", ":ChatGPTEditWithInstructions<CR>")
--- set("v", "<leader>cr", ":ChatGPTRun ")
-
 set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
 set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
 set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>')
 set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>')
 
-set('n', '<leader>ut', vim.cmd.UndotreeToggle)
 set('n', '<leader>ef', ':EslintFixAll<CR>')
+
 set('n', '<leader>tn', ':lua require("neotest").run.run()<CR>')
 set('n', '<leader>tf', ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>')
-set('n', '<leader>db', ':lua require("neotest").run.run({strategy = "dap"})<CR>')
-
+set('n', '<leader>td', ':lua require("neotest").run.run({strategy = "dap"})<CR>')
 
 set("n", "<leader>dc", "<Cmd>lua require'dap'.continue()<CR>", { silent = true, desc = 'launch debbuger' })
 set("n", "<leader>dt", "<Cmd>lua require'dap'.toggle_breakpoint()<CR>", { silent = true, desc = 'toggle break point' })

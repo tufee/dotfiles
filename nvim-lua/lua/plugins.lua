@@ -11,32 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.fn.setenv('OPENAI_API_KEY', '')
-
 require('lazy').setup({
 
-
-  -- { 'mbbill/undotree' },
-  --
-  -- {
-  --   'rmagatti/auto-session',
-  --   config = function()
-  --     require('auto-session').setup {
-  --       log_level = 'error',
-  --       auto_session_suppress_dirs = { '~/', '~/Projects', '~/Downloads', '/' },
-  --     }
-  --   end
-  -- },
-
   { 'styled-components/vim-styled-components' },
-
-  -- {
-  --   'rmagatti/session-lens',
-  --   dependencies = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
-  --   config = function()
-  --     require('session-lens').setup()
-  --   end
-  -- },
 
   {
     "nvim-neotest/neotest",
@@ -121,18 +98,6 @@ require('lazy').setup({
   --   end
   -- },
 
-  -- {
-  --   'jackMort/ChatGPT.nvim',
-  --   config = function()
-  --     require('configs.chatgpt')
-  --   end,
-  --   requires = {
-  --     'MunifTanjim/nui.nvim',
-  --     'nvim-lua/plenary.nvim',
-  --     'nvim-telescope/telescope.nvim'
-  --   }
-  -- },
-
   {
     'williamboman/mason.nvim',
     config = function()
@@ -148,7 +113,12 @@ require('lazy').setup({
     dependencies = { 'mason.nvim' }
   },
 
-  { 'mfussenegger/nvim-dap' },
+  {
+    'mfussenegger/nvim-dap',
+    config = function()
+      require('configs.dap')
+    end
+  },
 
   {
     'rcarriga/nvim-dap-ui',
@@ -156,13 +126,13 @@ require('lazy').setup({
     config = function()
       require('configs.dap-ui')
     end
-    ,
   },
 
   {
-    "jay-babu/mason-nvim-dap.nvim",
+    'theHamsta/nvim-dap-virtual-text',
+    dependencies = { 'mfussenegger/nvim-dap' },
     config = function()
-      require('configs.dap')
+      require('nvim-dap-virtual-text').setup()
     end
   },
 

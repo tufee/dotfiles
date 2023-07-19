@@ -33,7 +33,7 @@ set.backupdir = { path .. "/nvim/backups" }
 set.completeopt = { "menuone", "noselect" }
 set.virtualedit = "all"
 set.scrolloff = 8
--- set.updatetime = 50
+set.updatetime = 50
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {

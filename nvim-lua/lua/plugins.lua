@@ -226,5 +226,6 @@ require('lazy').setup({
   { 'shatur/neovim-ayu',           lazy = true },
   { 'cpea2506/one_monokai.nvim',   lazy = true },
   { 'catppuccin/nvim',             lazy = true },
-  { 'rose-pine/neovim',            name = 'rose-pine', lazy = false },
+  { 'rose-pine/neovim',            lazy = true, name = 'rose-pine' },
+  { 'navarasu/onedark.nvim' }
 })

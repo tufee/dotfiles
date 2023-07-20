@@ -153,19 +153,6 @@ require('lazy').setup({
     end
   },
 
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    },
-    config = function()
-      require('configs.neo-tree')
-    end,
-  },
-
   -- JS
   { 'pangloss/vim-javascript',  lazy = false },
   { 'MaxMEllon/vim-jsx-pretty', lazy = false },
@@ -174,38 +161,6 @@ require('lazy').setup({
 
   { 'tpope/vim-surround' },
   { 'tpope/vim-repeat' },
-  { 'wakatime/vim-wakatime' },
-
-  -- UI
-  {
-    'akinsho/bufferline.nvim',
-    version = 'v3.*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('bufferline').setup()
-    end
-  },
-
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      opt = true
-    },
-    config = function()
-      require('configs.lualine')
-    end,
-  },
-
-  {
-    'onsails/lspkind.nvim',
-    lazy = true,
-    config = function()
-      require('configs.lspkind')
-    end,
-  },
-
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
 
   {
     'RRethy/vim-illuminate',
@@ -222,10 +177,10 @@ require('lazy').setup({
   },
 
   -- Themes
-  { 'morhetz/gruvbox',             lazy = true },
-  { 'shatur/neovim-ayu',           lazy = true },
-  { 'cpea2506/one_monokai.nvim',   lazy = true },
-  { 'catppuccin/nvim',             lazy = true },
-  { 'rose-pine/neovim',            lazy = true, name = 'rose-pine' },
+  { 'morhetz/gruvbox',           lazy = true },
+  { 'shatur/neovim-ayu',         lazy = true },
+  { 'cpea2506/one_monokai.nvim', lazy = true },
+  { 'catppuccin/nvim',           lazy = true },
+  { 'rose-pine/neovim',          lazy = true, name = 'rose-pine' },
   { 'navarasu/onedark.nvim' }
 })

@@ -1,6 +1,6 @@
 local set = vim.keymap.set
 
-set("n", "<C-N>", ":NeoTreeShow<CR>")
+set("n", "<C-N>", ":Ex<CR>")
 
 set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 

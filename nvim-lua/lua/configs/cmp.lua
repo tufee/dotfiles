@@ -7,7 +7,6 @@ end
 
 local luasnip = require("luasnip")
 ---@diagnostic disable-next-line: different-requires
-local lspkind = require("lspkind")
 
 local has_words_before = function()
   if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
@@ -79,18 +78,5 @@ cmp.setup({
   },
   view = {
     entries = "custom",
-  },
-  formatting = {
-    format = lspkind.cmp_format({
-      mode = "symbol_text",
-      menu = {
-        nvim_lsp = "λ",
-        path = "[PATH]",
-        buffer = "Ω",
-        nvim_lua = "🌙",
-        copilot = "🤖",
-        luasnip = "🌕",
-      },
-    }),
   },
 })

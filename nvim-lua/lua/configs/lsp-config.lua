@@ -3,7 +3,7 @@ if not status then
   return
 end
 
-local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+local signs = { Error = "E ", Warning = "W ", Hint = "H ", Information = "I " }
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type

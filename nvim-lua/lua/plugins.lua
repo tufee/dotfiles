@@ -16,12 +16,20 @@ require('lazy').setup({
   { 'styled-components/vim-styled-components' },
 
   {
+    'm4xshen/autoclose.nvim',
+    config = function()
+      require('autoclose').setup()
+    end
+  },
+
+  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
-      'marilari88/neotest-vitest'
+      'marilari88/neotest-vitest',
+      'nvim-neotest/neotest-jest'
     },
     config = function()
       require('configs.neotest')

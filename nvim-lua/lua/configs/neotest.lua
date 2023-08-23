@@ -1,6 +1,6 @@
 require("neotest").setup({
   adapters = {
-    require('neotest-vitest')({
+    require('neotest-jest')({
       dap = { justMyCode = false },
     }),
   },

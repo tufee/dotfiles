@@ -1,4 +1,5 @@
 require("luasnip.loaders.from_vscode").lazy_load()
+local lspkind = require("lspkind")
 
 local status, cmp = pcall(require, "cmp")
 if not status then
@@ -78,5 +79,18 @@ cmp.setup({
   },
   view = {
     entries = "custom",
+  },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = "symbol_text",
+      menu = {
+        nvim_lsp = "λ",
+        path = "[PATH]",
+        buffer = "Ω",
+        nvim_lua = "🌙",
+        copilot = "🤖",
+        luasnip = "🌕",
+      },
+    }),
   },
 })

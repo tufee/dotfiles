@@ -3,7 +3,7 @@ if not status then
   return
 end
 
-local signs = { Error = "E ", Warning = "W ", Hint = "H ", Information = "I " }
+local signs = { Error = " ", Warning = " ", Hint = "H ", Information = " " }
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -26,13 +26,11 @@ local on_attach = function(client, bufnr)
   vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
-  --vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "[a", vim.diagnostic.goto_prev, bufopts)
   vim.keymap.set("n", "]a", vim.diagnostic.goto_next, bufopts)
   vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-  vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set("n", "<M-CR>", vim.lsp.buf.code_action, bufopts)
   vim.keymap.set("n", "<space>f", function()
     vim.lsp.buf.format({ async = true })
   end, bufopts)
@@ -78,6 +76,11 @@ lspconfig.sqlls.setup({
   capabilities = capabilities,
 })
 
+lspconfig.yamlls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 lspconfig.prismals.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -89,6 +92,16 @@ lspconfig.eslint.setup({
 })
 
 lspconfig.cssls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.angularls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+lspconfig.html.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })

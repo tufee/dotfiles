@@ -17,6 +17,8 @@ masonlsp.setup({
     "prismals",
     "eslint",
     "cssls",
+    "angularls",
+    "html",
     "tsserver",
   },
 })

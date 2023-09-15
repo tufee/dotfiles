@@ -1,7 +1,7 @@
 local dap = require("dap")
 
 if not dap.adapters["pwa-node"] then
-  vim.fn.sign_define('DapBreakpoint', { text = '🔴', texthl = '', linehl = '', numhl = '' })
+  vim.fn.sign_define('DapBreakpoint', { text = ' ', texthl = '', linehl = '', numhl = '' })
 
   require("dap").adapters["pwa-node"] = {
     type = "server",

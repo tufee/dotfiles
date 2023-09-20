@@ -3,6 +3,7 @@ local set = vim.opt
 local path = vim.fn.expand("~/.config")
 
 g.mapleader = " "
+g.netrw_banner = 0
 set.list = true
 set.listchars = { eol = " ", trail = "·", nbsp = "." }
 set.termguicolors = true
@@ -20,7 +21,6 @@ set.autoindent = true
 set.smartindent = true
 set.hidden = true
 set.inccommand = "split"
-set.clipboard = "unnamedplus"
 set.hlsearch = true
 set.ignorecase = true
 set.smartcase = true
@@ -34,6 +34,7 @@ set.completeopt = { "menuone", "noselect" }
 set.virtualedit = "all"
 set.scrolloff = 8
 set.updatetime = 50
+set.colorcolumn = "80"
 
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
@@ -45,4 +46,3 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
-

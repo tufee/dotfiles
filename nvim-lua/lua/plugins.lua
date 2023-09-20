@@ -14,19 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   { 'wakatime/vim-wakatime' },
 
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    config = function()
-      require('configs.neotree')
-    end
-  },
-
   -- UI
   {
     'akinsho/bufferline.nvim',
@@ -50,15 +37,12 @@ require('lazy').setup({
 
   {
     'onsails/lspkind.nvim',
-    lazy = true,
     config = function()
       require('configs.lspkind')
     end,
   },
 
-  { 'nvim-tree/nvim-web-devicons',            lazy = true },
-
-  { 'styled-components/vim-styled-components' },
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
 
   {
     'm4xshen/autoclose.nvim',
@@ -81,7 +65,7 @@ require('lazy').setup({
     end
   },
 
-  { 'nvim-lua/plenary.nvim',    lazy = true },
+  { 'nvim-lua/plenary.nvim', lazy = true },
 
   {
     'rcarriga/nvim-notify',
@@ -94,11 +78,6 @@ require('lazy').setup({
     'nvim-telescope/telescope.nvim',
     lazy = true,
     tag = '0.1.1',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-
-  {
-    'nvim-pack/nvim-spectre',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
@@ -206,14 +185,7 @@ require('lazy').setup({
     end
   },
 
-  -- JS
-  { 'pangloss/vim-javascript',  lazy = false },
-  { 'MaxMEllon/vim-jsx-pretty', lazy = false },
-  { 'jparise/vim-graphql',      lazy = true },
-  { 'prisma/vim-prisma',        lazy = true },
-
   { 'tpope/vim-surround' },
-  { 'tpope/vim-repeat' },
 
   {
     'RRethy/vim-illuminate',
@@ -234,6 +206,6 @@ require('lazy').setup({
   { 'shatur/neovim-ayu',         lazy = true },
   { 'cpea2506/one_monokai.nvim', lazy = true },
   { 'catppuccin/nvim',           lazy = true },
-  { 'rose-pine/neovim',          lazy = true, name = 'rose-pine' },
-  { 'navarasu/onedark.nvim' }
+  { 'rose-pine/neovim',          name = 'rose-pine' },
+  { 'navarasu/onedark.nvim',     lazy = true }
 })

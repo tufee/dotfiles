@@ -1,12 +1,10 @@
 local set = vim.keymap.set
 
-set("n", "<C-N>", ":Neotree toggle<CR>")
-
-set("n", "<Leader>a", "ggVG<CR>")
-set("n", "<Leader>w", ":w<CR>")
-set("n", "<Leader>q", ":q!<CR>")
-set("n", "<Leader><CR>", ":noh<CR>")
+set("n", "<C-N>", ":Ex<CR>")
 set("n", "<Tab>", "*")
+
+set({ "n", "v" }, "<leader>y", [["+y]])
+set("n", "<leader>Y", [["+Y]])
 
 set("n", "<C-Down>", ":resize +2<CR>")
 set("n", "<C-Left>", ":vertical resize -2<CR>")
@@ -29,11 +27,6 @@ set("n", "<C-p>",
 
 set("v", "J", ":m '>+1<CR>gv=gv")
 set("v", "K", ":m '<-2<CR>gv=gv")
-
-set('n', '<leader>S', '<cmd>lua require("spectre").open()<CR>')
-set('n', '<leader>sw', '<cmd>lua require("spectre").open_visual({select_word=true})<CR>')
-set('v', '<leader>sw', '<esc><cmd>lua require("spectre").open_visual()<CR>')
-set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>')
 
 set('n', '<leader>ef', ':EslintFixAll<CR>')
 

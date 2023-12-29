@@ -4,6 +4,7 @@ local path = vim.fn.expand("~/.config")
 
 g.mapleader = " "
 g.netrw_banner = 0
+g.netrw_winsize = 15
 set.list = true
 set.listchars = { eol = " ", trail = "·", nbsp = "." }
 set.termguicolors = true

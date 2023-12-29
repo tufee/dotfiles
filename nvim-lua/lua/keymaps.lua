@@ -1,7 +1,12 @@
 local set = vim.keymap.set
 
-set("n", "<C-N>", ":Ex<CR>")
+set("n", "<C-N>", ":Lex<CR>")
 set("n", "<Tab>", "*")
+
+set("n", "<Leader>a", "ggVG<CR>")
+set("n", "<Leader>w", ":w<CR>")
+set("n", "<Leader>q", ":q!<CR>")
+set("n", "<Leader><CR>", ":noh<CR>")
 
 set({ "n", "v" }, "<leader>y", [["+y]])
 set("n", "<leader>Y", [["+Y]])

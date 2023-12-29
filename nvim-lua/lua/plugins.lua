@@ -77,7 +77,6 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     lazy = true,
-    tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
@@ -116,20 +115,20 @@ require('lazy').setup({
     end
   },
 
-  -- {
-  --   'zbirenbaum/copilot-cmp',
-  --   dependencies = { 'copilot.lua' },
-  --   config = function()
-  --     require('copilot_cmp').setup({
-  --       suggestion = { enabled = false },
-  --       panel = { enabled = false },
-  --       formatters = {
-  --         insert_text = require('copilot_cmp.format').remove_existing
-  --       },
-  --     })
-  --   end
-  -- },
-  --
+  {
+    'zbirenbaum/copilot-cmp',
+    dependencies = { 'copilot.lua' },
+    config = function()
+      require('copilot_cmp').setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+        formatters = {
+          insert_text = require('copilot_cmp.format').remove_existing
+        },
+      })
+    end
+  },
+
   {
     'williamboman/mason.nvim',
     config = function()

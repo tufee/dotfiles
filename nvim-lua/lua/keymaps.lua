@@ -1,6 +1,8 @@
 local set = vim.keymap.set
 
-set("n", "<C-N>", ":Lex<CR>")
+set("n", "<C-N>", ":Neotree toggle<CR>")
+
+-- set("n", "<C-N>", ":Lex<CR>")
 set("n", "<Tab>", "*")
 
 set("n", "<Leader>a", "ggVG<CR>")

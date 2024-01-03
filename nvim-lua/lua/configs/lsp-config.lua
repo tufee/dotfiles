@@ -79,6 +79,23 @@ lspconfig.sqlls.setup({
 lspconfig.yamlls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
+  settings = {
+    yaml = {
+      schemaStore = {
+        enable = false,
+        url = "",
+      },
+      schemas = require('schemastore').yaml.schemas {
+        -- select subset from the JSON schema catalog
+        select = {
+          'AWS CloudFormation',
+          -- 'sam.yaml',
+          'docker-compose.yml'
+        },
+      },
+      -- schemas = require('schemastore').yaml.schemas(),
+    }
+  }
 })
 
 lspconfig.prismals.setup({

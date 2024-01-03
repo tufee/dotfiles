@@ -14,6 +14,19 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   { 'wakatime/vim-wakatime' },
 
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require('configs.neotree')
+    end
+  },
+
   -- UI
   {
     'akinsho/bufferline.nvim',
@@ -23,6 +36,17 @@ require('lazy').setup({
       require('bufferline').setup()
     end
   },
+
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
+    config = function()
+      require('ibl').setup()
+    end
+  },
+
+  { "b0o/schemastore.nvim" },
 
   {
     'nvim-lualine/lualine.nvim',
@@ -65,7 +89,7 @@ require('lazy').setup({
     end
   },
 
-  { 'nvim-lua/plenary.nvim', lazy = true },
+  { 'nvim-lua/plenary.nvim',       lazy = true },
 
   {
     'rcarriga/nvim-notify',
@@ -76,6 +100,16 @@ require('lazy').setup({
 
   {
     'nvim-telescope/telescope.nvim',
+    config = function()
+      require('telescope').setup({
+        defaults = {
+          file_ignore_patterns = {
+            "node_modules"
+          }
+        }
+      })
+    end,
+
     lazy = true,
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
@@ -201,7 +235,7 @@ require('lazy').setup({
   },
 
   -- Themes
-  { 'morhetz/gruvbox',           lazy = true },
+  { 'morhetz/gruvbox',           lazy = false },
   { 'shatur/neovim-ayu',         lazy = true },
   { 'cpea2506/one_monokai.nvim', lazy = true },
   { 'catppuccin/nvim',           lazy = true },

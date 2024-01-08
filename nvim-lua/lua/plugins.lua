@@ -46,8 +46,6 @@ require('lazy').setup({
     end
   },
 
-  { "b0o/schemastore.nvim" },
-
   {
     'nvim-lualine/lualine.nvim',
     dependencies = {
@@ -131,7 +129,6 @@ require('lazy').setup({
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'saadparwaiz1/cmp_luasnip',
-      'jose-elias-alvarez/nvim-lsp-ts-utils',
       'rafamadriz/friendly-snippets',
       'L3MON4D3/LuaSnip',
     },

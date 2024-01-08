@@ -79,23 +79,6 @@ lspconfig.sqlls.setup({
 lspconfig.yamlls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  settings = {
-    yaml = {
-      schemaStore = {
-        enable = false,
-        url = "",
-      },
-      schemas = require('schemastore').yaml.schemas {
-        -- select subset from the JSON schema catalog
-        select = {
-          'AWS CloudFormation',
-          -- 'sam.yaml',
-          'docker-compose.yml'
-        },
-      },
-      -- schemas = require('schemastore').yaml.schemas(),
-    }
-  }
 })
 
 lspconfig.prismals.setup({
@@ -118,19 +101,4 @@ lspconfig.html.setup({
   capabilities = capabilities,
 })
 
-lspconfig.tsserver.setup({
-  on_attach = function(client, bufnr)
-    client.server_capabilities.document_formatting = false
-    client.server_capabilities.document_range_formatting = false
-
-    local ts_utils = require("nvim-lsp-ts-utils")
-    ts_utils.setup({})
-    ts_utils.setup_client(client)
-
-    buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-    buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
-    buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
-
-    on_attach(client, bufnr)
-  end,
-})
+lspconfig.tsserver.setup({})

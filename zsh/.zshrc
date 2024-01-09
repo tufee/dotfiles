@@ -101,6 +101,8 @@ source $ZSH/oh-my-zsh.sh
 
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true 
+ZSH_AUTOSUGGEST_STRATEGY=(completion)
+bindkey '^I' autosuggest-accept
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"

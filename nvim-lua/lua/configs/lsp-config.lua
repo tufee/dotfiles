@@ -25,6 +25,7 @@ local on_attach = function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, bufopts)
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+  vim.keymap.set("n", "gs", ':OrganizeImports<CR>', bufopts)
   vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
   vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
   vim.keymap.set("n", "[a", vim.diagnostic.goto_prev, bufopts)
@@ -35,6 +36,26 @@ local on_attach = function(client, bufnr)
     vim.lsp.buf.format({ async = true })
   end, bufopts)
 end
+
+local function organize_imports()
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = {vim.api.nvim_buf_get_name(0)},
+    title = ""
+  }
+  vim.lsp.buf.execute_command(params)
+end
+
+lspconfig.tsserver.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  commands = {
+    OrganizeImports = {
+      organize_imports,
+      description = "Organize Imports"
+    }
+  }
+}
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -101,4 +122,4 @@ lspconfig.html.setup({
   capabilities = capabilities,
 })
 
-lspconfig.tsserver.setup({})
+-- lspconfig.tsserver.setup({})

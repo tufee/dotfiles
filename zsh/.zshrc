@@ -10,15 +10,16 @@ export ZSH="$HOME/.oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-alias zshconfig="nvim ~/.zshrc"
+alias zshconf="nvim ~/.zshrc"
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias tmuxconfig="nvim ~/.tmux.conf"
-alias vimconfig="cd ~/.config/nvim"
+alias tmuxconf="nvim ~/.tmux.conf"
+alias vimconf="cd ~/.config/nvim"
 alias down="cd ~/Downloads"
 alias dev="cd ~/dev"
 alias vim="nvim"
 alias vi="nvim"
 alias lg="lazygit"
+alias cl="clear"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -95,7 +96,7 @@ zstyle ':omz:update' frequency 13
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting vi-mode)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 

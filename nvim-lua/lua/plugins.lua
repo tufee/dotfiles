@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  { 'wakatime/vim-wakatime' },
+  { 'wakatime/vim-wakatime'},
 
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -25,6 +25,13 @@ require('lazy').setup({
     config = function()
       require('configs.neotree')
     end
+  },
+
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require("configs.conform")
+    end,
   },
 
   -- UI
@@ -87,7 +94,7 @@ require('lazy').setup({
     end
   },
 
-  { 'nvim-lua/plenary.nvim',       lazy = true },
+  { 'nvim-lua/plenary.nvim', lazy = true },
 
   {
     'rcarriga/nvim-notify',
@@ -190,13 +197,13 @@ require('lazy').setup({
     end
   },
 
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    dependencies = { 'mfussenegger/nvim-dap' },
-    config = function()
-      require('nvim-dap-virtual-text').setup()
-    end
-  },
+  -- {
+  --   'theHamsta/nvim-dap-virtual-text',
+  --   dependencies = { 'mfussenegger/nvim-dap' },
+  --   config = function()
+  --     require('nvim-dap-virtual-text').setup()
+  --   end
+  -- },
 
   {
     'akinsho/toggleterm.nvim',

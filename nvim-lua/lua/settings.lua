@@ -6,6 +6,7 @@ g.mapleader = " "
 g.netrw_banner = 0
 g.netrw_winsize = 15
 set.list = true
+set.clipboard = "unnamedplus"
 set.listchars = { eol = " ", trail = "·", nbsp = "." }
 set.termguicolors = true
 set.signcolumn = "yes"

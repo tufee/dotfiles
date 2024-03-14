@@ -13,6 +13,7 @@ ts.setup({
   indent = { enable = true },
   autotag = { enable = true },
   ensure_installed = {
+    "python",
     "bash",
     "css",
     "dockerfile",

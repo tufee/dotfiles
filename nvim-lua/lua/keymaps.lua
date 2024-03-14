@@ -3,15 +3,16 @@ local set = vim.keymap.set
 set("n", "<C-N>", ":Neotree toggle<CR>")
 
 -- set("n", "<C-N>", ":Lex<CR>")
-set("n", "<Tab>", "*")
+-- set("n", "<Tab>", "*")
 
 set("n", "<Leader>a", "ggVG<CR>")
 set("n", "<Leader>w", ":w<CR>")
 set("n", "<Leader>q", ":q!<CR>")
+set("n", "<C-e>", ":bd<CR>")
 set("n", "<Leader><CR>", ":noh<CR>")
 
-set({ "n", "v" }, "<leader>y", [["+y]])
-set("n", "<leader>Y", [["+Y]])
+-- set({ "n", "v" }, "<leader>y", [["+y]])
+-- set("n", "<leader>Y", [["+Y]])
 
 set("n", "<C-Down>", ":resize +2<CR>")
 set("n", "<C-Left>", ":vertical resize -2<CR>")

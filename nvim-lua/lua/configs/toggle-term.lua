@@ -15,7 +15,7 @@ toggle_term.setup({
   close_on_exit = true, -- close the terminal window when the process exits
   float_opts = {
     border = "curved",
-    width = 120,
+    width = 240,
     height = 40,
     winblend = 3,
     highlights = {
@@ -55,4 +55,4 @@ function _lazygit_toggle()
   lazygit:toggle()
 end
 
--- vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>lg", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true })

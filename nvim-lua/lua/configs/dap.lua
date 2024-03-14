@@ -30,9 +30,19 @@ for _, language in ipairs({ "typescript", "javascript" }) do
       },
       {
         type = "pwa-node",
+        request = "launch",
+        name = "Launch lambda ts-node",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+        runtimeArgs = {
+          "-r", "ts-node/register"
+        },
+      },
+      {
+        type = "pwa-node",
         request = "attach",
         name = "Attach",
-        processId = require("dap.utils").pick_process,
+        -- processId = require("dap.utils").pick_process,
         cwd = "${workspaceFolder}",
       },
     }

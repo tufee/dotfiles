@@ -20,6 +20,7 @@ alias vim="nvim"
 alias vi="nvim"
 alias lg="lazygit"
 alias cl="clear"
+alias setnode="function _setnode() { nvm alias default \"$1\"; };_setnode"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -33,6 +34,8 @@ setopt INC_APPEND_HISTORY
 TERM=screen-256color
 
 export NVM_DIR="$HOME/.nvm"
+export JAVA_HOME="/home/tufe/jdk1.8.0_202"
+export PATH=$JAVA_HOME/bin:$PATH
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -98,12 +101,24 @@ zstyle ':omz:update' frequency 13
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode)
 
-source $ZSH/oh-my-zsh.sh
-
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true 
+ZVM_MODE=ZVM_MODE_NORMAL
+ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
-bindkey '^I' autosuggest-accept
+
+bindkey '^[l' autosuggest-accept
+
+# The plugin will auto execute this zvm_config function
+#
+zvm_config() {
+  # Retrieve default cursor styles
+  local ncur=$(zvm_cursor_style $ZVM_NORMAL_MODE_CURSOR)
+  local icur=$(zvm_cursor_style $ZVM_INSERT_MODE_CURSOR)
+
+  # Append your custom color for your cursor
+  ZVM_INSERT_MODE_CURSOR=$icur'\e\e]12;red\a'
+  ZVM_NORMAL_MODE_CURSOR=$ncur'\e\e]12;#008800\a'
+}
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -129,3 +144,5 @@ bindkey '^I' autosuggest-accept
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
+

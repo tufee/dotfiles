@@ -1,8 +1,7 @@
 local set = vim.keymap.set
 
-set("n", "<C-N>", ":Neotree toggle<CR>")
-
--- set("n", "<C-N>", ":Lex<CR>")
+-- set("n", "<C-N>", ":Neotree toggle<CR>")
+vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 -- set("n", "<Tab>", "*")
 
 set("n", "<Leader>a", "ggVG<CR>")

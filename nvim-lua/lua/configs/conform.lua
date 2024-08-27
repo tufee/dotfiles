@@ -4,6 +4,7 @@ require("conform").setup({
     javascript = { "prettierd" },
     yaml = { "yamlfmt" },
     json = { "jq" },
+    go = { "gofumpt", "goimports-reviser", "golines" },
     -- xml = { "xmlformatter" }
   },
 })

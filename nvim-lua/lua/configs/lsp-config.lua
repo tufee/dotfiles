@@ -166,4 +166,19 @@ lspconfig.html.setup({
   capabilities = capabilities,
 })
 
+lspconfig.gopls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filestypes = { "go", "gomod", "gowork", "gotmpl" },
+  root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git") ,
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+    },
+  }
+})
 -- lspconfig.tsserver.setup({})

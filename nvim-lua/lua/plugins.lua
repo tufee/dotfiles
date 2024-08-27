@@ -1,248 +1,259 @@
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-  { 'wakatime/vim-wakatime'},
+require("lazy").setup({
+	{ "wakatime/vim-wakatime" },
 
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
-    },
-    config = function()
-      require('configs.neotree')
-    end
-  },
+	{
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	},
+	-- { "fatih/vim-go" },
 
-  {
-    "stevearc/conform.nvim",
-    config = function()
-      require("configs.conform")
-    end,
-  },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("configs.neotree")
+		end,
+	},
 
-  -- UI
-  {
-    'akinsho/bufferline.nvim',
-    version = 'v3.*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      require('bufferline').setup()
-    end
-  },
+	{ "nvim-neotest/nvim-nio" },
 
-  {
-    'lukas-reineke/indent-blankline.nvim',
-    main = 'ibl',
-    opts = {},
-    config = function()
-      require('ibl').setup()
-    end
-  },
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			require("configs.conform")
+		end,
+	},
 
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      opt = true
-    },
-    config = function()
-      require('configs.lualine')
-    end,
-  },
+	-- UI
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("bufferline").setup()
+		end,
+	},
 
-  {
-    'onsails/lspkind.nvim',
-    config = function()
-      require('configs.lspkind')
-    end,
-  },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+		config = function()
+			require("ibl").setup()
+		end,
+	},
 
-  { 'nvim-tree/nvim-web-devicons', lazy = true },
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			opt = true,
+		},
+		config = function()
+			require("configs.lualine")
+		end,
+	},
 
-  {
-    'm4xshen/autoclose.nvim',
-    config = function()
-      require('autoclose').setup()
-    end
-  },
+	{
+		"onsails/lspkind.nvim",
+		config = function()
+			require("configs.lspkind")
+		end,
+	},
 
-  {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      'marilari88/neotest-vitest',
-      'nvim-neotest/neotest-jest'
-    },
-    config = function()
-      require('configs.neotest')
-    end
-  },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
-  { 'nvim-lua/plenary.nvim', lazy = true },
+	{
+		"m4xshen/autoclose.nvim",
+		config = function()
+			require("autoclose").setup()
+		end,
+	},
 
-  {
-    'rcarriga/nvim-notify',
-    config = function()
-      require('configs.notify')
-    end
-  },
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+			"marilari88/neotest-vitest",
+			"nvim-neotest/neotest-jest",
+		},
+		config = function()
+			require("configs.neotest")
+		end,
+	},
 
-  {
-    'nvim-telescope/telescope.nvim',
-    config = function()
-      require('telescope').setup({
-        defaults = {
-          file_ignore_patterns = {
-            "node_modules"
-          }
-        }
-      })
-    end,
+	{ "nvim-lua/plenary.nvim", lazy = true },
 
-    lazy = true,
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("configs.notify")
+		end,
+	},
 
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = 'cmp-nvim-lsp',
-    config = function()
-      require('configs.lsp-config')
-    end,
-  },
+	{
+		"nvim-telescope/telescope.nvim",
+		config = function()
+			require("telescope").setup({
+				defaults = {
+					file_ignore_patterns = {
+						"node_modules",
+					},
+				},
+			})
+		end,
 
-  {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
-      'saadparwaiz1/cmp_luasnip',
-      'rafamadriz/friendly-snippets',
-      'L3MON4D3/LuaSnip',
-    },
-    config = function()
-      require('configs.cmp')
-    end,
-  },
+		lazy = true,
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('configs.copilot')
-    end
-  },
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = "cmp-nvim-lsp",
+		config = function()
+			require("configs.lsp-config")
+		end,
+	},
 
-  {
-    'zbirenbaum/copilot-cmp',
-    dependencies = { 'copilot.lua' },
-    config = function()
-      require('copilot_cmp').setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-        formatters = {
-          insert_text = require('copilot_cmp.format').remove_existing
-        },
-      })
-    end
-  },
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
+			"L3MON4D3/LuaSnip",
+		},
+		config = function()
+			require("configs.cmp")
+		end,
+	},
 
-  {
-    'williamboman/mason.nvim',
-    config = function()
-      require('mason').setup()
-    end,
-  },
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("configs.copilot")
+		end,
+	},
 
-  {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require('configs.mason-lsp')
-    end,
-    dependencies = { 'mason.nvim' }
-  },
+	{
+		"zbirenbaum/copilot-cmp",
+		dependencies = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup({
+				suggestion = { enabled = false },
+				panel = { enabled = false },
+				formatters = {
+					insert_text = require("copilot_cmp.format").remove_existing,
+				},
+			})
+		end,
+	},
 
-  {
-    'mfussenegger/nvim-dap',
-    config = function()
-      require('configs.dap')
-    end
-  },
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup()
+		end,
+	},
 
-  {
-    'rcarriga/nvim-dap-ui',
-    dependencies = { 'mfussenegger/nvim-dap' },
-    config = function()
-      require('configs.dap-ui')
-    end
-  },
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
+			require("configs.mason-lsp")
+		end,
+		dependencies = { "mason.nvim" },
+	},
 
-  -- {
-  --   'theHamsta/nvim-dap-virtual-text',
-  --   dependencies = { 'mfussenegger/nvim-dap' },
-  --   config = function()
-  --     require('nvim-dap-virtual-text').setup()
-  --   end
-  -- },
+	{
+		"mfussenegger/nvim-dap",
+		config = function()
+			require("configs.dap")
+		end,
+	},
 
-  {
-    'akinsho/toggleterm.nvim',
-    keys = {
-      { '<C-T>', '<cmd>Toggleterm<cr>' },
-    },
-    config = function()
-      require('configs.toggle-term')
-    end,
-  },
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = { "mfussenegger/nvim-dap" },
+		config = function()
+			require("configs.dap-ui")
+		end,
+	},
 
-  {
-    'numtostr/comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end
-  },
+	-- {
+	--   'theHamsta/nvim-dap-virtual-text',
+	--   dependencies = { 'mfussenegger/nvim-dap' },
+	--   config = function()
+	--     require('nvim-dap-virtual-text').setup()
+	--   end
+	-- },
 
-  { 'tpope/vim-surround' },
+	{
+		"akinsho/toggleterm.nvim",
+		keys = {
+			{ "<C-T>", "<cmd>Toggleterm<cr>" },
+		},
+		config = function()
+			require("configs.toggle-term")
+		end,
+	},
 
-  {
-    'RRethy/vim-illuminate',
-    config = function()
-      require('illuminate').configure()
-    end,
-  },
+	{
+		"numtostr/comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
 
-  {
-    'nvim-treesitter/nvim-treesitter',
-    config = function()
-      require('configs.treesitter')
-    end,
-  },
+	{ "tpope/vim-surround" },
 
-  -- Themes
-  { 'morhetz/gruvbox',           lazy = false },
-  { 'shatur/neovim-ayu',         lazy = true },
-  { 'cpea2506/one_monokai.nvim', lazy = true },
-  { 'catppuccin/nvim',           lazy = true },
-  { 'rose-pine/neovim',          name = 'rose-pine' },
-  { 'navarasu/onedark.nvim',     lazy = true }
+	{
+		"RRethy/vim-illuminate",
+		config = function()
+			require("illuminate").configure()
+		end,
+	},
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			require("configs.treesitter")
+		end,
+	},
+
+	-- Themes
+	{ "morhetz/gruvbox", lazy = false },
+	{ "shatur/neovim-ayu", lazy = true },
+	{ "cpea2506/one_monokai.nvim", lazy = true },
+	{ "catppuccin/nvim", lazy = true },
+	{ "rose-pine/neovim", name = "rose-pine" },
+	{ "navarasu/onedark.nvim", lazy = true },
 })

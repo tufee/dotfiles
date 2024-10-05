@@ -14,13 +14,13 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ "wakatime/vim-wakatime" },
 
-	{
-		"stevearc/oil.nvim",
-		opts = {},
-		-- Optional dependencies
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
-		-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-	},
+	-- {
+	-- 	"stevearc/oil.nvim",
+	-- 	opts = {},
+	-- 	-- Optional dependencies
+	-- 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
+	-- 	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+	-- },
 	-- { "fatih/vim-go" },
 
 	{

@@ -19,6 +19,7 @@ masonlsp.setup({
     "cssls",
     "angularls",
     "html",
-    "tsserver",
+    "ts_ls",
+    "gopls",
   },
 })

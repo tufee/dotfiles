@@ -14,13 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ "wakatime/vim-wakatime" },
 
-	-- {
-	-- 	"stevearc/oil.nvim",
-	-- 	opts = {},
-	-- 	-- Optional dependencies
-	-- 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	-- 	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-	-- },
 	-- { "fatih/vim-go" },
 
 	{
@@ -81,8 +74,6 @@ require("lazy").setup({
 			require("configs.lspkind")
 		end,
 	},
-
-	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
 	{
 		"m4xshen/autoclose.nvim",
@@ -155,40 +146,46 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("configs.copilot")
-		end,
-	},
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("configs.copilot")
+	-- 	end,
+	-- },
+	--
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	dependencies = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup({
+	-- 			suggestion = { enabled = false },
+	-- 			panel = { enabled = false },
+	-- 			formatters = {
+	-- 				insert_text = require("copilot_cmp.format").remove_existing,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 
 	{
-		"zbirenbaum/copilot-cmp",
-		dependencies = { "copilot.lua" },
+		"williamboman/mason.nvim",
 		config = function()
-			require("copilot_cmp").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-				formatters = {
-					insert_text = require("copilot_cmp.format").remove_existing,
+			require("mason").setup({
+				opts = {
+					registries = {
+						"github:mason-org/mason-registry",
+					},
 				},
 			})
 		end,
 	},
 
 	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-
-	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("configs.mason-lsp")
+			require("mason")
 		end,
 		dependencies = { "mason.nvim" },
 	},
@@ -218,9 +215,7 @@ require("lazy").setup({
 
 	{
 		"akinsho/toggleterm.nvim",
-		keys = {
-			{ "<C-T>", "<cmd>Toggleterm<cr>" },
-		},
+		version = "*",
 		config = function()
 			require("configs.toggle-term")
 		end,

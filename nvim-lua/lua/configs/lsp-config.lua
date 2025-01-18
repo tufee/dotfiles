@@ -10,12 +10,6 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
-local buf_map = function(bufnr, mode, lhs, rhs, opts)
-	vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
-		silent = true,
-	})
-end
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 	virtual_text = true,
 })
@@ -50,9 +44,6 @@ local function organize_imports()
 	vim.lsp.buf.execute_command(params)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-
 lspconfig.ts_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -64,10 +55,8 @@ lspconfig.ts_ls.setup({
 	},
 })
 
-lspconfig.pyright.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 lspconfig.dockerls.setup({
 	on_attach = on_attach,
@@ -181,4 +170,3 @@ lspconfig.gopls.setup({
 		},
 	},
 })
--- lspconfig.tsserver.setup({})

@@ -1,25 +1,27 @@
 local status, masonlsp = pcall(require, "mason-lspconfig")
 
 if not status then
-  return
+	return
 end
 
 masonlsp.setup({
-  automatic_installation = true,
-  ensure_installed = {
-    "dockerls",
-    "graphql",
-    "jsonls",
-    "vimls",
-    "lua_ls",
-    "sqlls",
-    "yamlls",
-    "prismals",
-    "eslint",
-    "cssls",
-    "angularls",
-    "html",
-    "ts_ls",
-    "gopls",
-  },
+	automatic_installation = true,
+	ensure_installed = {
+		"dockerls",
+		"graphql",
+		"jsonls",
+		"vimls",
+		"lua_ls",
+		"sqlls",
+		"yamlls",
+		"prismals",
+		"eslint",
+		"cssls",
+		"html",
+		"ts_ls",
+		"gopls",
+		"gofumpt",
+		"goimports-reviser",
+		"golines",
+	},
 })

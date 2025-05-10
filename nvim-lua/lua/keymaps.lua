@@ -24,8 +24,8 @@ set("n", "<C-U>", "<C-U>zz")
 set("n", "n", "nzzzv")
 set("n", "N", "Nzzzv")
 
-set("n", "<C-K>", ":bn<CR>")
-set("n", "<C-J>", ":bp<CR>")
+set("n", "<TAB>", ":bn<CR>")
+set("n", "<S-TAB>", ":bp<CR>")
 
 set("n", "<Leader><Leader>", ":Telescope buffers<CR>")
 set("n", "<C-F>", ":Telescope live_grep<CR>")

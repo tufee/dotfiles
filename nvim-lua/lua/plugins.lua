@@ -14,8 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{ "wakatime/vim-wakatime" },
 
-	-- { "fatih/vim-go" },
-
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
@@ -172,38 +170,38 @@ require("lazy").setup({
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("mason").setup({
-				opts = {
-					registries = {
-						"github:mason-org/mason-registry",
-					},
-				},
-			})
+			require("configs.mason")
 		end,
 	},
 
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason")
+			require("configs.mason-lsp")
 		end,
 		dependencies = { "mason.nvim" },
 	},
 
 	{
-		"mfussenegger/nvim-dap",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		config = function()
-			require("configs.dap")
+			require("configs.mason-tool-installer")
 		end,
 	},
-
-	{
-		"rcarriga/nvim-dap-ui",
-		dependencies = { "mfussenegger/nvim-dap" },
-		config = function()
-			require("configs.dap-ui")
-		end,
-	},
+	-- {
+	-- 	"mfussenegger/nvim-dap",
+	-- 	config = function()
+	-- 		require("configs.dap")
+	-- 	end,
+	-- },
+	--
+	-- {
+	-- 	"rcarriga/nvim-dap-ui",
+	-- 	dependencies = { "mfussenegger/nvim-dap" },
+	-- 	config = function()
+	-- 		require("configs.dap-ui")
+	-- 	end,
+	-- },
 
 	-- {
 	--   'theHamsta/nvim-dap-virtual-text',

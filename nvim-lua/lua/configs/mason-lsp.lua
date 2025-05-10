@@ -20,8 +20,5 @@ masonlsp.setup({
 		"html",
 		"ts_ls",
 		"gopls",
-		"gofumpt",
-		"goimports-reviser",
-		"golines",
 	},
 })

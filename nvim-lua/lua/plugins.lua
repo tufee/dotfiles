@@ -73,12 +73,12 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"m4xshen/autoclose.nvim",
-		config = function()
-			require("autoclose").setup()
-		end,
-	},
+	-- {
+	-- 	"m4xshen/autoclose.nvim",
+	-- 	config = function()
+	-- 		require("autoclose").setup()
+	-- 	end,
+	-- },
 
 	{
 		"nvim-neotest/neotest",
@@ -88,6 +88,7 @@ require("lazy").setup({
 			"antoinemadec/FixCursorHold.nvim",
 			"marilari88/neotest-vitest",
 			"nvim-neotest/neotest-jest",
+			"nvim-neotest/neotest-go",
 		},
 		config = function()
 			require("configs.neotest")

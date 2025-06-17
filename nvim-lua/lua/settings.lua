@@ -1,6 +1,7 @@
 local g = vim.g
 local set = vim.opt
 local path = vim.fn.expand("~/.config")
+vim.deprecate = function() end
 
 g.mapleader = " "
 g.netrw_banner = 0

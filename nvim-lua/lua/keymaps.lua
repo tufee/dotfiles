@@ -7,7 +7,7 @@ set("n", "<C-N>", ":Neotree toggle<CR>")
 set("n", "<Leader>a", "ggVG<CR>")
 set("n", "<Leader>w", ":w<CR>")
 set("n", "<Leader>q", ":q!<CR>")
-set("n", "<C-e>", ":bd<CR>")
+set("n", "<C-l>", ":bd<CR>")
 set("n", "<Leader><CR>", ":noh<CR>")
 
 -- set({ "n", "v" }, "<leader>y", [["+y]])

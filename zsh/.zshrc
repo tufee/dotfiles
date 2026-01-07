@@ -1,8 +1,3 @@
-
-if [ -z "$TMUX" ]; then
-  tmux attach || tmux new
-fi
-
 export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
@@ -13,11 +8,12 @@ alias tmuxconf="nvim ~/.tmux.conf"
 alias vimconf="cd ~/.config/nvim"
 alias down="cd ~/Downloads"
 alias dev="cd ~/dev"
+alias fd="fdfind"
 alias vim="nvim"
 alias vi="nvim"
 alias lg="lazygit"
-alias cl="clear"
 alias update="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y"
+alias repo="gh repo view --web"
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -27,8 +23,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt INC_APPEND_HISTORY
-
-TERM=screen-256color
 
 export NVM_DIR="$HOME/.nvm"
 
@@ -41,6 +35,7 @@ plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 export EDITOR=nvim
 export VISUAL=nvim
+export PATH=$PATH:/usr/local/go/bin
 
 # ZVM_MODE=ZVM_MODE_NORMAL
 # ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
@@ -61,3 +56,10 @@ bindkey '^[l' autosuggest-accept
 # }
 
 source $ZSH/oh-my-zsh.sh
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Created by `pipx` on 2026-01-05 22:17:59
+export PATH="$PATH:/home/tufe/.local/bin"

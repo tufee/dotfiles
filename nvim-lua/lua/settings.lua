@@ -2,15 +2,16 @@ local g = vim.g
 local set = vim.opt
 local path = vim.fn.expand("~/.config")
 
+-- Adicionar Mason ao PATH
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
 g.mapleader = " "
-g.netrw_banner = 0
-g.netrw_winsize = 15
 set.clipboard = "unnamedplus"
 set.listchars = { eol = " ", trail = "·", nbsp = "." }
 set.termguicolors = true
-set.tabstop = 4
-set.softtabstop = 4
-set.shiftwidth = 4
+set.tabstop = 2
+set.softtabstop = 2
+set.shiftwidth = 2
 set.cursorline = false
 set.number = true
 set.mouse = "a"
@@ -28,7 +29,6 @@ set.undofile = true
 set.writebackup = true
 set.undodir = { path .. "/nvim/undos" }
 set.backupdir = { path .. "/nvim/backups" }
-set.completeopt = { "menuone", "noselect" }
 set.virtualedit = "all"
 set.scrolloff = 8
 set.updatetime = 50

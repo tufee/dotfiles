@@ -33,33 +33,6 @@ require("lazy").setup({
 				},
 			})
 
-			-- Adicionar keymaps do LSP quando JDTLS conectar
-			vim.api.nvim_create_autocmd("LspAttach", {
-				pattern = "*.java",
-				callback = function(args)
-					local bufnr = args.buf
-					local client = vim.lsp.get_client_by_id(args.data.client_id)
-
-					if client and client.name == "jdtls" then
-						local bufopts = { noremap = true, silent = true, buffer = bufnr }
-						vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, bufopts)
-						vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-						vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-						vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-						vim.keymap.set("n", "[d", function()
-							vim.diagnostic.jump({ count = -1, float = true })
-						end, bufopts)
-						vim.keymap.set("n", "]d", function()
-							vim.diagnostic.jump({ count = 1, float = true })
-						end, bufopts)
-						vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-						vim.keymap.set("n", "<M-CR>", vim.lsp.buf.code_action, bufopts)
-						vim.keymap.set("n", "<space>f", function()
-							require("conform").format()
-						end, bufopts)
-					end
-				end,
-			})
 		end,
 	},
 
@@ -67,9 +40,6 @@ require("lazy").setup({
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		cmd = "Neotree",
-		keys = {
-			{ "<C-N>", ":Neotree toggle<CR>", desc = "Toggle Neotree" },
-		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
@@ -77,7 +47,7 @@ require("lazy").setup({
 		},
 		config = function()
 			require("neo-tree").setup({
-				close_if_last_window = true,
+				-- close_if_last_window = true,
 				filesystem = {
 					follow_current_file = {
 						enabled = true,
@@ -150,7 +120,6 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",
-			"antoinemadec/FixCursorHold.nvim",
 			"marilari88/neotest-vitest",
 			"nvim-neotest/neotest-jest",
 			"nvim-neotest/neotest-go",
@@ -158,6 +127,7 @@ require("lazy").setup({
 		config = function()
 			require("neotest").setup({
 				adapters = {
+					require("neotest-vitest"),
 					require("neotest-jest")({
 						dap = { justMyCode = false },
 					}),
@@ -410,28 +380,6 @@ require("lazy").setup({
 				end
 			end
 
-			-- Função on_attach com keymaps LSP
-			local on_attach = function(client, bufnr)
-				local bufopts = { noremap = true, silent = true, buffer = bufnr }
-				vim.keymap.set("n", "gD", vim.lsp.buf.type_definition, bufopts)
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-				vim.keymap.set("n", "gs", ":OrganizeImports<CR>", bufopts)
-				vim.keymap.set("n", "<leader>h", vim.lsp.buf.signature_help, bufopts)
-				vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-				vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
-				vim.keymap.set("n", "[d", function()
-					vim.diagnostic.jump({ count = -1, float = true })
-				end, bufopts)
-				vim.keymap.set("n", "]d", function()
-					vim.diagnostic.jump({ count = 1, float = true })
-				end, bufopts)
-				vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
-				vim.keymap.set("n", "<M-CR>", vim.lsp.buf.code_action, bufopts)
-				vim.keymap.set("n", "<space>f", function()
-					require("conform").format()
-				end)
-			end
-
 			-- Configurar mason-lspconfig com handlers
 			masonlsp.setup({
 				automatic_installation = true,
@@ -460,7 +408,6 @@ require("lazy").setup({
 							return
 						end
 						lspconfig[server_name].setup({
-							on_attach = on_attach,
 							capabilities = capabilities,
 						})
 					end,
@@ -468,7 +415,6 @@ require("lazy").setup({
 					-- Configurações específicas por servidor
 					["ts_ls"] = function()
 						lspconfig.ts_ls.setup({
-							on_attach = on_attach,
 							capabilities = capabilities,
 							commands = {
 								OrganizeImports = {
@@ -481,7 +427,6 @@ require("lazy").setup({
 
 					["lua_ls"] = function()
 						lspconfig.lua_ls.setup({
-							on_attach = on_attach,
 							capabilities = capabilities,
 							settings = {
 								Lua = {
@@ -514,7 +459,6 @@ require("lazy").setup({
 
 					["yamlls"] = function()
 						lspconfig.yamlls.setup({
-							on_attach = on_attach,
 							capabilities = capabilities,
 							settings = {
 								yaml = {
@@ -548,9 +492,23 @@ require("lazy").setup({
 						})
 					end,
 
+					["eslint"] = function()
+						lspconfig.eslint.setup({
+							capabilities = capabilities,
+							root_dir = lspconfig.util.root_pattern(
+								"eslint.config.js",
+								"eslint.config.mjs",
+								"eslint.config.cjs",
+								".eslintrc.js",
+								".eslintrc.cjs",
+								".eslintrc.json",
+								".eslintrc"
+							),
+						})
+					end,
+
 					["gopls"] = function()
 						lspconfig.gopls.setup({
-							on_attach = on_attach,
 							capabilities = capabilities,
 							filetypes = { "go", "gomod", "gowork", "gotmpl" },
 							root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
@@ -747,20 +705,6 @@ require("lazy").setup({
 				end,
 				desc = "DAP UI Toggle",
 			},
-			{
-				"<leader>dw",
-				function()
-					require("dapui").eval()
-				end,
-				desc = "DAP UI Eval",
-			},
-			{
-				"<leader>dT",
-				function()
-					require("dap").clear_breakpoints()
-				end,
-				desc = "DAP Clear Breakpoints",
-			},
 		},
 		dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
 		config = function()
@@ -837,7 +781,7 @@ require("lazy").setup({
 				indent = { enable = true },
 				autotag = { enable = true },
 				ensure_installed = { "lua", "vim", "markdown" },
-				auto_install = true,
+				auto_install = false,
 			})
 		end,
 	},

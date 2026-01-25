@@ -66,4 +66,7 @@ set("n", "]d", function()
 	vim.diagnostic.jump({ count = 1, float = true })
 end)
 set("n", "<leader>rn", vim.lsp.buf.rename)
+
+-- Usar ' para ir para marcas (alternativa ao backtick com dead keys)
+set("n", "'", "`")
 set("n", "<M-CR>", vim.lsp.buf.code_action)

@@ -609,50 +609,83 @@ require("lazy").setup({
 			vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "DiagnosticError", linehl = "", numhl = "" })
 			vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "DiagnosticWarn", linehl = "Visual", numhl = "" })
 
-			-- Configurar adapter para js-debug se instalado
-			local mason_registry_ok, mason_registry = pcall(require, "mason-registry")
-			if mason_registry_ok then
-				local package_ok, js_debug_package = pcall(mason_registry.get_package, "js-debug-adapter")
-				if package_ok and js_debug_package then
-					local install_path_ok, js_debug_path =
-						pcall(js_debug_package.get_install_path, js_debug_package)
-					if install_path_ok and js_debug_path then
-						dap.adapters["pwa-node"] = {
-							type = "server",
-							host = "localhost",
-							port = "${port}",
-							executable = {
-								command = "node",
-								args = {
-									js_debug_path .. "/js-debug/src/dapDebugServer.js",
-									"${port}",
-								},
-							},
-						}
-					end
-				end
-			end
+			-- Configurar adapter para js-debug
+			local js_debug_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter"
+			dap.adapters["pwa-node"] = {
+				type = "server",
+				host = "localhost",
+				port = "${port}",
+				executable = {
+					command = "node",
+					args = {
+						js_debug_path .. "/js-debug/src/dapDebugServer.js",
+						"${port}",
+					},
+				},
+			}
 
 			-- Configurações para JavaScript/TypeScript
-			for _, language in ipairs({ "typescript", "javascript" }) do
-				if not dap.configurations[language] then
-					dap.configurations[language] = {
-						{
-							type = "pwa-node",
-							request = "launch",
-							name = "Launch file",
-							program = "${file}",
-							cwd = "${workspaceFolder}",
-						},
-						{
-							type = "pwa-node",
-							request = "attach",
-							name = "Attach",
-							cwd = "${workspaceFolder}",
-						},
-					}
-				end
-			end
+			dap.configurations.javascript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+				},
+				{
+					type = "pwa-node",
+					request = "attach",
+					name = "Attach",
+					processId = require("dap.utils").pick_process,
+					cwd = "${workspaceFolder}",
+				},
+			}
+
+			dap.configurations.typescript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch TS file (ts-node)",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+					runtimeExecutable = "npx",
+					runtimeArgs = { "ts-node" },
+					sourceMaps = true,
+					resolveSourceMapLocations = {
+						"${workspaceFolder}/**",
+						"!**/node_modules/**",
+					},
+				},
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "Launch TS file (tsx)",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+					runtimeExecutable = "npx",
+					runtimeArgs = { "tsx" },
+					sourceMaps = true,
+				},
+				{
+					type = "pwa-node",
+					request = "attach",
+					name = "Attach to Node process",
+					processId = function()
+						return require("dap.utils").pick_process({ filter = "node" })
+					end,
+					cwd = "${workspaceFolder}",
+					sourceMaps = true,
+				},
+				{
+					type = "pwa-node",
+					request = "attach",
+					name = "Attach to port 9229",
+					port = 9229,
+					cwd = "${workspaceFolder}",
+					sourceMaps = true,
+				},
+			}
 
 			-- Java fallback (se nvim-java-dap não configurar)
 			if not dap.adapters.java then

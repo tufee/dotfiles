@@ -1,5 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.uv.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
 		"clone",
@@ -196,7 +196,14 @@ require("lazy").setup({
 			-- Configurar diagnósticos globalmente
 			vim.diagnostic.config({
 				virtual_text = true,
-				signs = true,
+				signs = {
+					text = {
+						[vim.diagnostic.severity.ERROR] = " ",
+						[vim.diagnostic.severity.WARN] = " ",
+						[vim.diagnostic.severity.HINT] = "💡",
+						[vim.diagnostic.severity.INFO] = " ",
+					},
+				},
 				update_in_insert = false,
 				underline = true,
 				severity_sort = true,
@@ -208,12 +215,6 @@ require("lazy").setup({
 				},
 			})
 
-			-- Definir símbolos de diagnóstico
-			local signs = { Error = " ", Warning = " ", Hint = "💡", Information = " " }
-			for type, icon in pairs(signs) do
-				local hl = "DiagnosticSign" .. type
-				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-			end
 		end,
 	},
 
@@ -227,7 +228,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"saadparwaiz1/cmp_luasnip",
 			"rafamadriz/friendly-snippets",
-			"L3MON4D3/LuaSnip",
+			{ "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
 			"onsails/lspkind.nvim",
 		},
 		config = function()
@@ -808,11 +809,7 @@ require("lazy").setup({
 		event = { "BufReadPost", "BufNewFile" },
 		build = ":TSUpdate",
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				highlight = { enable = true },
-				incremental_selection = { enable = true },
-				indent = { enable = true },
-				autotag = { enable = true },
+			require("nvim-treesitter").setup({
 				ensure_installed = { "lua", "vim", "markdown" },
 				auto_install = false,
 			})

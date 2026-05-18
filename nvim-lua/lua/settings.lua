@@ -5,6 +5,9 @@ local path = vim.fn.expand("~/.config")
 -- Adicionar Mason ao PATH
 vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 
+-- Adicionar diretório de parsers ao runtimepath
+set.runtimepath:append(vim.fn.expand("~/.local/share/nvim/site"))
+
 g.mapleader = " "
 set.clipboard = "unnamedplus"
 set.listchars = { eol = " ", trail = "·", nbsp = "." }

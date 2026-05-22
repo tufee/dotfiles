@@ -13,6 +13,15 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		"greggh/claude-code.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- Required for git operations
+		},
+		config = function()
+			require("claude-code").setup()
+		end
+	},
+	{
 		"wakatime/vim-wakatime",
 		event = "VeryLazy",
 	},
@@ -468,26 +477,6 @@ require("lazy").setup({
 									},
 									hover = true,
 									completion = true,
-									customTags = {
-										"!Base64",
-										"!Cidr",
-										"!FindInMap sequence",
-										"!GetAtt",
-										"!GetAZs",
-										"!ImportValue",
-										"!Join sequence",
-										"!Ref",
-										"!Select sequence",
-										"!Split sequence",
-										"!Sub sequence",
-										"!Sub",
-										"!And sequence",
-										"!Condition",
-										"!Equals sequence",
-										"!If sequence",
-										"!Not sequence",
-										"!Or sequence",
-									},
 								},
 							},
 						})
@@ -687,32 +676,8 @@ require("lazy").setup({
 					sourceMaps = true,
 				},
 			}
-
-			-- Java fallback (se nvim-java-dap não configurar)
-			if not dap.adapters.java then
-				dap.adapters.java = function(callback)
-					callback({
-						type = "server",
-						host = "127.0.0.1",
-						port = 5005,
-					})
-				end
-			end
-
-			if not dap.configurations.java then
-				dap.configurations.java = {
-					{
-						type = "java",
-						request = "attach",
-						name = "Debug (Attach) - Remote",
-						hostName = "127.0.0.1",
-						port = 5005,
-					},
-				}
-			end
 		end,
 	},
-
 	{
 		"rcarriga/nvim-dap-ui",
 		lazy = false, -- Carregar eagerly para garantir que listeners funcionem
@@ -794,9 +759,8 @@ require("lazy").setup({
 	},
 
 	{
-		"numtostr/comment.nvim",
+		"numToStr/Comment.nvim",
 		event = { "BufReadPost", "BufNewFile" },
-		opts = {},
 	},
 
 	{

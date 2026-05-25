@@ -595,11 +595,10 @@ require("lazy").setup({
 		config = function()
 			local dap = require("dap")
 
-			-- Definir símbolos de breakpoint visíveis
-			vim.fn.sign_define("DapBreakpoint", { text = "🔴", texthl = "DiagnosticError", linehl = "", numhl = "" })
-			vim.fn.sign_define("DapStopped", { text = "▶️", texthl = "DiagnosticWarn", linehl = "Visual", numhl = "" })
+			vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticError", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapBreakpointCondition", { text = "◐", texthl = "DiagnosticWarn", linehl = "", numhl = "" })
+			vim.fn.sign_define("DapStopped", { text = "▶", texthl = "DiagnosticWarn", linehl = "Visual", numhl = "" })
 
-			-- Configurar adapter para js-debug
 			local js_debug_path = vim.fn.stdpath("data") .. "/mason/packages/js-debug-adapter"
 			dap.adapters["pwa-node"] = {
 				type = "server",
@@ -612,6 +611,12 @@ require("lazy").setup({
 						"${port}",
 					},
 				},
+				enrich_config = function(config, on_config)
+					if not config.timeout then
+						config.timeout = 30000
+					end
+					on_config(config)
+				end,
 			}
 
 			-- Configurações para JavaScript/TypeScript
@@ -633,6 +638,21 @@ require("lazy").setup({
 			}
 
 			dap.configurations.typescript = {
+				{
+					type = "pwa-node",
+					request = "launch",
+					name = "NestJS: Debug (nest start)",
+					runtimeExecutable = "npx",
+					runtimeArgs = { "nest", "start", "--debug", "--watch" },
+					cwd = "${workspaceFolder}",
+					sourceMaps = true,
+					console = "integratedTerminal",
+					resolveSourceMapLocations = {
+						"${workspaceFolder}/**",
+						"!**/node_modules/**",
+					},
+					skipFiles = { "<node_internals>/**", "node_modules/**" },
+				},
 				{
 					type = "pwa-node",
 					request = "launch",

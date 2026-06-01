@@ -611,6 +611,9 @@ require("lazy").setup({
 						"${port}",
 					},
 				},
+				options = {
+					initialize_timeout_sec = 30,
+				},
 				enrich_config = function(config, on_config)
 					if not config.timeout then
 						config.timeout = 30000
@@ -680,20 +683,49 @@ require("lazy").setup({
 				{
 					type = "pwa-node",
 					request = "attach",
-					name = "Attach to Node process",
+					name = "Attach to Node process (auto)",
 					processId = function()
-						return require("dap.utils").pick_process({ filter = "node" })
+						local pids = vim.fn.systemlist("pgrep -f 'node.*--inspect'")
+						if vim.v.shell_error == 0 and #pids == 1 then
+							return tonumber(pids[1])
+						elseif #pids > 1 then
+							return require("dap.utils").pick_process({
+								filter = function(proc)
+									return proc.name:match("node") and proc.name:match("inspect")
+								end,
+							})
+						else
+							vim.notify(
+								"Nenhum processo node com --inspect encontrado. Inicie com: node --inspect ...",
+								vim.log.levels.ERROR
+							)
+							return nil
+						end
 					end,
 					cwd = "${workspaceFolder}",
 					sourceMaps = true,
+					skipFiles = { "<node_internals>/**", "node_modules/**" },
+					resolveSourceMapLocations = {
+						"${workspaceFolder}/**",
+						"!**/node_modules/**",
+					},
 				},
 				{
 					type = "pwa-node",
 					request = "attach",
-					name = "Attach to port 9229",
-					port = 9229,
+					name = "Attach to port (--inspect)",
+					address = "localhost",
+					port = function()
+						local input = vim.fn.input("Debug port (default 9229): ")
+						return tonumber(input) or 9229
+					end,
 					cwd = "${workspaceFolder}",
 					sourceMaps = true,
+					skipFiles = { "<node_internals>/**", "node_modules/**" },
+					resolveSourceMapLocations = {
+						"${workspaceFolder}/**",
+						"!**/node_modules/**",
+					},
 				},
 			}
 		end,
@@ -801,7 +833,8 @@ require("lazy").setup({
 	},
 
 	-- Themes
-	{ "morhetz/gruvbox", lazy = true },
+	-- { "morhetz/gruvbox", lazy = true },
+	{ "ellisonleao/gruvbox.nvim", lazy = true },
 	{ "shatur/neovim-ayu", priority = 1000 },
 	{ "cpea2506/one_monokai.nvim", lazy = true },
 	{ "catppuccin/nvim", lazy = true },

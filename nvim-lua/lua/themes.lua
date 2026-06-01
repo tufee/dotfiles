@@ -8,10 +8,11 @@
 --
  -- require('onedark').load()
 
- -- vim.cmd [[colorscheme gruvbox]]
- -- vim.g.gruvbox_contrast_dark= 'hard'
+vim.cmd [[colorscheme gruvbox]]
+-- vim.g.gruvbox_contrast_dark= 'hard'
+vim.o.background = "dark"
 
-vim.cmd [[colorscheme ayu]]
+-- vim.cmd [[colorscheme ayu]]
 -- vim.g.ayucolor= 'light'
 -- vim.g.ayucolor= 'mirage'
-vim.g.ayucolor= 'dark'
+-- vim.g.ayucolor= 'dark'

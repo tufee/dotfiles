@@ -44,6 +44,8 @@ require("lazy").setup({
 
 		end,
 	},
+	-- Packer
+	{ "sindrets/diffview.nvim" },
 
 	{
 		"nvim-neo-tree/neo-tree.nvim",

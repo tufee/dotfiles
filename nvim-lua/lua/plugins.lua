@@ -13,38 +13,33 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"greggh/claude-code.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- Required for git operations
-		},
-		config = function()
-			require("claude-code").setup()
-		end
-	},
-	{
 		"wakatime/vim-wakatime",
 		event = "VeryLazy",
 	},
-
 	{
-		"nvim-java/nvim-java",
-		ft = { "java" },
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"mfussenegger/nvim-dap",
+		'mikesmithgh/kitty-scrollback.nvim',
+		enabled = true,
+		lazy = true,
+		cmd = {
+			'KittyScrollbackGenerateKittens',
+			'KittyScrollbackCheckHealth',
+			'KittyScrollbackGenerateCommandLineEditing',
 		},
+		event = { 'User KittyScrollbackLaunch' },
+
 		config = function()
-			require("java").setup({
-				-- Instala Java 21 automaticamente apenas para o JDTLS rodar
-				-- Seus projetos continuam usando Java 17
-				jdk = {
-					auto_install = true,
+			require('kitty-scrollback').setup({
+				search = {
+					callbacks = {
+						after_ready = function()
+							vim.fn.feedkeys('?', 'n')
+						end,
+					},
 				},
 			})
-
 		end,
 	},
-	-- Packer
+
 	{ "sindrets/diffview.nvim" },
 
 	{
@@ -824,11 +819,11 @@ require("lazy").setup({
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPost", "BufNewFile" },
+		event = "VeryLazy",
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter").setup({
-				ensure_installed = { "lua", "vim", "markdown" },
+				ensure_installed = { "lua", "vim", "vimdoc", "markdown" },
 				auto_install = false,
 			})
 		end,

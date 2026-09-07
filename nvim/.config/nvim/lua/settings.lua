@@ -9,6 +9,9 @@ vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
 set.runtimepath:append(vim.fn.expand("~/.local/share/nvim/site"))
 
 g.mapleader = " "
+-- kitty-scrollback closes Neovim immediately after a yank; xsel keeps the X11
+-- clipboard selection available reliably in that flow.
+g.clipboard = "xsel"
 set.clipboard = "unnamedplus"
 set.listchars = { eol = " ", trail = "·", nbsp = "." }
 set.termguicolors = true

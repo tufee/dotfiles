@@ -150,7 +150,7 @@ bindsym $mod+r mode "resize"
 # ------------------------------------------------------------
 
 bindsym $mod+Return exec $terminal
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id albert toggle
 bindsym $mod+n exec kitty -e yazi
 bindsym $mod+Shift+b exec $browser
 bindsym Print exec --no-startup-id flameshot gui
@@ -202,6 +202,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 # Startup
 # ------------------------------------------------------------
 
+exec --no-startup-id albert
 exec --no-startup-id flameshot
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 

@@ -1,0 +1,231 @@
+# ============================================================
+# i3 - Development Setup
+# ============================================================
+
+# ------------------------------------------------------------
+# Mod key
+# ------------------------------------------------------------
+
+set $mod Mod4
+
+# ------------------------------------------------------------
+# Applications
+# ------------------------------------------------------------
+
+set $terminal kitty
+set $browser google-chrome > /dev/null 2>&1 &
+
+# ------------------------------------------------------------
+# Font
+# ------------------------------------------------------------
+
+font pango:JetBrainsMono Nerd Font 10
+
+# ------------------------------------------------------------
+# Window borders
+# ------------------------------------------------------------
+
+default_border pixel 2
+default_floating_border pixel 2
+
+# ------------------------------------------------------------
+# Gaps
+# ------------------------------------------------------------
+
+gaps inner 2
+gaps outer 0
+
+# ------------------------------------------------------------
+# Workspaces
+# ------------------------------------------------------------
+
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+
+# ------------------------------------------------------------
+# Workspace bindings
+# ------------------------------------------------------------
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+
+# ------------------------------------------------------------
+# Move container to workspace
+# ------------------------------------------------------------
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+
+# ------------------------------------------------------------
+# Navigation
+# ------------------------------------------------------------
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Arrow keys also work
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# ------------------------------------------------------------
+# Move windows
+# ------------------------------------------------------------
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# ------------------------------------------------------------
+# Split
+# ------------------------------------------------------------
+
+bindsym $mod+v split v
+bindsym $mod+b split h
+
+# ------------------------------------------------------------
+# Fullscreen
+# ------------------------------------------------------------
+
+bindsym $mod+f fullscreen toggle
+
+# ------------------------------------------------------------
+# Floating
+# ------------------------------------------------------------
+
+bindsym $mod+Shift+space floating toggle
+
+# ------------------------------------------------------------
+# Layout
+# ------------------------------------------------------------
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# ------------------------------------------------------------
+# Resize
+# ------------------------------------------------------------
+
+mode "resize" {
+	bindsym h resize shrink width 10 px or 10 ppt
+		bindsym j resize grow height 10 px or 10 ppt
+		bindsym k resize shrink height 10 px or 10 ppt
+		bindsym l resize grow width 10 px or 10 ppt
+
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up   resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
+
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# ------------------------------------------------------------
+# Applications
+# (obs: $mod+b e $mod+e estavam duplicados com split/layout acima -
+#  usei binds novos e livres para nao sobrescrever nada)
+# ------------------------------------------------------------
+
+bindsym $mod+Return exec $terminal
+bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+n exec kitty -e yazi
+bindsym $mod+Shift+b exec $browser
+bindsym Print exec --no-startup-id flameshot gui
+bindsym $mod+Shift+x exec --no-startup-id "i3lock & sleep 1 && xset dpms force off"
+
+# ------------------------------------------------------------
+# Kill window
+# ------------------------------------------------------------
+
+bindsym $mod+q kill
+
+# ------------------------------------------------------------
+# Reload / restart
+# ------------------------------------------------------------
+
+bindsym $mod+c reload
+bindsym $mod+Shift+r restart
+
+# ------------------------------------------------------------
+# Exit i3
+# ------------------------------------------------------------
+
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+
+# ------------------------------------------------------------
+# Multimedia (volume)
+# ------------------------------------------------------------
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# ------------------------------------------------------------
+# Multimedia (player - playerctl ja estava instalado e sem uso)
+# ------------------------------------------------------------
+
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# ------------------------------------------------------------
+# Brilho (brightnessctl ja estava instalado e sem uso)
+# ------------------------------------------------------------
+
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
+
+# ------------------------------------------------------------
+# Startup
+# ------------------------------------------------------------
+
+exec --no-startup-id flameshot
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+# ------------------------------------------------------------
+# Monitor
+# ------------------------------------------------------------
+
+exec --no-startup-id xset s 300 5
+exec --no-startup-id xset +dpms
+exec --no-startup-id xset dpms 300 600 900
+
+# ------------------------------------------------------------
+# Wifi
+# ------------------------------------------------------------ 
+
+bindsym $mod+Shift+w exec --no-startup-id ~/.config/polybar/wifi-menu.sh
+
+exec --no-startup-id dunst
+
+# Compositor (picom estava instalado mas nunca iniciado)
+exec --no-startup-id picom
+
+# Wallpaper (ajuste o caminho da imagem)
+exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+
+# Lock de tela ao suspender (requer i3lock: sudo apt install i3lock)
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork

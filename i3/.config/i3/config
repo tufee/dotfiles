@@ -211,6 +211,8 @@ exec --no-startup-id nm-applet
 # Monitor
 # ------------------------------------------------------------
 
+# Mantem a sessao i3 ativa com a tampa fechada; o inibidor termina ao sair da sessao.
+exec --no-startup-id systemd-inhibit --what=handle-lid-switch --mode=block --who=i3 --why="Monitor externo com notebook fechado" /usr/bin/sleep infinity
 exec --no-startup-id xset s 300 5
 exec --no-startup-id xset +dpms
 exec --no-startup-id xset dpms 300 600 900

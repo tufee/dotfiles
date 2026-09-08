@@ -1,0 +1,96 @@
+[General]
+showTray=true
+telemetry=false
+
+[application]
+enabled=true
+
+[applications]
+enabled=true
+
+[bluetooth]
+enabled=true
+
+[calculator_qalculate]
+enabled=true
+
+[clipboard]
+enabled=true
+
+[datetime]
+enabled=true
+
+[github]
+enabled=true
+saved_searches\issues\1\query=is:open is:issue assignee:@me
+saved_searches\issues\1\title=Assigned issues
+saved_searches\issues\2\query=is:open is:issue author:@me
+saved_searches\issues\2\title=Created issues
+saved_searches\issues\3\query=is:open is:issue org:albertlauncher
+saved_searches\issues\3\title=Albert issues
+saved_searches\issues\4\query=is:open is:pr assignee:@me
+saved_searches\issues\4\title=Assigned pull requests
+saved_searches\issues\5\query=is:open is:pr author:@me
+saved_searches\issues\5\title=Created pull requests
+saved_searches\issues\6\query=is:open is:pr org:albertlauncher
+saved_searches\issues\6\title=Albert pull requests
+saved_searches\issues\7\query=is:open is:pr review-requested:@me
+saved_searches\issues\7\title=Review requests
+saved_searches\issues\8\query=mentions:@me
+saved_searches\issues\8\title=Mentions
+saved_searches\issues\9\query=involves:@me
+saved_searches\issues\9\title=Recent activity
+saved_searches\issues\size=9
+saved_searches\repositories\1\query=sort:updated-desc fork:true user:@me
+saved_searches\repositories\1\title=smartsky-repositories
+saved_searches\repositories\2\query=sort:updated-desc fork:true archived:false org:albertlauncher
+saved_searches\repositories\2\title=Albert repositories
+saved_searches\repositories\3\query=sort:updated-desc fork:true archived:true org:albertlauncher
+saved_searches\repositories\3\title=Archived Albert repositories
+saved_searches\repositories\size=3
+saved_searches\users\1\query=org:smartsky-repositories
+saved_searches\users\1\title=smartsky
+saved_searches\users\2\query=org:smartsky-repositories sort:updated-desc
+saved_searches\users\2\title=smartsky
+saved_searches\users\size=1
+
+[system]
+enabled=true
+
+[urlhandler]
+enabled=true
+
+[websearch]
+enabled=true
+
+[widgetsboxmodel]
+action_item_padding=6
+action_item_selection_border_radius=11
+action_item_selection_border_width=0
+alwaysOnTop=true
+clearOnHide=true
+disable_input_method=true
+displayScrollbar=false
+followCursor=true
+hideOnFocusLoss=true
+historySearch=true
+input_border_radius=11
+input_font_size=18
+input_padding=5
+itemCount=5
+result_item_horizontal_spacing=6
+result_item_icon_size=39
+result_item_padding=6
+result_item_selection_border_radius=11
+result_item_selection_border_width=0
+result_item_subtext_font_size=8
+result_item_text_font_size=13
+result_item_vertical_spacing=2
+showCentered=true
+window_border_radius=18
+window_border_width=1
+window_padding=7
+window_shadow_offset=8
+window_shadow_size=80
+window_spacing=7
+window_width=640

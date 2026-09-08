@@ -4,4 +4,5 @@ killall -q polybar
 
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-MONITOR=HDMI-A-1 polybar main &
+MONITOR="$(polybar --list-monitors | sed -n '1s/:.*//p')"
+MONITOR="$MONITOR" polybar main &

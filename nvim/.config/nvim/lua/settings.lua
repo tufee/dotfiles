@@ -40,24 +40,6 @@ set.scrolloff = 8
 set.updatetime = 50
 set.colorcolumn = "100"
 
--- Filtrar avisos de deprecação específicos do spring-boot.nvim
-local original_deprecate = vim.deprecate
-vim.deprecate = function(name, alternative, version, plugin, backtrace)
-	-- Silenciar avisos de client.request
-	if name and name:match("client%.request") then
-		-- Verificar se vem do spring-boot.nvim no backtrace
-		local info = debug.getinfo(3, "S")
-		if info and info.source and info.source:match("spring[-_]boot%.nvim") then
-			return
-		end
-		-- Verificar no backtrace fornecido
-		if backtrace and type(backtrace) == "string" and backtrace:match("spring[-_]boot%.nvim") then
-			return
-		end
-	end
-	original_deprecate(name, alternative, version, plugin, backtrace)
-end
-
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
 	callback = function()

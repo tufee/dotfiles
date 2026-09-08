@@ -80,14 +80,6 @@ require("lazy").setup({
 					yaml = { "yamlfmt" },
 					json = { "jq" },
 					go = { "gofumpt", "goimports-reviser", "golines" },
-					java = { "google-java-format" },
-				},
-				formatters = {
-					["google-java-format"] = {
-						command = "google-java-format",
-						args = { "-" },
-						stdin = true,
-					},
 				},
 			})
 		end,
@@ -405,15 +397,10 @@ require("lazy").setup({
 					"html",
 					"ts_ls",
 					"gopls",
-					"jdtls",
 				},
 				handlers = {
 					-- Handler padrão para todos os servidores
 					function(server_name)
-						-- Ignorar jdtls - será configurado pelo nvim-java
-						if server_name == "jdtls" then
-							return
-						end
 						lspconfig[server_name].setup({
 							capabilities = capabilities,
 						})
@@ -528,7 +515,6 @@ require("lazy").setup({
 					"stylua",
 					"yamlfmt",
 					"jq",
-					"google-java-format",
 				},
 				auto_update = false,
 				run_on_start = false,

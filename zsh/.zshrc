@@ -45,11 +45,12 @@ export VISUAL=nvim
 
 export PATH=$PATH:/usr/local/go/bin
 export PATH=/home/paulo/.opencode/bin:$PATH
-export PATH="$PATH:/home/tufe/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$HOME/.local/bin:$PATH"
 
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export DOCKER_HOST="unix:///run/user/$(id -u)/podman/podman.sock"
 
 ZSH_AUTOSUGGEST_STRATEGY=(completion)
 

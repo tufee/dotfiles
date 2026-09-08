@@ -226,8 +226,8 @@ exec --no-startup-id dunst
 # Compositor (picom estava instalado mas nunca iniciado)
 exec --no-startup-id picom
 
-# Wallpaper (ajuste o caminho da imagem)
-exec --no-startup-id feh --bg-fill ~/Pictures/wallpaper.jpg
+# Wallpaper, quando o arquivo estiver disponível
+exec --no-startup-id sh -c '[ -f "$HOME/Pictures/wallpaper.jpg" ] && exec feh --bg-fill "$HOME/Pictures/wallpaper.jpg"'
 
 # Lock de tela ao suspender (requer i3lock: sudo apt install i3lock)
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork

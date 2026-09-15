@@ -11,6 +11,9 @@ enabled=true
 [bluetooth]
 enabled=true
 
+[caffeine]
+enabled=true
+
 [calculator_qalculate]
 enabled=true
 

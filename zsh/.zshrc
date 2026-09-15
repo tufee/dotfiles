@@ -16,11 +16,19 @@ alias update="sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y"
 alias repo="gh repo view --web"
 alias ldk="lazydocker"
 
-alias domusapp='sshpass -f ~/.ssh/passwd-domusapp ssh domusapp'
-alias domusdb='sshpass -f ~/.ssh/passwd-domusdb ssh domusdb'
+alias domusprd='sshpass -f ~/.ssh/passwd-domusprd ssh domusprd'
+alias domusqa='sshpass -f ~/.ssh/passwd-domusqa ssh domusqa'
+alias domusdev='sshpass -f ~/.ssh/passwd-domusdev ssh domusdev'
+alias domusrc='sshpass -f ~/.ssh/passwd-domusrc ssh domusrc'
+
 alias geo='sshpass -f ~/.ssh/passwd-geo ssh geo'
-alias pulseapp='sshpass -f ~/.ssh/passwd-pulseapp ssh pulseapp'
-alias pulsedb='sshpass -f ~/.ssh/passwd-pulsedb ssh pulsedb'
+
+alias pulseprd='sshpass -f ~/.ssh/passwd-pulseprd ssh pulseprd'
+alias pulseprddb='sshpass -f ~/.ssh/passwd-pulseprddb ssh pulseprddb'
+alias pulseqa='sshpass -f ~/.ssh/passwd-pulseqa ssh pulseqa'
+alias pulsedev='sshpass -f ~/.ssh/passwd-pulsedev ssh pulsedev'
+alias pulserc='sshpass -f ~/.ssh/passwd-pulserc ssh pulserc'
+alias ssh='kitten ssh'
 
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -59,3 +67,10 @@ eval "$(zoxide init zsh)"
 
 bindkey -r '^[l'                      # remove o macro `ls` padrão do oh-my-zsh
 bindkey '^[l' autosuggest-accept      # Alt+L aceita a sugestão do zsh-autosuggestions
+
+# bun completions
+[ -s "/home/paulo/.bun/_bun" ] && source "/home/paulo/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

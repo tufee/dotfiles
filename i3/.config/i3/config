@@ -8,6 +8,9 @@
 
 set $mod Mod4
 
+# Caps Lock funciona como a tecla Super/Windows
+exec_always --no-startup-id setxkbmap -option caps:super
+
 # ------------------------------------------------------------
 # Applications
 # ------------------------------------------------------------

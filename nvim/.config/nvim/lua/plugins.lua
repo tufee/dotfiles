@@ -805,7 +805,7 @@ require("lazy").setup({
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "VeryLazy",
+		lazy = false,
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter").setup({
